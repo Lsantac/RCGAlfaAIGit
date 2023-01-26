@@ -1,0 +1,111 @@
+ 
+ :root{
+  --tam-max : 600px;
+ }
+ 
+ @media screen and (max-width: 600px) {
+      
+    .table td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+  }
+
+  @media screen and (min-width: 601px) {
+    td img:not(#imagem_logado):not(#imagem_logo) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    td.end-tabela {
+      display: none;
+    }
+    th.col-nome {
+        display:none;  
+      }
+  
+  }
+  
+  @media screen and (min-width: 601px) {
+    td.end-vertical {
+      display: none;
+    }
+    td.end-tabela {
+      display:flexbox;
+    }
+    
+  }
+
+   
+  .table td .btn {
+    width: 85px;
+    height: 30px;
+  }
+  
+  .table td form {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-around;
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+    
+   .table tr {
+    border-bottom: 1px solid #ddd;
+    
+  }
+    
+  .table td,.table th {
+    border: none;
+  }
+  .table td table tr {
+    border: none;
+  }
+  
+  .table td table td {
+    float: left;
+    
+  }
+
+  @media only screen and (max-width: 600px) {
+    td.foto {
+      display: block;
+    }
+  
+    td.nome {
+      display: block;
+    }
+
+    td {
+        font-size: 80%;
+    }
+
+    input.consulta {
+        font-size: 70%;
+    }
+
+    input.rede {
+        font-size: 70%;
+    }
+
+    th.col-foto, th.col-nome, th.col-local,th.col-actions,th.col-part {
+        font-size: 80%; 
+    }
+
+    th.col-foto{
+       display: none;
+    }
+
+  }
+
+  @media only screen and (min-width: 601px) {
+    th.col-part{
+        display: none;
+     }
+
+  }

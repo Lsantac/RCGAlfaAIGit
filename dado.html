@@ -1,0 +1,70 @@
+
+<style>
+.cube {
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  animation: spin 5s infinite linear;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+.front {
+  background: yellow;
+  transform: rotateY(0deg) translateZ(50px);
+}
+
+.back {
+  background: green;
+  transform: rotateY(180deg) translateZ(50px);
+}
+
+.right {
+  background: purple;
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.left {
+  background: blue;
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.top {
+  background: red;
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.bottom {
+  background: orange;
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+@keyframes spin {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+
+</style>
+
+
+<div class="cube">
+  <div class="face front"></div>
+  <div class="face back"></div>
+  <div class="face right"></div>
+  <div class="face left"></div>
+  <div class="face top"></div>
+  <div class="face bottom"></div>
+</div>

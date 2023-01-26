@@ -1,0 +1,108 @@
+
+
+@media (max-width: 1070px) {
+    .texto_m {
+        font-size: 12px;
+    }
+
+}
+
+@media (min-width: 1067px) {
+    .accordion-item {
+      display: none;
+    }
+
+    .cols-vert,.mostra-data {
+      display: none;
+    }
+
+   
+  }
+
+  .data,.col-quant {
+      font-size: 12px;
+    }
+
+  @media screen and (max-width: 1066.98px) {
+    /*.accordion-item {
+      display: block;
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+    .accordion-header {
+        text-align: left;
+        padding: 0;
+      }
+    .accordion-button {
+        text-align: left;
+        padding: 0;
+        font-size: 12px; 
+      } */
+      
+   /* .mostra-obs{
+        display: none;    
+    }*/
+
+            
+    .mostra-btn-mapa,.mostra-btn-sugest,.col-data{
+      display: none;    
+    }
+
+    th.col-quant, th.col-unid , th.col-rede, th.col-status{
+      display: none;
+    }
+    td.col-quant, td.col-unid, td.col-rede ,td.col-status{
+      display: none;
+    }
+    .col-sugest,.col-mapa{
+      display: none;
+    }
+
+    .cols-vert{
+      font-size: 12px;
+    }
+    
+  }
+  
+  .btn-sug,.btn-mapa-tam {
+    height: 30px;
+    width: 105px;
+    font-size: 11px;
+      
+  }
+
+  
+  .card-img-top {
+    width: 100%;
+    height: 200px;
+    max-width: 200px;
+    object-fit: cover;
+  }
+
+  .card-title{
+    font-size: 18px;
+    color: green;
+  }
+  .card-text {
+    font-size: 13px;
+  }
+
+  .mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 10px;;
+}
+
+.small-margin-bottom {
+  margin-bottom: 2px;
+}
+
+p {
+  margin-bottom: -0px;
+}
+
+
+
+
+

@@ -1,0 +1,19 @@
+
+
+@media only screen and (max-width: 1200px) {
+    .navbar-nav {
+      font-size: 15px;
+    }
+    .texto-nome-logado, .texto-bem-vindo {
+      font-size: 13px;
+    }
+        
+    #imagem_logo {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  
+  
+  
+  

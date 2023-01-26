@@ -2,49 +2,25 @@
 
 @media (max-width: 1070px) {
     .texto_m {
-        font-size: 12px;
+        font-size: 14px;
     }
 
 }
 
 @media (min-width: 1067px) {
-    .accordion-item {
-      display: none;
-    }
-
+   
     .cols-vert,.mostra-data {
       display: none;
     }
 
-   
   }
 
-  .data,.col-quant {
+  .data {
       font-size: 12px;
     }
 
   @media screen and (max-width: 1066.98px) {
-    /*.accordion-item {
-      display: block;
-      border: 0;
-      margin: 0;
-      padding: 0;
-    }
-    .accordion-header {
-        text-align: left;
-        padding: 0;
-      }
-    .accordion-button {
-        text-align: left;
-        padding: 0;
-        font-size: 12px; 
-      } */
-      
-   /* .mostra-obs{
-        display: none;    
-    }*/
-
-            
+               
     .mostra-btn-mapa,.mostra-btn-sugest,.col-data{
       display: none;    
     }
@@ -73,12 +49,6 @@
   }
 
   
-  .card-img-top {
-    width: 100%;
-    height: 200px;
-    max-width: 200px;
-    object-fit: cover;
-  }
 
   .card-title{
     font-size: 18px;
@@ -102,7 +72,39 @@ p {
   margin-bottom: -0px;
 }
 
+@media (max-width: 750px) {
+  .texto_m {
+      font-size: 16px;
+  }
+  .btn-mapa-tam,.btn-sug{
+    font-size: 14px;
+    height: 50px;
+    width: 105px;
+  }
 
+  .card-img-top {
+    width: 100%;
+    height: 200px;
+    max-width: 200px;
+    object-fit: cover;
+  }
 
+  .col-img,.col-descr{
+    display: none;
+  }
+
+ .figure-img {
+   align-content: center;  
+ }
+  
+}
+
+@media (min-width: 749.9px) {
+
+ .figure-img{
+  display: none;
+ }
+
+}
 
 

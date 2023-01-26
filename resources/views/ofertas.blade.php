@@ -63,8 +63,8 @@
     <table class="table table-sm">
         <thead class="texto_m"> 
             <tr>
-                <th scope="col">Imagem</th>
-                <th scope="col">Descrição</th>
+                <th scope="col" class="col-img">Imagem</th>
+                <th scope="col" class="col-descr">Descrição</th>
                 <th scope="col" class="col-data">Data</th>
                 <th scope="col" class="col-quant">Quant</th>
                 <th scope="col" class="col-unid">Unidade</th>
@@ -81,7 +81,7 @@
             <div>
                 <td>
                     <div class="col-1">
-                        <figure class="figure">
+                        <figure class="figure col-img">
                                 @if(!@empty($ofp->imagem))
                                    <img id="imagem_of_cons" src="/uploads/of_img/{{$ofp->imagem}}" class="imagem-of-nec-cons">
                                 @else
@@ -94,6 +94,13 @@
                     <div style="width: auto;">
                         <div>
                             <div class="row align-items-start">
+                                <figure class="figure figure-img">
+                                    @if(!@empty($ofp->imagem))
+                                       <img id="imagem_of_cons" src="/uploads/of_img/{{$ofp->imagem}}" class="imagem-of-nec-cons card-img-top">
+                                    @else
+                                       <img id="imagem_of_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons">
+                                    @endif
+                                </figure>
                                 <div class="col">
                                     <h5 style="font-size:15px;" class="card-title texto-oferta">{{$ofp->desc_of}}</h5>
                                     <h6 style="color:rgb(4, 97, 97)" class="card-subtitle mb-2 texto_m">Categoria : {{$ofp->desc_cat}} </h6>
@@ -120,7 +127,7 @@
                                 </div>
                                 <div class="d-lg-none">
                                     <p class="texto_m"><strong> Nome : </strong> {{$ofp->nome_part}} </p>
-                                    <p class="texto_p"><strong>Endereço : </strong> {{$ofp->endereco}} , {{$ofp->cidade}} {{$ofp->estado}} - {{$ofp->pais}}</p>
+                                    <p class="texto_m"><strong>Endereço : </strong> {{$ofp->endereco}} , {{$ofp->cidade}} {{$ofp->estado}} - {{$ofp->pais}}</p>
                                 </div>
                                 
                                 <div class="col d-none d-sm-none d-sx-none d-md-none d-lg-block">
@@ -131,12 +138,13 @@
                         </div>
 
                         <div class="cols-vert">
-                            <strong>Quant :</strong> {{$ofp->quant}}
-                            <strong>Unidade :</strong> {{$ofp->desc_unid}}<br>
-                            <strong>Rede :</strong> {{$ofp->nome_rede}}<br>
-                            <strong>Status :</strong>
+                            
+                            <strong class="texto_m">Quant :</strong> {{$ofp->quant}}
+                            <strong class="texto_m">Unidade :</strong> {{$ofp->desc_unid}}<br>
+                            <strong class="texto_m">Rede :</strong> {{$ofp->nome_rede}}<br>
+                            <strong class="texto_m">Status :</strong>
                                    
-                                    <div class="texto-em-andamento" style="display: inline-block">
+                                    <div class="texto-em-andamento texto_m" style="display: inline-block">
                                         <span>
                                     @php
                                         echo App\Http\Controllers\IniciaController::consulta_status_transacoes_of_anda($ofp->id_of_part)
@@ -144,7 +152,7 @@
                                     </span>
                                     </div>
                                     
-                                    <div class="texto-parc-finalizada" style="display: inline-block">
+                                    <div class="texto-parc-finalizada texto_m" style="display: inline-block">
                                         <span>
                                     @php
                                         echo App\Http\Controllers\IniciaController::consulta_status_transacoes_of_parc($ofp->id_of_part)
@@ -152,7 +160,7 @@
                                     </span>
                                     </div>
             
-                                    <div class="texto-finalizada" style="display: inline-block">
+                                    <div class="texto-finalizada texto_m" style="display: inline-block">
                                             <span>
                                         @php
                                             echo App\Http\Controllers\IniciaController::consulta_status_transacoes_of_final($ofp->id_of_part)

@@ -9,9 +9,9 @@
     <h2 class="texto-oferta">Ofertas</h2>
     
     <div class="row">
-        <div class="col-10">
+        <div class="col-12">
 
-            <form class="d-flex" method="GET" action="{{route('consultar_ofertas')}}">
+            <form id="form-consultar"  class="d-flex" method="GET" action="{{route('consultar_ofertas')}}">
                 @csrf
 
                 <input class="form-control me-2 texto_p consulta" name="consulta_of" value="{{Session::get('criterio_of')}}" type="search" placeholder="Digite palavras para consulta..." aria-label="Consultar">
@@ -25,17 +25,20 @@
                             @endforeach
                 </datalist>                         
 
-                <button class="btn btn btn-primary me-3 texto_p" type="submit">Procurar</button>                        
+                <button class="btn btn btn-primary me-3 btn-procurar" type="submit">Procurar</button>                        
                 
             </form>
         </div>
         <br><br>
+
+        <button form="form-consultar" class="btn btn btn-primary me-3 btn-procurar-cel" type="submit">Procurar</button>
+
         <div class="col-auto">
             <form action="mostra_varios_parts" method="post">
                 @csrf
 
                 @if (isset($ofps_map))
-                    <button class="btn btn-mapa btn-sm bi-globe btn-mapa-tam" type="submit"> Mapa Geral</button>
+                    <button class="btn btn-mapa btn-sm bi-globe btn-mapa-geral-tam" type="submit"> Mapa Geral</button>
 
                     <input value="0" name="nome_part" type="hidden">
                     <input value="Oferta" name="of_nec" type="hidden">
@@ -96,31 +99,18 @@
                             <div class="row align-items-start">
                                 <figure class="figure figure-img">
                                     @if(!@empty($ofp->imagem))
-                                       <img id="imagem_of_cons" src="/uploads/of_img/{{$ofp->imagem}}" class="imagem-of-nec-cons card-img-top">
+                                       <img id="imagem_of_cons" src="/uploads/of_img/{{$ofp->imagem}}" class="imagem-of-nec-cons card-img-top center-img">
                                     @else
-                                       <img id="imagem_of_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons">
+                                       <img id="imagem_of_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons center-img">
                                     @endif
                                 </figure>
                                 <div class="col">
-                                    <h5 style="font-size:15px;" class="card-title texto-oferta">{{$ofp->desc_of}}</h5>
+                                    <h5 class="card-title descr-oferta">{{$ofp->desc_of}}</h5>
                                     <h6 style="color:rgb(4, 97, 97)" class="card-subtitle mb-2 texto_m">Categoria : {{$ofp->desc_cat}} </h6>
                                     <p class="texto_m mostra-data"><strong> Data : </strong>
                                        @php $date = new DateTime($ofp->data); echo $date->format('d/m/Y'); @endphp
                                     </p> 
-
-                                   <!-- <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{$ofp->id}}" aria-expanded="true" aria-controls="collapseOne">
-                                            <strong> Observações : </strong>
-                                          </button>
-                                        </h2>
-                                        <div id="collapseOne-{{$ofp->id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                          <div class="accordion-body texto_p">
-                                            {{$ofp->obs}}
-                                          </div>
-                                        </div>
-                                    </div> -->
-
+                                    
                                     <div class="mostra-obs">
                                         <p class="texto_m"><strong> Observações : </strong> {{$ofp->obs}} </p>
                                     </div>
@@ -137,12 +127,12 @@
                             </div>
                         </div>
 
-                        <div class="cols-vert">
+                        <div class="cols-vert texto_m">
                             
-                            <strong class="texto_m">Quant :</strong> {{$ofp->quant}}
-                            <strong class="texto_m">Unidade :</strong> {{$ofp->desc_unid}}<br>
-                            <strong class="texto_m">Rede :</strong> {{$ofp->nome_rede}}<br>
-                            <strong class="texto_m">Status :</strong>
+                            <strong>Quant :</strong> {{$ofp->quant}}
+                            <strong>Unidade :</strong> {{$ofp->desc_unid}}<br>
+                            <strong>Rede :</strong> {{$ofp->nome_rede}}<br>
+                            <strong>Status :</strong>
                                    
                                     <div class="texto-em-andamento texto_m" style="display: inline-block">
                                         <span>

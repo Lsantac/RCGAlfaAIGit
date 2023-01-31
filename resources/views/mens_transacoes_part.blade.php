@@ -393,6 +393,19 @@
                                 Concorda com os termos combinados nas mensagens e nas definições da transação? 
                                 <br>
                                 Para que a transação seja finalizada completamente, é preciso que as duas partes confirmem. 
+                                <br><br>
+                                <label for="id_rating" class="form-label">Selecione uma Avaliação</label>
+                                <select required="required" name="id_rating" id="id_rating" style="width: 350px;" class="form-select" aria-label="Default select example">
+                                  <option selected></option>
+                                  <option value="1">Otimo</option>
+                                  <option value="2">Bom</option>
+                                  <option value="3">Regular</option>
+                                  <option value="4">Ruim</option>
+                                  <option value="5">Pessimo</option>
+                                </select>
+                                <br>
+                                <label for="exampleFormControlTextarea1" class="form-label">Observações</label>
+                                <textarea  name="obs_rating" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                               </div>
 
                               <input value="{{Session('id_logado')}}" name="id_logado" id="id_logado" type="hidden">

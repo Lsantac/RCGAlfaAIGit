@@ -1072,6 +1072,13 @@ class TransacoesController extends Controller
 
                  if($trans_up) {  
                         /*Sucesso*/
+
+                        $transaction_ratings = DB::table('transaction_ratings')->updateOrInsert(
+                           ['id_trans' => $trans->id,
+                            'id_part' => request('id_logado')],
+                           ['obs_rating' => request('obs_rating'),
+                            'id_rating' => request('id_rating')]);
+                       
                         session()->flash('code', $code);
                   }else{
                         /*Erro na atualização da transação!  */

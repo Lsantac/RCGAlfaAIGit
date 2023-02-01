@@ -8,7 +8,7 @@
             <div class="row">
 
                 <div class="col">
-                    <div class="card" style="width: 100%;">
+                    <div class="card" style="width: 100%;border-radius: 2rem;overflow: hidden;">
                         <h6 class="card-header header-oferta"><a style="text-decoration: none;" href="/ofertas_part/{{Session::get('id_logado')}}" class="texto-oferta bi-arrow-up-circle-fill"> Minhas Ofertas</a></h6>
                         <div class="card-body">
 

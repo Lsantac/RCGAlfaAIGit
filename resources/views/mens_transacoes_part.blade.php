@@ -89,6 +89,11 @@
                           }
                           @endphp
                         </strong>
+                        @if(isset($rating_of))  
+                          <div>Avaliação : {{$rating_of->description}}</div>
+                          <div>Obs : {{$rating_of->obs_rating}}</div>
+                        @endif
+
                     </div>
                     <div class=" texto_m d-none d-lg-block">
                       <strong> Confirmada em :
@@ -101,6 +106,10 @@
                         }
                         @endphp
                       </strong>
+                      @if(isset($rating_of))  
+                          <div>Avaliação : {{$rating_of->description}}</div>
+                          <div>Obs : {{$rating_of->obs_rating}}</div>
+                      @endif
                   </div>
 
                   </div>
@@ -397,11 +406,11 @@
                                 <label for="id_rating" class="form-label">Selecione uma Avaliação</label>
                                 <select required="required" name="id_rating" id="id_rating" style="width: 350px;" class="form-select" aria-label="Default select example">
                                   <option selected></option>
-                                  <option value="1">Otimo</option>
-                                  <option value="2">Bom</option>
+                                  <option value="5">Otimo</option>
+                                  <option value="4">Bom</option>
                                   <option value="3">Regular</option>
-                                  <option value="4">Ruim</option>
-                                  <option value="5">Pessimo</option>
+                                  <option value="2">Ruim</option>
+                                  <option value="1">Pessimo</option>
                                 </select>
                                 <br>
                                 <label for="exampleFormControlTextarea1" class="form-label">Observações</label>

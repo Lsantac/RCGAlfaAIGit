@@ -682,7 +682,11 @@ class TransacoesController extends Controller
              }
           }
                                             
-          return view('trans_trocas_part',['part' => $part,'ofps'=>$ofps,'of_tr_ps'=>$of_tr_ps,'nome_part_cab'=>$nome_part_cab]);
+          return view('trans_trocas_part',
+                     ['part' => $part,
+                     'ofps'=>$ofps,
+                     'of_tr_ps'=>$of_tr_ps,
+                     'nome_part_cab'=>$nome_part_cab]);
     
           }         
 
@@ -790,6 +794,24 @@ class TransacoesController extends Controller
                                             ->get();
 
            /*dd($trans);*/
+
+           #consulta avaliações na tabela transaction_ratings
+           $rating_of = DB::table('transaction_ratings')->where('transaction_ratings.id_trans',$id_trans)
+                                                     ->where('transaction_ratings.id_part',$ofps->id_part)
+                                                     ->join('ratings','transaction_ratings.id_rating','=','ratings.id')
+                                                     ->first();
+
+           if(!$troca){                                                     
+              $rating_nec_tr = DB::table('transaction_ratings')->where('transaction_ratings.id_trans',$id_trans)
+                                                               ->where('transaction_ratings.id_part',$necps->id_part)
+                                                               ->join('ratings','transaction_ratings.id_rating','=','ratings.id')
+                                                               ->first();                                                     
+           }else{
+              $rating_nec_tr = DB::table('transaction_ratings')->where('transaction_ratings.id_trans',$id_trans)
+                                                               ->where('transaction_ratings.id_part',$oftrps->id_part)
+                                                               ->join('ratings','transaction_ratings.id_rating','=','ratings.id')
+                                                               ->first();                                                     
+           }
                                             
            $soma_qt_of_trans = DB::table('transacoes')->where('transacoes.id_of_part',$id_of_part)
                                                       ->sum('transacoes.quant_of');                                                          
@@ -809,7 +831,7 @@ class TransacoesController extends Controller
               $disp_qt_of_tr_trans = $oftrps->quant - round($soma_qt_of_tr_trans,2);
               $disp_qt_nec_trans = 0; 
 
-              return view('mens_transacoes_part',['part'  =>$part,
+              return view('mens_transacoes_part',['part' =>$part,
                                                  'ofps'  =>$ofps,
                                                  'oftrps'=>$oftrps,
                                                  'msgs'  =>$msgs,
@@ -818,7 +840,9 @@ class TransacoesController extends Controller
                                                  'disp_qt_of_trans'=>$disp_qt_of_trans, 
                                                  'disp_qt_of_tr_trans'=>$disp_qt_of_tr_trans, 
                                                  'disp_qt_nec_trans'=>$disp_qt_nec_trans, 
-                                                 'origem'=>$origem
+                                                 'origem'=>$origem,
+                                                 'rating_of'=>$rating_of,
+                                                 'rating_nec_tr'=>$rating_nec_tr,
                                                  ]);                      
     
            } else{
@@ -829,7 +853,7 @@ class TransacoesController extends Controller
               $disp_qt_of_tr_trans = 0;
 
               
-              return view('mens_transacoes_part',['part'  =>$part,
+              return view('mens_transacoes_part',['part'=>$part,
                                                 'ofps'  =>$ofps,
                                                 'necps' =>$necps,
                                                 'msgs'  =>$msgs,
@@ -838,7 +862,9 @@ class TransacoesController extends Controller
                                                 'disp_qt_of_trans'=>$disp_qt_of_trans, 
                                                 'disp_qt_of_tr_trans'=>$disp_qt_of_tr_trans, 
                                                 'disp_qt_nec_trans'=>$disp_qt_nec_trans, 
-                                                'origem'=>$origem
+                                                'origem'=>$origem,
+                                                'rating_of'=>$rating_of,
+                                                'rating_nec_tr'=>$rating_nec_tr,
                                                 ]);                      
 
            }                                                      
@@ -1075,10 +1101,12 @@ class TransacoesController extends Controller
 
                         $transaction_ratings = DB::table('transaction_ratings')->updateOrInsert(
                            ['id_trans' => $trans->id,
-                            'id_part' => request('id_logado')],
+                            'id_part' => request('id_logado'),
+                            'created_at'=> date('Y-m-d H:i:s')],
                            ['obs_rating' => request('obs_rating'),
-                            'id_rating' => request('id_rating')]);
-                       
+                            'id_rating' => request('id_rating'),
+                            'updated_at'=> date('Y-m-d H:i:s')]);
+
                         session()->flash('code', $code);
                   }else{
                         /*Erro na atualização da transação!  */

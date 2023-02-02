@@ -1099,13 +1099,14 @@ class TransacoesController extends Controller
                  if($trans_up) {  
                         /*Sucesso*/
 
-                        $transaction_ratings = DB::table('transaction_ratings')->updateOrInsert(
-                           ['id_trans' => $trans->id,
-                            'id_part' => request('id_logado'),
-                            'created_at'=> date('Y-m-d H:i:s')],
+                        DB::table('transaction_ratings')->updateOrInsert(
+                           ['id_trans' => $trans->id, 'id_part' => request('id_logado')],
                            ['obs_rating' => request('obs_rating'),
                             'id_rating' => request('id_rating'),
-                            'updated_at'=> date('Y-m-d H:i:s')]);
+                            'updated_at' => date('Y-m-d H:i:s')],
+                           ['created_at' => DB::raw("CASE WHEN updated_at IS NULL THEN '".date('Y-m-d H:i:s')."' ELSE created_at END")]
+                       );
+                       
 
                         session()->flash('code', $code);
                   }else{

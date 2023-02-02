@@ -3,12 +3,14 @@
 
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('/css/inicio.css') }}">
+
     <div class="container">
         <div class="d-none d-lg-block">
             <div class="row">
 
                 <div class="col">
-                    <div class="card" style="width: 100%;border-radius: 2rem;overflow: hidden;">
+                    <div class="card card-inicio">
                         <h6 class="card-header header-oferta"><a style="text-decoration: none;" href="/ofertas_part/{{Session::get('id_logado')}}" class="texto-oferta bi-arrow-up-circle-fill"> Minhas Ofertas</a></h6>
                         <div class="card-body">
 
@@ -69,7 +71,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card" style="width: 100%;">
+                    <div class="card card-inicio">
                         <h6 class="card-header header-necessidade"><a style="text-decoration: none;" href="/necessidades_part/{{Session::get('id_logado')}}" class="texto-necessidade bi-arrow-down-circle-fill"> Minhas Necessidades</a></h6>
                         <div class="card-body">
 
@@ -137,7 +139,7 @@
         <div class="d-none d-lg-block">
 
             <div class="row ">
-                <!-- <div class="col d-none d-lg-block"> -->
+                
 
                 <div class="col">
                     <div class="card" >
@@ -161,7 +163,7 @@
             <div class="row">
 
                 <div class="col-12" style="margin-bottom: 18px">
-                    <div class="card" style="width: 100%;">
+                    <div class="card card-inicio" >
                         <h6 class="card-header header-oferta"><a style="text-decoration: none;" href="/ofertas_part/{{Session::get('id_logado')}}" class="texto-oferta bi-arrow-up-circle-fill"> Minhas Ofertas</a></h6>
                         <div class="card-body">
 
@@ -240,7 +242,7 @@
             <div class="row ">
                 <!-- <div class="col d-none d-lg-block"> -->
                 <div class="col-12" style="margin-bottom: 18px">
-                    <div class="card" style="width: 100%;">
+                    <div class="card card-inicio" >
                         <h6 class="card-header header-necessidade"><a style="text-decoration: none;" href="/necessidades_part/{{Session::get('id_logado')}}" class="texto-necessidade bi-arrow-down-circle-fill"> Minhas Necessidades</a></h6>
                         <div class="card-body">
 

@@ -186,6 +186,10 @@
                                 }
                             @endphp
                         </strong>
+                        @if(isset($rating_nec_tr))  
+                          <div>Avaliação : {{$rating_nec_tr->description}}</div>
+                          <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
+                        @endif
                     </div>
                     <div class=" texto_m d-none d-lg-block">
                       <strong> Confirmada em :
@@ -198,6 +202,10 @@
                               }
                           @endphp
                       </strong>
+                      @if(isset($rating_nec_tr))  
+                          <div>Avaliação : {{$rating_nec_tr->description}}</div>
+                          <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
+                      @endif
                   </div>
 
                   </div>
@@ -245,6 +253,10 @@
                                 }
                             @endphp
                         </strong>
+                        @if(isset($rating_nec_tr))  
+                          <div>Avaliação : {{$rating_nec_tr->description}}</div>
+                          <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
+                        @endif
                     </div>
                     <div class=" texto_m d-none d-lg-block">
                       <strong> Confirmada em :
@@ -257,6 +269,10 @@
                               }
                           @endphp
                       </strong>
+                      @if(isset($rating_nec_tr))  
+                          <div>Avaliação : {{$rating_nec_tr->description}}</div>
+                          <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
+                      @endif
                   </div>
 
                   </div>
@@ -403,18 +419,40 @@
                                 <br>
                                 Para que a transação seja finalizada completamente, é preciso que as duas partes confirmem. 
                                 <br><br>
+                                
                                 <label for="id_rating" class="form-label">Selecione uma Avaliação</label>
+
                                 <select required="required" name="id_rating" id="id_rating" style="width: 350px;" class="form-select" aria-label="Default select example">
+                                <option selected></option>
+
+                                @if(isset($rating_of))
+                                  <?php
+                                    $options = array(5 => 'Ótimo', 4 => 'Bom', 3 => 'Regular', 2 => 'Ruim', 1 => 'Péssimo');
+                                    foreach ($options as $value => $text) {
+                                      $selected = ($value == $rating_of->id_rating) ? 'selected' : '';
+                                      echo "<option value='$value' $selected>$text</option>";
+                                    }
+                                  ?>
+
+                                @else
                                   <option selected></option>
                                   <option value="5">Otimo</option>
                                   <option value="4">Bom</option>
                                   <option value="3">Regular</option>
                                   <option value="2">Ruim</option>
                                   <option value="1">Pessimo</option>
+                                @endif  
                                 </select>
                                 <br>
-                                <label for="exampleFormControlTextarea1" class="form-label">Observações</label>
-                                <textarea  name="obs_rating" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                                @if(isset($rating_of))
+                                    <label for="exampleFormControlTextarea1" class="form-label">Observações</label>
+                                    <textarea  name="obs_rating" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$rating_of->obs_rating}}</textarea>
+                                @else 
+                                    <label for="exampleFormControlTextarea1" class="form-label">Observações</label>
+                                    <textarea  name="obs_rating" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                @endif  
+
                               </div>
 
                               <input value="{{Session('id_logado')}}" name="id_logado" id="id_logado" type="hidden">

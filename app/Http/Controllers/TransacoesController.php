@@ -822,8 +822,10 @@ class TransacoesController extends Controller
            $soma_qt_nec_trans = DB::table('transacoes')->where('transacoes.id_nec_part',$id_nec_part)
                                                        ->sum('transacoes.quant_nec'); 
                                                        
-           $disp_qt_of_trans = $ofps->quant - round($soma_qt_of_trans,2);                                                        
+           $disp_qt_of_trans = $ofps->quant - round($soma_qt_of_trans,2);  
            
+           $ratings = DB::table('ratings')->get()->toArray();
+
            if($troca){
               $moedas =  DB::table('moedas')->where('desc_moeda','=','Troca')
                                             ->get();
@@ -843,6 +845,7 @@ class TransacoesController extends Controller
                                                  'origem'=>$origem,
                                                  'rating_of'=>$rating_of,
                                                  'rating_nec_tr'=>$rating_nec_tr,
+                                                 'ratings'=>$ratings
                                                  ]);                      
     
            } else{
@@ -865,6 +868,7 @@ class TransacoesController extends Controller
                                                 'origem'=>$origem,
                                                 'rating_of'=>$rating_of,
                                                 'rating_nec_tr'=>$rating_nec_tr,
+                                                'ratings'=>$ratings
                                                 ]);                      
 
            }                                                      
@@ -1099,14 +1103,13 @@ class TransacoesController extends Controller
                  if($trans_up) {  
                         /*Sucesso*/
 
-                        DB::table('transaction_ratings')->updateOrInsert(
+                       DB::table('transaction_ratings')->updateOrInsert(
                            ['id_trans' => $trans->id, 'id_part' => request('id_logado')],
                            ['obs_rating' => request('obs_rating'),
                             'id_rating' => request('id_rating'),
-                            'updated_at' => date('Y-m-d H:i:s')],
-                           ['created_at' => DB::raw("CASE WHEN updated_at IS NULL THEN '".date('Y-m-d H:i:s')."' ELSE created_at END")]
-                       );
-                       
+                            'created_at' => DB::raw("CASE WHEN updated_at IS NULL THEN '".date('Y-m-d H:i:s')."' ELSE created_at END"),
+                            'updated_at' => date('Y-m-d H:i:s')]
+                        );
 
                         session()->flash('code', $code);
                   }else{

@@ -824,7 +824,12 @@ class TransacoesController extends Controller
                                                        
            $disp_qt_of_trans = $ofps->quant - round($soma_qt_of_trans,2);  
            
-           $ratings = DB::table('ratings')->get()->toArray();
+           $ratings = DB::table('ratings')->get();
+           $trans_ratings = DB::table('transaction_ratings')->where('transaction_ratings.id_trans',$id_trans)
+                                                            ->where('transaction_ratings.id_part',session('id_logado'))
+                                                            ->join('ratings','transaction_ratings.id_rating','=','ratings.id') 
+                                                            ->first();
+           
 
            if($troca){
               $moedas =  DB::table('moedas')->where('desc_moeda','=','Troca')
@@ -845,12 +850,15 @@ class TransacoesController extends Controller
                                                  'origem'=>$origem,
                                                  'rating_of'=>$rating_of,
                                                  'rating_nec_tr'=>$rating_nec_tr,
-                                                 'ratings'=>$ratings
+                                                 'ratings'=>$ratings,
+                                                 'trans_ratings'=>$trans_ratings
                                                  ]);                      
     
            } else{
               $moedas =  DB::table('moedas')->where('desc_moeda','<>','Troca')
                                             ->get();  
+
+            /* dd($trans_ratings,$ratings,session('id_logado'));*/                                           
 
               $disp_qt_nec_trans = $necps->quant - round($soma_qt_nec_trans,2); 
               $disp_qt_of_tr_trans = 0;
@@ -868,7 +876,8 @@ class TransacoesController extends Controller
                                                 'origem'=>$origem,
                                                 'rating_of'=>$rating_of,
                                                 'rating_nec_tr'=>$rating_nec_tr,
-                                                'ratings'=>$ratings
+                                                'ratings'=>$ratings,
+                                                'trans_ratings'=>$trans_ratings
                                                 ]);                      
 
            }                                                      
@@ -1012,14 +1021,17 @@ class TransacoesController extends Controller
             $QtOf = request('QtOf');
             $QtOfTr = request('QtOfTr');
             $QtNec = request('QtNec');
-
-            if(request('id_logado')==request('id_part_of')){
+            $id_part_of = request('id_part_of');
+            $id_part_nec = request('id_part_nec');
+            $id_part_of_tr = request('id_part_of_tr');
+            
+            if(request('id_logado')==$id_part_of){
                $of_nec_tr = 'of';
             }else{
-                  if(request('id_logado')==request('id_part_nec')){
+                  if(request('id_logado')==$id_part_nec){
                     $of_nec_tr = 'nec';
                   } else{
-                        if(request('id_logado')==request('id_part_of_tr')){
+                        if(request('id_logado')==$id_part_of_tr){
                            $of_nec_tr = 'tr';
                         }   
                   }     
@@ -1064,8 +1076,9 @@ class TransacoesController extends Controller
 
                   /*dd($trans);*/
 
+                 /*Finalizada totalmente*/
                  if (($trans->data_final_of_part <> null) and (($trans->data_final_nec_part <> null) or (($trans->data_final_of_tr_part <> null)))){
-                    $trans_up->update(['id_st_trans'=> 4]);/*Finalizada totalmente*/
+                    $trans_up->update(['id_st_trans'=> 4]);
                     $code = 4;
                   
                     //Incluindo registro de quantidade de moeda/fluxo no historico do participante da oferta
@@ -1077,15 +1090,17 @@ class TransacoesController extends Controller
                     'data' => date('Y-m-d H:i:s')]);
                     
                     //Incluindo registro de quantidade de moeda/fluxo no historico do participante da necessidade
-                    if($of_nec_tr=='nec'){
-                       $id_part_inclui_moeda = request('id_part_nec');
+                    if($id_part_nec > 0){
+                       $id_part_inclui_moeda = $id_part_nec;
                        $fator = -1;
                     }else{
-                        if($of_nec_tr=='tr'){
-                           $id_part_inclui_moeda = request('id_part_of_tr');    
+                        if($id_part_of_tr > 0){
+                           $id_part_inclui_moeda = $id_part_of_tr;    
                            $fator = 1;
                         }  
                     }    
+
+                   /* dd($fator,$id_part_of,$id_part_nec,$id_part_of_tr);*/
 
                     $moedas_part_nec = DB::table('moedas_part')->updateOrInsert(
                     ['id_part'=>$id_part_inclui_moeda,'id_moeda'=>request('Fluxo'),'id_trans'=>$trans->id],  

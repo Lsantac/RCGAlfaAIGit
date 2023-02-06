@@ -423,36 +423,16 @@
                                 <label for="id_rating" class="form-label">Selecione uma Avaliação</label>
 
                                 <select required="required" name="id_rating" id="id_rating" style="width: 350px;" class="form-select" aria-label="Default select example">
-                                <option selected></option>
-
-                                                                  
-                                  @if(isset($rating_of) && Session::get('id_logado') == $ofps->id_part)
-                                    <?php
-                                      $options = array(5 => 'Ótimo', 4 => 'Bom', 3 => 'Regular', 2 => 'Ruim', 1 => 'Péssimo');
-                                      foreach ($options as $value => $text) {
-                                        $selected = ($value == $rating_of->id_rating) ? 'selected' : '';
-                                        echo "<option value='$value' $selected>$text</option>";
-                                      }
-                                    ?>
-                                  @else   
-                                    @if(isset($rating_nec_tr))
-                                          <?php
-                                            $options = array(5 => 'Ótimo', 4 => 'Bom', 3 => 'Regular', 2 => 'Ruim', 1 => 'Péssimo');
-                                            foreach ($options as $value => $text) {
-                                              $selected = ($value == $rating_nec_tr->id_rating) ? 'selected' : '';
-                                              echo "<option value='$value' $selected>$text</option>";
-                                            }
-                                          ?> 
-                                    @else 
-                                          <option selected></option>
-                                          <option value="5">Otimo</option>
-                                          <option value="4">Bom</option>
-                                          <option value="3">Regular</option>
-                                          <option value="2">Ruim</option>
-                                          <option value="1">Pessimo</option>
-                                      @endif   
+                                  @if (isset($trans_ratings))
+                                        <option value="{{$trans_ratings->id_rating}}" selected>{{$trans_ratings->description}}</option>
+                                  @else
+                                    <option value = "" selected></option>
                                   @endif
-
+                                  @foreach ($ratings as $rating)
+                                    <option value="{{$rating->id}}"> 
+                                          {{$rating->description}} 
+                                    </option>
+                                  @endforeach
                                 
                                 </select>
                                 <br>

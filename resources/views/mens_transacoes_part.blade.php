@@ -81,9 +81,9 @@
                     <div class=" texto_p d-block d-lg-none">
                         <strong> Confirmada em :
                           @php
-                          if(isset($trans[0])){
-                            if($trans[0]->data_final_of_part > 0){
-                              $date = new DateTime($trans[0]->data_final_of_part);
+                          if(isset($trans)){
+                            if($trans->data_final_of_part > 0){
+                              $date = new DateTime($trans->data_final_of_part);
                               echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
                             }
                           }
@@ -98,9 +98,9 @@
                     <div class=" texto_m d-none d-lg-block">
                       <strong> Confirmada em :
                         @php
-                        if(isset($trans[0])){
-                          if($trans[0]->data_final_of_part > 0){
-                            $date = new DateTime($trans[0]->data_final_of_part);
+                        if(isset($trans)){
+                          if($trans->data_final_of_part > 0){
+                            $date = new DateTime($trans->data_final_of_part);
                             echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
                           }
                         }
@@ -163,9 +163,9 @@
               <div class="card-text texto_m">Categoria : {{$necps->desc_cat}}</div>
               <div class="card-text texto_m">Quant inicial : {{$necps->quant}}  {{$necps->desc_unid}}</div>
               @if($disp_qt_nec_trans > 0)
-                <div style="color: blue;" class="card-text texto_m">Quant disponivel : {{$disp_qt_nec_trans}}  {{$necps->desc_unid}}</div>
+                <div style="color: blue;" class="card-text texto_m">Quant desejada : {{$disp_qt_nec_trans}}  {{$necps->desc_unid}}</div>
               @else
-                <div style="color: red;" class="card-text texto_m">Quant disponivel : {{$disp_qt_nec_trans}}  {{$necps->desc_unid}}</div>
+                <div style="color: red;" class="card-text texto_m">Quant desejada : {{$disp_qt_nec_trans}}  {{$necps->desc_unid}}</div>
               @endif
               <div class="card-text texto_m">Obs : {{$necps->obs}}</div>
               <br>
@@ -178,9 +178,9 @@
                     <div class=" texto_p d-block d-lg-none">
                         <strong> Confirmada em :
                             @php
-                                if(isset($trans[0])){
-                                  if($trans[0]->data_final_nec_part > 0){
-                                    $date = new DateTime($trans[0]->data_final_nec_part);
+                                if(isset($trans)){
+                                  if($trans->data_final_nec_part > 0){
+                                    $date = new DateTime($trans->data_final_nec_part);
                                     echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
                                   }
                                 }
@@ -194,9 +194,9 @@
                     <div class=" texto_m d-none d-lg-block">
                       <strong> Confirmada em :
                           @php
-                              if(isset($trans[0])){
-                                if($trans[0]->data_final_nec_part > 0){
-                                  $date = new DateTime($trans[0]->data_final_nec_part);
+                              if(isset($trans)){
+                                if($trans->data_final_nec_part > 0){
+                                  $date = new DateTime($trans->data_final_nec_part);
                                   echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
                                 }
                               }
@@ -245,9 +245,9 @@
                     <div class=" texto_p d-block d-lg-none">
                         <strong> Confirmada em :
                             @php
-                                if(isset($trans[0])){
-                                  if($trans[0]->data_final_of_tr_part > 0){
-                                    $date = new DateTime($trans[0]->data_final_of_tr_part);
+                                if(isset($trans)){
+                                  if($trans->data_final_of_tr_part > 0){
+                                    $date = new DateTime($trans->data_final_of_tr_part);
                                     echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
                                   }
                                 }
@@ -261,9 +261,9 @@
                     <div class=" texto_m d-none d-lg-block">
                       <strong> Confirmada em :
                           @php
-                              if(isset($trans[0])){
-                                if($trans[0]->data_final_of_tr_part > 0){
-                                  $date = new DateTime($trans[0]->data_final_of_tr_part);
+                              if(isset($trans)){
+                                if($trans->data_final_of_tr_part > 0){
+                                  $date = new DateTime($trans->data_final_of_tr_part);
                                   echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
                                 }
                               }
@@ -301,8 +301,8 @@
                     <input form="finalizar_transacao" value="1" name="Fluxo" id="Fluxo" type="hidden">
                 @else 
                     <select form="finalizar_transacao" class="form-select texto_m" aria-label="Default select example" name="Fluxo" id="Fluxo" required>
-                            @if (count($trans)>0)
-                                 <option value="{{$trans[0]->id_moeda}}" selected>{{$trans[0]->desc_moeda}}</option>
+                            @if (isset($trans))
+                                 <option value="{{$trans->id_moeda}}" selected>{{$trans->desc_moeda}}</option>
                             @else
                               <option value = "" selected></option>
                             @endif
@@ -323,8 +323,8 @@
                 </div>
   
                 <div class="col-4 ">
-                  @if (count($trans)>0)
-                      <input onkeypress="return event.keyCode!=13" id="QtFluxo" form="finalizar_transacao" value="{{$trans[0]->quant_moeda}}"  type="" name="QtFluxo" class="form-control texto_m"  required>
+                  @if (isset($trans))
+                      <input onkeypress="return event.keyCode!=13" id="QtFluxo" form="finalizar_transacao" value="{{$trans->quant_moeda}}"  type="" name="QtFluxo" class="form-control texto_m"  required>
                   @else
                       <input onkeypress="return event.keyCode!=13" id="QtFluxo" form="finalizar_transacao" value="1"  type="" name="QtFluxo" class="form-control texto_m"  required>
                   @endif
@@ -340,8 +340,8 @@
                 <div class="col-auto">
                   <div class="row">
                     <div class="col-7">
-                         @if (count($trans)>0)
-                             <input onkeypress="return event.keyCode!=13" id="QtOf" name="QtOf" onchange="verifica_quant({{$disp_qt_of_trans}},'of')"  form="finalizar_transacao"  value="{{$trans[0]->quant_of}}" type=""  class="form-control texto_m"  required>  
+                         @if (isset($trans))
+                             <input onkeypress="return event.keyCode!=13" id="QtOf" name="QtOf" onchange="verifica_quant({{$disp_qt_of_trans}},'of')"  form="finalizar_transacao"  value="{{$trans->quant_of}}" type=""  class="form-control texto_m"  required>  
                          @else
                              <input onkeypress="return event.keyCode!=13" id="QtOf" name="QtOf" onchange="verifica_quant({{$disp_qt_of_trans}},'of')" form="finalizar_transacao"  value="{{$disp_qt_of_trans}}" type=""  class="form-control texto_m"  required>  
                          @endif    
@@ -361,8 +361,8 @@
                     <div class="col-auto ">
                       <div class="row">
                           <div class="col-7 ">
-                            @if (count($trans)>0)
-                                <input  onkeypress="return event.keyCode!=13" id="QtNec" name="QtNec" onchange="verifica_quant({{$disp_qt_nec_trans}},'nec')" form="finalizar_transacao"  value="{{$trans[0]->quant_nec}}" type=""  class="form-control texto_m"  required>  
+                            @if (isset($trans))
+                                <input  onkeypress="return event.keyCode!=13" id="QtNec" name="QtNec" onchange="verifica_quant({{$disp_qt_nec_trans}},'nec')" form="finalizar_transacao"  value="{{$trans->quant_nec}}" type=""  class="form-control texto_m"  required>  
                             @else
                                 <input  onkeypress="return event.keyCode!=13" id="QtNec" name="QtNec" onchange="verifica_quant({{$disp_qt_nec_trans}},'nec')" form="finalizar_transacao"  value="{{$disp_qt_nec_trans}}" type=""  class="form-control texto_m"  required>  
                             @endif  
@@ -380,8 +380,8 @@
                     <div class="col-8 ">
                       <div class="row">
                           <div class="col-6 ">
-                            @if (count($trans)>0)
-                                <input  onkeypress="return event.keyCode!=13" id="QtOfTr" name="QtOfTr" onchange="verifica_quant({{$disp_qt_of_tr_trans}},'tr')" form="finalizar_transacao"  value="{{$trans[0]->quant_of_tr}}" type=""  class="form-control texto_m"  required>  
+                            @if (isset($trans))
+                                <input  onkeypress="return event.keyCode!=13" id="QtOfTr" name="QtOfTr" onchange="verifica_quant({{$disp_qt_of_tr_trans}},'tr')" form="finalizar_transacao"  value="{{$trans->quant_of_tr}}" type=""  class="form-control texto_m"  required>  
                             @else
                                 <input  onkeypress="return event.keyCode!=13" id="QtOfTr" name="QtOfTr" onchange="verifica_quant({{$disp_qt_of_tr_trans}},'tr')" form="finalizar_transacao"  value="{{$disp_qt_of_tr_trans}}" type=""  class="form-control texto_m"  required>  
                             @endif  
@@ -404,7 +404,7 @@
 
                         <!-- Button trigger modal Finalizar -->
                         <button  id="botao_finalizar" onclick="verifica_zeros('{{$origem}}')"  type="button" class="btn btn-finalizar btn-sm" >
-                          Finalizar 
+                          Finalizar/Avaliar 
                         </button>
 
                         <div class="modal fade" id="finalizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -484,15 +484,15 @@
 
                   
                   <div class="col">
-                    @if(isset($trans[0]))
+                    @if(isset($trans))
                         <!-- Modal -->
                         <form id='cancelar_transacao'  action="{{route('cancelar_transacao')}}" method="get">
                           
                           @csrf
                           
-                              @if(($origem == "of"  and $trans[0]->data_final_of_part > 0) or 
-                                  ($origem == "nec" and $trans[0]->data_final_nec_part > 0) or 
-                                  ($origem == "tr"  and $trans[0]->data_final_of_tr_part > 0)) 
+                              @if(($origem == "of"  and $trans->data_final_of_part > 0) or 
+                                  ($origem == "nec" and $trans->data_final_nec_part > 0) or 
+                                  ($origem == "tr"  and $trans->data_final_of_tr_part > 0)) 
                                       <button  id="botao_cancelar" type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#cancelar">
                                         Cancelar
                                       </button>      
@@ -516,7 +516,7 @@
                                 </div>
                                 
                                 <input value="{{Session('id_logado')}}" name="id_logado" id="id_logado" type="hidden">
-                                <input value="{{$trans[0]->id}}" name="id_trans" id="id_trans" type="hidden">
+                                <input value="{{$trans->id}}" name="id_trans" id="id_trans" type="hidden">
                                 <input value="{{$origem}}" name="origem" id="origem" type="hidden">
 
                                 <input value="{{$ofps->id_part}}" name="id_part_of" id="id_part_of" type="hidden">
@@ -724,8 +724,8 @@
 
                     <td>
                         @if(Session::get('id_logado') == $msg->id_part and ($msg->canc_conf == false))  
-                           @if(isset($trans[0])) 
-                               @if(($trans[0]->data_final_of_part == null) AND ($trans[0]->data_final_nec_part == NULL) AND ($trans[0]->data_final_of_tr_part == NULL))
+                           @if(isset($trans)) 
+                               @if(($trans->data_final_of_part == null) AND ($trans->data_final_nec_part == NULL) AND ($trans->data_final_of_tr_part == NULL))
                                    <button class="btn btn-editar btn-sm bi bi-pencil texto_p" type="submit" data-bs-toggle="modal" data-bs-target="#EditarMensagem-{{$msg->id}}">
                                     Editar</button>
                                @endif 
@@ -768,8 +768,8 @@
                     <td>
  
                       @if(Session::get('id_logado') == $msg->id_part and ($msg->canc_conf == false))  
-                           @if(isset($trans[0])) 
-                               @if(($trans[0]->data_final_of_part == null) AND ($trans[0]->data_final_nec_part == NULL) AND ($trans[0]->data_final_of_tr_part == NULL))
+                           @if(isset($trans)) 
+                               @if(($trans->data_final_of_part == null) AND ($trans->data_final_nec_part == NULL) AND ($trans->data_final_of_tr_part == NULL))
                                    <button class="btn btn-danger btn-sm bi bi-trash texto_p" type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluiMensagem-{{$msg->id}}" >
                                    Excluir</button>
                                @endif 
@@ -918,8 +918,8 @@
    @endif    
 @endif
 
-@if (count($trans)>0)
-    @if($trans[0]->desc_moeda == 'Troca' or $trans[0]->desc_moeda == 'Doação')
+@if (isset($trans))
+    @if($trans->desc_moeda == 'Troca' or $trans->desc_moeda == 'Doação')
         <script>
               document.getElementById("QtFluxo").readOnly = true ;
         </script>
@@ -927,6 +927,17 @@
         <script>
           document.getElementById("QtFluxo").readOnly = false ;
         </script>
+    @endif
+    @if($trans->id_st_trans == 4)
+      
+       <script>
+           document.getElementById("QtFluxo").readOnly = true ;
+           document.getElementById("Fluxo").disabled = true ;
+           document.getElementById("QtOf").readOnly = true ;
+           document.getElementById("QtNec").readOnly = true ;
+       </script>
+
+        
     @endif
 @endif
 

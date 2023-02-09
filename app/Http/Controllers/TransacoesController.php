@@ -791,7 +791,7 @@ class TransacoesController extends Controller
             $trans = DB::table('transacoes')->where('transacoes.id', $id_trans)
                                             ->select('transacoes.*','moedas.desc_moeda')
                                             ->join('moedas','transacoes.id_moeda','=','moedas.id') 
-                                            ->get();
+                                            ->first();
 
            /*dd($trans);*/
 
@@ -858,7 +858,8 @@ class TransacoesController extends Controller
               $moedas =  DB::table('moedas')->where('desc_moeda','<>','Troca')
                                             ->get();  
 
-            /* dd($trans_ratings,$ratings,session('id_logado'));*/                                           
+            /* dd($trans_ratings,$ratings,session('id_logado'));*/    
+                                                   
 
               $disp_qt_nec_trans = $necps->quant - round($soma_qt_nec_trans,2); 
               $disp_qt_of_tr_trans = 0;
@@ -1074,15 +1075,18 @@ class TransacoesController extends Controller
 
                   /*se for finalizado parcialmente então o status é 3, se for finalização total então é 4.*/
 
-                  /*dd($trans);*/
+                  $trans_atu = DB::table('transacoes')->where('id',$trans->id)->first();
+
+                 /* dd($trans_atu);*/
 
                  /*Finalizada totalmente*/
-                 if (($trans->data_final_of_part <> null) and (($trans->data_final_nec_part <> null) or (($trans->data_final_of_tr_part <> null)))){
+                 if (($trans_atu->data_final_of_part <> null) and (($trans_atu->data_final_nec_part <> null) or (($trans_atu->data_final_of_tr_part <> null)))){
                     $trans_up->update(['id_st_trans'=> 4]);
                     $code = 4;
                   
                     //Incluindo registro de quantidade de moeda/fluxo no historico do participante da oferta
                    
+                    dd(request('Fluxo'));
                     
                     $moedas_part_of = DB::table('moedas_part')->updateOrInsert(
                     ['id_part'=>request('id_part_of'),'id_moeda'=>request('Fluxo'),'id_trans'=>$trans->id],  

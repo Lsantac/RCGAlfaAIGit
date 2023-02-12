@@ -768,6 +768,7 @@ class TransacoesController extends Controller
                                             ->where('id_of_tr_part', $id_of_tr_part)
                                             ->first();
 
+           
             /*dd(request('id_nec_part_t')." , ".request('id_of_part_t')." , ".$id_of_tr_part);*/
                                             
 
@@ -788,12 +789,12 @@ class TransacoesController extends Controller
     
             $msgs->appends($request->all()); 
 
-            $trans = DB::table('transacoes')->where('transacoes.id', $id_trans)
+            $trans = DB::table('transacoes')->where('transacoes.id',$id_trans)
                                             ->select('transacoes.*','moedas.desc_moeda')
-                                            ->join('moedas','transacoes.id_moeda','=','moedas.id') 
+                                            ->leftjoin('moedas','transacoes.id_moeda','=','moedas.id') 
                                             ->first();
 
-           /*dd($trans);*/
+          /* dd($trans,$id_trans);*/
 
            #consulta avaliações na tabela transaction_ratings
            $rating_of = DB::table('transaction_ratings')->where('transaction_ratings.id_trans',$id_trans)
@@ -1086,7 +1087,7 @@ class TransacoesController extends Controller
                   
                     //Incluindo registro de quantidade de moeda/fluxo no historico do participante da oferta
                    
-                    dd(request('Fluxo'));
+                   /* dd(request('Fluxo'));*/
                     
                     $moedas_part_of = DB::table('moedas_part')->updateOrInsert(
                     ['id_part'=>request('id_part_of'),'id_moeda'=>request('Fluxo'),'id_trans'=>$trans->id],  

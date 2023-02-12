@@ -83,8 +83,8 @@
                           @php
                           if(isset($trans)){
                             if($trans->data_final_of_part > 0){
-                              $date = new DateTime($trans->data_final_of_part);
-                              echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
+                              $date = new DateTime($trans->data_final_of_tr_part, new DateTimeZone(date_default_timezone_get()));
+                              echo $date->format('d-m-Y'). " (Local Time: ".$date->format('H:i').")" ;
                             }
                           }
                           @endphp
@@ -100,8 +100,8 @@
                         @php
                         if(isset($trans)){
                           if($trans->data_final_of_part > 0){
-                            $date = new DateTime($trans->data_final_of_part);
-                            echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
+                            $date = new DateTime($trans->data_final_of_tr_part, new DateTimeZone(date_default_timezone_get()));
+                              echo $date->format('d-m-Y'). " (Local Time: ".$date->format('H:i').")" ;
                           }
                         }
                         @endphp
@@ -689,16 +689,16 @@
                  
                     <td>
                       @php
-                        $date = new DateTime($msg->data);
+                        $date = new DateTime($msg->data, new DateTimeZone(date_default_timezone_get()));
                       @endphp
                       <div class="d-none d-lg-block texto_m">
                            @php
-                             echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
+                              echo $date->format('d-m-Y'). " (Local Time: ".$date->format('H:i').")" ;
                            @endphp
                       </div>
                       <div class="d-block d-lg-none texto_p">
                         @php
-                          echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
+                            echo $date->format('d-m-Y'). " (Local Time: ".$date->format('H:i').")" ;
                         @endphp
                    </div>
 

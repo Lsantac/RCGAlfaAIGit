@@ -2,6 +2,10 @@
 
 @section('content')
 
+
+<script src="/js/moment.js"></script>
+
+
 <div class="container">
 
   <div class="row">
@@ -78,16 +82,9 @@
                 </div>
                 <div class="col-9">
                   <div style="color:rgb(13, 122, 13); text-decoration:double;" class="card-text"> 
-                    <div class=" texto_p d-block d-lg-none">
-                        <strong> Confirmada em :
-                          @php
-                          if(isset($trans)){
-                            if($trans->data_final_of_part > 0){
-                              $date = new DateTime($trans->data_final_of_tr_part, new DateTimeZone(date_default_timezone_get()));
-                              echo $date->format('d-m-Y'). " (Local Time: ".$date->format('H:i').")" ;
-                            }
-                          }
-                          @endphp
+                    <div class=" texto_p d-block d-lg-none" >
+                        <strong class="local-time"> 
+                         
                         </strong>
                         @if(isset($rating_of))  
                           <div>Avaliação : {{$rating_of->description}}</div>
@@ -96,15 +93,8 @@
 
                     </div>
                     <div class=" texto_m d-none d-lg-block">
-                      <strong> Confirmada em :
-                        @php
-                        if(isset($trans)){
-                          if($trans->data_final_of_part > 0){
-                            $date = new DateTime($trans->data_final_of_tr_part, new DateTimeZone(date_default_timezone_get()));
-                              echo $date->format('d-m-Y'). " (Local Time: ".$date->format('H:i').")" ;
-                          }
-                        }
-                        @endphp
+                      <strong class="local-time">
+
                       </strong>
                       @if(isset($rating_of))  
                           <div>Avaliação : {{$rating_of->description}}</div>
@@ -688,22 +678,13 @@
                  @endif 
                  
                     <td>
-                      @php
-                        $date = new DateTime($msg->data, new DateTimeZone(date_default_timezone_get()));
-                      @endphp
-                      <div class="d-none d-lg-block texto_m">
-                           @php
-                              echo $date->format('d-m-Y'). " (Local Time: ".$date->format('H:i').")" ;
-                           @endphp
+                      <div class="d-none d-lg-block texto_m local-time-msg" data-time="{{$msg->data}}">
+                        {{$msg->data}}
                       </div>
-                      <div class="d-block d-lg-none texto_p">
-                        @php
-                            echo $date->format('d-m-Y'). " (Local Time: ".$date->format('H:i').")" ;
-                        @endphp
-                   </div>
-
+                      <div class="d-block d-lg-none texto_p local-time-msg" data-time="{{$msg->data}}">
+                        {{$msg->data}}
+                      </div>
                     </td>
-
                     <td>
                       <div class="d-none d-lg-block texto_m">
                           {{$msg->nome_part_mens}}
@@ -1039,6 +1020,33 @@
   }
    
   </script>
+
+<script>
+  /*alert("{{$trans->data_final_of_part}}");*/
+  var date = moment.utc("{{$trans->data_final_of_part}}");
+  /*alert(date);*/
+  var localDate = date.local().format('DD-MM-YYYY HH:mm');
+  /*alert(localDate); */
+ /* document.getElementById("local-time").innerHTML = "Confirmada em : " + localDate;*/
+
+  const localTimeElements = document.querySelectorAll('.local-time');
+  localTimeElements.forEach(element => {
+  element.innerHTML = "Confirmada em : " + localDate;
+});
+  
+ </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let localTime = document.getElementsByClassName("local-time-msg");
+    localTime.forEach(function(el) {
+      let utcTime = el.getAttribute("data-time");
+      let time = moment.utc(utcTime).toDate();
+      time = moment(time).local().format('DD-MM-YYYY HH:mm');
+      el.innerHTML = time;
+    });
+  });
+</script>
 
 
 @endsection

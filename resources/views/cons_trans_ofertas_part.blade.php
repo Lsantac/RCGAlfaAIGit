@@ -134,7 +134,7 @@
                                     @if($of_st->fluxo == 'Troca')
                                         <div class="card-body" style="background-color:rgb(172, 240, 223) ">
                                     @else
-                                        <div class="card-body" style="background-color:rgb(245, 217, 199) ">
+                                        <div class="card-body" style="background-color:rgb(238, 211, 194) ">
                                     @endif   
 
                                     <div class="row">

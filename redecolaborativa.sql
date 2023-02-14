@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Fev-2023 às 21:43
+-- Tempo de geração: 14-Fev-2023 às 13:47
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -157,7 +157,7 @@ CREATE TABLE `markers_nec` (
 --
 
 INSERT INTO `markers_nec` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`, `status`) VALUES
-(1470, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', -19.9150295, -43.9596977, NULL, 4);
+(1518, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -174,21 +174,6 @@ CREATE TABLE `markers_of` (
   `type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `markers_of`
---
-
-INSERT INTO `markers_of` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`, `status`) VALUES
-(10755, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4),
-(10756, 'Amanda Pereira', 'Rua Irlanda, 20', -16.7167072, -49.3069305, NULL, 3),
-(10754, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', -19.9150295, -43.9596977, NULL, 4),
-(10753, 'Joao Batista', 'Rua Brasil 104', -22.7455845, -45.1327324, NULL, 3),
-(10752, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 2),
-(10751, 'Amanda Pereira', 'Rua Irlanda, 20', -16.7167072, -49.3069305, NULL, 2),
-(10750, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 4),
-(10749, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 3),
-(10748, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -241,7 +226,29 @@ INSERT INTO `mensagens_trans` (`id`, `id_trans`, `id_part`, `id_part_dest`, `men
 (210, 64, 26, 38, 'Cancelamento da confirmação. sim', '2022-08-09 17:26:35', 'tr', 1),
 (211, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-01-31 22:00:16', 'of', 1),
 (212, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-01-31 22:35:38', 'of', 1),
-(213, 69, 26, 24, 'Mas essa Babá é Permacultora também? Maravilha!! rss', '2023-02-01 21:29:04', 'of', 0);
+(213, 69, 26, 24, 'Mas essa Babá é Permacultora também? Maravilha!! rss', '2023-02-01 21:29:04', 'of', 0),
+(214, 66, 38, 26, 'Cancelamento da confirmação. vamos mudar a quantidade de fluxo.', '2023-02-08 16:10:38', 'nec', 1),
+(215, 66, 38, 26, 'Cancelamento da confirmação. teste de readonly', '2023-02-08 21:56:07', 'nec', 1),
+(216, 66, 38, 26, 'Cancelamento da confirmação. outro teste', '2023-02-08 22:22:37', 'nec', 1),
+(217, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:24:50', 'nec', 1),
+(218, 66, 38, 26, 'olá tudo bem?', '2023-02-09 20:26:12', 'nec', 0),
+(219, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:35:48', 'nec', 1),
+(220, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:39:45', 'nec', 1),
+(221, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:40:44', 'nec', 1),
+(222, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:43:18', 'nec', 1),
+(223, 66, 38, 26, 'Cancelamento da confirmação. agora vai!!', '2023-02-09 20:54:30', 'nec', 1),
+(224, 66, 26, 38, 'Cancelamento da confirmação. Luiz cancelou', '2023-02-09 20:55:27', 'of', 1),
+(225, 70, 39, 26, 'Olá Luiz, voce é terapeuta quantico? Quando pode me atender? Pode vir aqui no palacio da Quinta, no proximo domingo?', '2023-02-09 18:03:34', 'nec', 0),
+(226, 70, 39, 26, 'Vi que voce não tem mais horario disponivel. pode incluir mais uma hora?', '2023-02-09 21:03:19', 'nec', 0),
+(227, 70, 26, 39, 'Olá Pedro! Ok, Sim posso incluir mais um horário pra voce com certeza! Vou até fazer uma doação. É um grande prazer poder ajuda-lo.', '2023-02-13 20:24:08', 'of', 0),
+(228, 70, 26, 39, 'Cancelamento da confirmação. mudança de moeda', '2023-02-09 21:09:14', 'of', 1),
+(229, 70, 39, 26, 'Grato Luiz!! Quando puder , venha na Quinta tomar um chá e conversaremos sobre astronomia e permacultura. Isabel também adora. Mas não pode ser ayahuasca porque senão no dia seguinte vou ter inauguração do Colegio Pedro II e tenho que estar bem, rss. ', '2023-02-13 20:25:30', 'nec', 0),
+(230, 69, 26, 24, 'Cancelamento da confirmação. não vou mais doar não. vou usar uma moeda social.', '2023-02-12 21:50:08', 'of', 1),
+(231, 63, 14, 26, 'Cancelamento da confirmação. cancelar', '2023-02-12 22:19:10', 'of', 1),
+(232, 63, 14, 26, 'teste de data', '2023-02-12 22:57:31', 'of', 0),
+(233, 70, 26, 39, 'teste de local-time', '2023-02-13 22:15:12', 'of', 0),
+(234, 70, 26, 39, 'Cancelamento da confirmação. teste de data', '2023-02-13 22:34:22', 'of', 1),
+(235, 70, 39, 26, 'Cancelamento da confirmação. teste', '2023-02-13 23:23:06', 'nec', 1);
 
 -- --------------------------------------------------------
 
@@ -318,10 +325,20 @@ INSERT INTO `moedas_part` (`id`, `id_part`, `id_moeda`, `id_trans`, `quant_moeda
 (9, 26, 2, 62, 1, '2022-01-22'),
 (10, 14, 2, 62, -1, '2022-01-22'),
 (11, 26, 3, 63, -1, '2022-01-24'),
-(12, 14, 4, 63, 1, '2022-01-24'),
-(13, 26, 4, 63, -1, '2022-01-24'),
-(14, 26, 3, 66, 100, '2023-02-03'),
-(15, 38, 3, 66, -100, '2023-02-03');
+(12, 14, 4, 63, 1, '2023-02-12'),
+(13, 26, 4, 63, -1, '2023-02-12'),
+(14, 26, 3, 66, 30, '2023-02-09'),
+(15, 38, 3, 66, -30, '2023-02-09'),
+(16, 26, 7, 70, 1, '2023-02-09'),
+(17, 39, 7, 70, -1, '2023-02-09'),
+(18, 26, 2, 70, 1, '2023-02-13'),
+(19, 39, 2, 70, -1, '2023-02-13'),
+(20, 26, 2, 69, 1, '2023-02-12'),
+(21, 24, 2, 69, -1, '2023-02-12'),
+(22, 26, 7, 69, 1, '2023-02-12'),
+(23, 24, 7, 69, -1, '2023-02-12'),
+(24, 27, 1, 68, 1, '2023-02-12'),
+(25, 26, 1, 68, 1, '2023-02-12');
 
 -- --------------------------------------------------------
 
@@ -381,15 +398,16 @@ INSERT INTO `necessidades_part` (`id`, `id_nec`, `id_part`, `id_rede`, `data`, `
 (2, 2, 26, 0, '2021-08-16', 1, 'Bioconstrutor para fazer casas de adobe.', NULL, '2_1646333534.jpg', 1),
 (3, 3, 14, 0, '2021-08-19', 1, 'Desenvolvedor de sistemas de banco de dados.', NULL, NULL, 2),
 (4, 1, 27, 0, '2021-08-23', 1, 'Preciso de cozinheiro vegano com urgencia.', NULL, NULL, 2),
-(5, 4, 24, 0, '2021-08-23', 1, 'Preciso de um profissional de permacultura para criar um sitio ecologico para futuramente virar uma ecovila.', NULL, NULL, 3),
+(5, 4, 24, 0, '2021-08-23', 1, 'Preciso de um profissional de permacultura para criar um sitio ecologico para futuramente virar uma ecovila.', NULL, NULL, 4),
 (6, 5, 27, 0, '2021-09-07', 1, 'Jardineira Waldorf trabalho de manhã na escola Jardim Michaelis, Rio de Janeiro.', NULL, NULL, 2),
-(7, 6, 26, 0, '2021-09-15', 1, 'Preciso de um ator para um filme que estou fazendo sobre ecovilas.', NULL, '6_1646332030.jpg', 4),
+(7, 6, 26, 0, '2021-09-15', 1, 'Preciso de um ator para um filme que estou fazendo sobre ecovilas.', NULL, '6_1646332030.jpg', 2),
 (8, 7, 5, 0, '2021-11-24', 5, 'Preciso de musicos para montar uma banda. Guitarrista, baterista, vocalista, tecladista e arranjador.', NULL, NULL, 3),
 (9, 8, 26, 0, '2022-03-03', 10, 'comida organica, vegetariana. muito gostosa.', NULL, '8_1646332608.jpg', 0),
 (10, 9, 38, 0, '2022-03-05', 10, 'grupo para desenvolver curso', NULL, '9.jpg', 3),
 (11, 10, 26, 11, '2022-05-18', 1, 'Precisa-se de um Pegasus para completar 12 trabalhos de Hercules. Pode ser femea também.', NULL, '10_26_1652900629.jpg', 0),
 (12, 9, 26, 10, '2022-09-10', 1, 'tecnica com bolha de cura com luz azul', NULL, '9_26_1662842139.jpg', 0),
-(13, 3, 26, 0, '2022-09-13', 2, 'preciso de programadores de PHP/Laravel/HTML/CSS/JavaScript', NULL, '3_26_1663077714.jpg', 0);
+(13, 3, 26, 0, '2022-09-13', 2, 'preciso de programadores de PHP/Laravel/HTML/CSS/JavaScript', NULL, '3_26_1663077714.jpg', 0),
+(14, 9, 39, 0, '2023-02-09', 1, 'Preciso de uma sessão de terapia Quantica para resolver os problemas do Imperio Brasileiro!! Me ajudem!', NULL, '9_39_1675965660.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -455,19 +473,19 @@ INSERT INTO `ofertas_part` (`id`, `id_of`, `id_part`, `id_rede`, `data`, `quant`
 (3, 4, 26, 0, '2021-07-29', 1, 'Analista de Sistemas php', 1, '', 0),
 (5, 5, 26, 0, '2021-07-29', 1, 'Aplicação de Reiki a distancia.', 1, '', 0),
 (6, 3, 26, 0, '2021-07-27', 5, 'sapateiro', 0, '3_26_1652899973.jpg', 1),
-(7, 2, 26, 0, '2021-08-04', 2, 'Aulas de Pintura e artes em geral.', 0, NULL, 3),
+(7, 2, 26, 0, '2021-08-04', 2, 'Aulas de Pintura e artes em geral.', 0, NULL, 4),
 (8, 6, 24, 0, '2021-08-04', 1, 'Psicologia infantil', 0, NULL, 1),
 (9, 7, 33, 0, '2021-08-13', 1, 'Bioconstrutor capacitado em inumeras tecnicas como : Adobe, Pau-a-pique , Super-Adobe, Bambu, entre outros.', NULL, NULL, 0),
 (10, 1, 26, 0, '2021-08-23', 1, 'Cozinha vegetariana e vegana. Sou bom mesmo. :-)', NULL, NULL, 0),
 (11, 10, 27, 0, '2021-09-07', 1, 'Aulas de Shantala para gestantes. Horario a combinar.', NULL, NULL, 3),
-(12, 11, 14, 0, '2021-09-15', 1, 'Sou ator de Hollywood famoso e bem requisitado. Ofereço meus talentos para filmes sobre regeneração global.', NULL, '11_1647973638.jpg', 4),
+(12, 11, 14, 0, '2021-09-15', 1, 'Sou ator de Hollywood famoso e bem requisitado. Ofereço meus talentos para filmes sobre regeneração global.', NULL, '11_1647973638.jpg', 2),
 (13, 12, 26, 0, '2021-09-15', 2, 'ofereço companhia para bate papos e passeios, para quem se sentir solitário e quiser compartilhar suas experiencias de vida. Horario a combinar.\r\nGosto de ir ao teatro e criar peças.', NULL, '12_26_1663015464.jpg', 3),
 (14, 9, 26, 11, '2021-10-01', 2, 'tenho dois kilos de feijão para doar.', NULL, '9_1647635444.jpg', 3),
 (15, 7, 26, 0, '2021-10-01', 1, 'faço casas bem legais', NULL, '7_1646403021.jpg', 2),
 (16, 13, 38, 0, '2021-10-27', 1, 'é muito bom', NULL, '13_1646511808.jpg', 3),
 (17, 7, 38, 0, '2021-10-27', 1, 'permacultor quantico', NULL, '7_1647636775.jpg', 3),
-(20, 13, 26, 0, '2022-03-02', 1, 'terapia permacultural', NULL, '13_1646315419.jpg', 4),
-(21, 8, 26, 0, '2022-03-02', 2, 'gosto de bebês e de cães e gatos.', NULL, '8_1648141614.jpg', 3),
+(20, 13, 26, 0, '2022-03-02', 2, 'terapia permacultural', NULL, '13_1646315419.jpg', 4),
+(21, 8, 26, 0, '2022-03-02', 2, 'gosto de bebês e de cães e gatos.', NULL, '8_1648141614.jpg', 4),
 (22, 15, 26, 0, '2022-03-03', 1, 'Casa em otimo estado num lugar maravilhoso na mata atlantica e totalmente sustentável.', NULL, '15_1646333417.jpg', 1),
 (23, 12, 26, 0, '2022-04-12', 1, 'Companhia para conversar sobre espiritualidade.', NULL, '12.jpg', 0),
 (24, 3, 26, 0, '2022-04-21', 1, 'Faço sapatos de couro.', NULL, '3_26_1653418481.jpg', 0),
@@ -757,13 +775,14 @@ INSERT INTO `transacoes` (`id`, `id_nec_part`, `id_of_part`, `id_of_tr_part`, `i
 (60, 4, 14, 0, 2, 0, NULL, 0, 0, 0, '2021-12-09 12:52:27', NULL, NULL, NULL),
 (61, 8, 13, 0, 3, 1, 2, 2, 0, 0, '2021-12-09 12:55:06', NULL, '2022-02-12 21:31:52', NULL),
 (62, 3, 15, 0, 4, 1, 2, 1, 0, 1, '2021-12-09 13:15:07', '2022-01-22 18:49:46', '2022-01-22 18:48:13', NULL),
-(63, 7, 12, 0, 4, 1, 4, 1, 0, 1, '2021-12-09 13:15:48', '2022-01-24 22:50:40', '2022-01-22 18:57:11', NULL),
+(63, 7, 12, 0, 4, 1, 4, 1, 0, 1, '2021-12-09 13:15:48', '2023-02-09 19:18:31', '2023-02-12 19:19:22', NULL),
 (64, 0, 16, 14, 2, 1, 1, 1, 1, 0, '2022-01-28 18:29:50', NULL, NULL, NULL),
 (65, 6, 7, 0, 2, 0, NULL, 0, 0, 0, '2022-02-11 20:49:43', NULL, NULL, NULL),
-(66, 10, 20, 0, 4, 100, 3, 1, 0, 1, '2022-03-05 18:57:28', '2023-02-03 14:14:50', '2023-02-03 13:56:48', NULL),
+(66, 10, 20, 0, 4, 30, 3, 1, 0, 1, '2022-03-05 18:57:28', '2023-02-09 17:54:37', '2023-02-09 17:55:47', NULL),
 (67, 0, 17, 14, 2, 1, 1, 0, 1, 0, '2022-03-05 20:35:15', NULL, NULL, NULL),
-(68, 0, 11, 7, 3, 1, 1, 0, 1, 0, '2022-03-05 20:50:13', NULL, NULL, '2023-02-03 19:36:33'),
-(69, 5, 21, 0, 3, 1, 2, 1, 0, 0, '2022-03-23 15:57:07', NULL, '2023-02-02 20:36:49', NULL);
+(68, 0, 11, 7, 4, 1, 1, 0, 1, 0, '2022-03-05 20:50:13', NULL, '2023-02-12 20:10:00', '2023-02-03 19:36:33'),
+(69, 5, 21, 0, 4, 1, 7, 1, 0, 1, '2022-03-23 15:57:07', '2023-02-12 18:46:46', '2023-02-12 18:51:27', NULL),
+(70, 14, 20, 0, 4, 1, 2, 1, 0, 1, '2023-02-09 18:02:46', '2023-02-13 20:23:17', '2023-02-13 19:34:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -786,10 +805,15 @@ CREATE TABLE `transaction_ratings` (
 --
 
 INSERT INTO `transaction_ratings` (`id`, `id_part`, `id_trans`, `id_rating`, `obs_rating`, `created_at`, `updated_at`) VALUES
-(3, 26, 69, 4, 'Foi tudo feito com transparencia e rapidez. Esse sistema é muito bom. Que todos usem cada vez mais!!', '2023-02-02 21:33:07', '2023-02-02 23:36:49'),
-(7, 26, 66, 5, 'gostei muito do espaço e clientes. Parabens!!', '2023-02-03 16:56:17', '2023-02-03 16:56:48'),
-(8, 38, 66, 4, 'gostei muito do terapeuta!!', '2023-02-03 17:04:56', '2023-02-03 17:14:50'),
-(9, 26, 68, 5, 'muito boa instrutora!! Eu recomeindu!!', '2023-02-03 22:36:33', '2023-02-03 22:36:33');
+(3, 26, 69, 4, 'Foi tudo feito com transparencia e rapidez. Esse sistema é muito bom. Que todos usem cada vez mais!! mudei o fluxo para moeda.', '2023-02-02 21:33:07', '2023-02-12 21:51:27'),
+(7, 26, 66, 4, 'gostei muito do espaço e clientes. Foi legalzinho. ;-)', '2023-02-03 16:56:17', '2023-02-09 20:55:47'),
+(8, 38, 66, 4, 'gostei muito do terapeuta!! pessoa muito legal! outro teste', '2023-02-03 17:04:56', '2023-02-09 20:54:37'),
+(9, 26, 68, 5, 'muito boa instrutora!! Eu recomeindu!!', '2023-02-03 22:36:33', '2023-02-03 22:36:33'),
+(10, 39, 70, 5, 'Luiz é ótimo!', '2023-02-09 21:04:19', '2023-02-13 23:23:17'),
+(11, 26, 70, 5, 'Pedro é ótimo cliente!', '2023-02-09 21:08:50', '2023-02-13 22:34:34'),
+(12, 24, 69, 5, 'um bom babá, rss', '2023-02-12 21:46:46', '2023-02-12 21:46:46'),
+(13, 14, 63, 3, NULL, '2023-02-12 22:19:22', '2023-02-12 22:19:22'),
+(14, 27, 68, 5, 'Muito bom professor!! também recomendo!!', '2023-02-12 23:10:00', '2023-02-12 23:10:00');
 
 -- --------------------------------------------------------
 
@@ -836,7 +860,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `senha`, `created_at`, `updated_at`) VALUES
 (663, 'joao_estrela@gmail.com', '$2y$10$5Q/vo6dgYxWfmPfI2pJYT.cPeENe37Zevnvv2ZaQCFRzj6tnTT0Yi', NULL, NULL),
 (816, 'collab.redecolaborativa@gmail.com', '$2y$10$H4BrhFSS5G8xTsM6yKv8FubMBfLkrE9ssRgXsvWzlvyfyLep/SNJ.', NULL, NULL),
-(818, 'allamofarias@hotmail.com', '$2y$10$cXTdCIGFtnF2SiKg3MQSiO0LDKiE0KYfY0616IL60PpZSAklsmyuS', NULL, NULL);
+(818, 'allamofarias@hotmail.com', '$2y$10$cXTdCIGFtnF2SiKg3MQSiO0LDKiE0KYfY0616IL60PpZSAklsmyuS', NULL, NULL),
+(898, 'pedrodealcantara@gmail.com', '$2y$10$Wxx7dsKkJPIpSd03GHUkae/jbkAk5aEFUovmOliuJ1xzNg/kLlIcC', NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -1159,19 +1184,19 @@ ALTER TABLE `markers`
 -- AUTO_INCREMENT de tabela `markers_nec`
 --
 ALTER TABLE `markers_nec`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1471;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1519;
 
 --
 -- AUTO_INCREMENT de tabela `markers_of`
 --
 ALTER TABLE `markers_of`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10757;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11066;
 
 --
 -- AUTO_INCREMENT de tabela `mensagens_trans`
 --
 ALTER TABLE `mensagens_trans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
 -- AUTO_INCREMENT de tabela `migrations`
@@ -1189,7 +1214,7 @@ ALTER TABLE `moedas`
 -- AUTO_INCREMENT de tabela `moedas_part`
 --
 ALTER TABLE `moedas_part`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `necessidades`
@@ -1201,7 +1226,7 @@ ALTER TABLE `necessidades`
 -- AUTO_INCREMENT de tabela `necessidades_part`
 --
 ALTER TABLE `necessidades_part`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `ofertas`
@@ -1279,13 +1304,13 @@ ALTER TABLE `tipos_acessos`
 -- AUTO_INCREMENT de tabela `transacoes`
 --
 ALTER TABLE `transacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT de tabela `transaction_ratings`
 --
 ALTER TABLE `transaction_ratings`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `unidades`
@@ -1297,7 +1322,7 @@ ALTER TABLE `unidades`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=870;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=899;
 
 --
 -- Restrições para despejos de tabelas

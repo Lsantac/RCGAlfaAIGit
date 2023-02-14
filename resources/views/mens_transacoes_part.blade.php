@@ -4,7 +4,7 @@
 
 
 <script src="/js/moment.js"></script>
-
+<link rel="stylesheet" href="{{ asset('/css/mens_transacoes.css') }}">
 
 <div class="container">
 
@@ -83,7 +83,7 @@
                 <div class="col-9">
                   <div style="color:rgb(13, 122, 13); text-decoration:double;" class="card-text"> 
                     <div class=" texto_p d-block d-lg-none" >
-                        <strong class="local-time"> 
+                        <strong class="local-time-of"> 
                          
                         </strong>
                         @if(isset($rating_of))  
@@ -93,7 +93,7 @@
 
                     </div>
                     <div class=" texto_m d-none d-lg-block">
-                      <strong class="local-time">
+                      <strong class="local-time-of">
 
                       </strong>
                       @if(isset($rating_of))  
@@ -166,32 +166,22 @@
                 <div class="col-9">
                   <div style="color:rgb(122, 66, 13); text-decoration:double;" class="card-text"> 
                     <div class=" texto_p d-block d-lg-none">
-                        <strong> Confirmada em :
-                            @php
-                                if(isset($trans)){
-                                  if($trans->data_final_nec_part > 0){
-                                    $date = new DateTime($trans->data_final_nec_part);
-                                    echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                  }
-                                }
-                            @endphp
-                        </strong>
+                        @if(isset($trans))
+                            <strong class="local-time-nec">
+                                    
+                            </strong>
+                        @endif
                         @if(isset($rating_nec_tr))  
                           <div>Avaliação : {{$rating_nec_tr->description}}</div>
                           <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
                         @endif
                     </div>
                     <div class=" texto_m d-none d-lg-block">
-                      <strong> Confirmada em :
-                          @php
-                              if(isset($trans)){
-                                if($trans->data_final_nec_part > 0){
-                                  $date = new DateTime($trans->data_final_nec_part);
-                                  echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                }
-                              }
-                          @endphp
-                      </strong>
+                      @if(isset($trans))
+                            <strong class="local-time-nec">
+                              
+                            </strong>
+                      @endif
                       @if(isset($rating_nec_tr))  
                           <div>Avaliação : {{$rating_nec_tr->description}}</div>
                           <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
@@ -233,36 +223,26 @@
                 <div class="col-9">
                   <div style="color:rgb(13, 122, 107); text-decoration:double;" class="card-text"> 
                     <div class=" texto_p d-block d-lg-none">
-                        <strong> Confirmada em :
-                            @php
-                                if(isset($trans)){
-                                  if($trans->data_final_of_tr_part > 0){
-                                    $date = new DateTime($trans->data_final_of_tr_part);
-                                    echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                  }
-                                }
-                            @endphp
-                        </strong>
+                        @if(isset($trans))
+                           <strong class="local-time-oftr">
+                              
+                           </strong>
+                        @endif
                         @if(isset($rating_nec_tr))  
                           <div>Avaliação : {{$rating_nec_tr->description}}</div>
                           <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
                         @endif
                     </div>
                     <div class=" texto_m d-none d-lg-block">
-                      <strong> Confirmada em :
-                          @php
-                              if(isset($trans)){
-                                if($trans->data_final_of_tr_part > 0){
-                                  $date = new DateTime($trans->data_final_of_tr_part);
-                                  echo $date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                }
-                              }
-                          @endphp
-                      </strong>
-                      @if(isset($rating_nec_tr))  
-                          <div>Avaliação : {{$rating_nec_tr->description}}</div>
-                          <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
-                      @endif
+                        @if(isset($trans))
+                            <strong class="local-time-oftr">
+                                
+                            </strong>
+                        @endif
+                        @if(isset($rating_nec_tr))  
+                            <div>Avaliação : {{$rating_nec_tr->description}}</div>
+                            <div>Obs : {{$rating_nec_tr->obs_rating}}</div>
+                        @endif
                   </div>
 
                   </div>
@@ -678,11 +658,11 @@
                  @endif 
                  
                     <td>
-                      <div class="d-none d-lg-block texto_m local-time-msg" data-time="{{$msg->data}}">
-                        {{$msg->data}}
+                      <div class="d-none d-lg-block texto_m local-time-msg col-data" data-time="{{$msg->data}}">
+                           
                       </div>
-                      <div class="d-block d-lg-none texto_p local-time-msg" data-time="{{$msg->data}}">
-                        {{$msg->data}}
+                      <div class="d-block d-lg-none texto_p local-time-msg col-data" data-time="{{$msg->data}}">
+                        
                       </div>
                     </td>
                     <td>
@@ -1022,23 +1002,50 @@
   </script>
 
 <script>
-  /*alert("{{$trans->data_final_of_part}}");*/
+ 
   var date = moment.utc("{{$trans->data_final_of_part}}");
-  /*alert(date);*/
   var localDate = date.local().format('DD-MM-YYYY HH:mm');
-  /*alert(localDate); */
- /* document.getElementById("local-time").innerHTML = "Confirmada em : " + localDate;*/
-
-  const localTimeElements = document.querySelectorAll('.local-time');
+  
+  const localTimeElements = document.querySelectorAll('.local-time-of');
   localTimeElements.forEach(element => {
   element.innerHTML = "Confirmada em : " + localDate;
-});
+   });
+  </script>
+
+   @if(isset($necps))
+      <script>
+        var date_nec = moment.utc("{{$trans->data_final_nec_part}}");
+        var localDate_nec = date_nec.local().format('DD-MM-YYYY HH:mm');
+        
+        const localTimeElements_nec = document.querySelectorAll('.local-time-nec');
+        localTimeElements_nec.forEach(element => {
+        element.innerHTML = "Confirmada em : " + localDate_nec;
+        });
+      </script>
+   @else
+      <script>
+        var date_oftr = moment.utc("{{$trans->data_final_of_tr_part}}");
+        var localDate_oftr = date_oftr.local().format('DD-MM-YYYY HH:mm');
+        
+        const localTimeElements_oftr = document.querySelectorAll('.local-time-oftr');
+        localTimeElements_oftr.forEach(element => {
+        element.innerHTML = "Confirmada em : " + localDate_oftr;
+        });
+      </script>
+
+   @endif
+
+  
+   
   
  </script>
 
+
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    let localTime = document.getElementsByClassName("local-time-msg");
+    let localTime = Array.from(document.getElementsByClassName("local-time-msg"));
+    
     localTime.forEach(function(el) {
       let utcTime = el.getAttribute("data-time");
       let time = moment.utc(utcTime).toDate();

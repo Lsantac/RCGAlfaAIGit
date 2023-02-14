@@ -839,6 +839,7 @@ class TransacoesController extends Controller
               $disp_qt_of_tr_trans = $oftrps->quant - round($soma_qt_of_tr_trans,2);
               $disp_qt_nec_trans = 0; 
 
+             
               return view('mens_transacoes_part',['part' =>$part,
                                                  'ofps'  =>$ofps,
                                                  'oftrps'=>$oftrps,
@@ -1087,7 +1088,7 @@ class TransacoesController extends Controller
                   
                     //Incluindo registro de quantidade de moeda/fluxo no historico do participante da oferta
                    
-                   /* dd(request('Fluxo'));*/
+                   /* dd(request('Fluxo') );*/
                     
                     $moedas_part_of = DB::table('moedas_part')->updateOrInsert(
                     ['id_part'=>request('id_part_of'),'id_moeda'=>request('Fluxo'),'id_trans'=>$trans->id],  

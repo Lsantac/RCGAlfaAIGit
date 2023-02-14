@@ -1005,32 +1005,46 @@
  
   var date = moment.utc("{{$trans->data_final_of_part}}");
   var localDate = date.local().format('DD-MM-YYYY HH:mm');
+
+  var testa_data = date.local();
+
+  if(testa_data.isValid()){
+    const localTimeElements = document.querySelectorAll('.local-time-of');
+    localTimeElements.forEach(element => {
+    element.innerHTML = "Confirmada em : " + localDate;
+    });
+  };
   
-  const localTimeElements = document.querySelectorAll('.local-time-of');
-  localTimeElements.forEach(element => {
-  element.innerHTML = "Confirmada em : " + localDate;
-   });
   </script>
 
    @if(isset($necps))
       <script>
         var date_nec = moment.utc("{{$trans->data_final_nec_part}}");
         var localDate_nec = date_nec.local().format('DD-MM-YYYY HH:mm');
+        var testa_data = date_nec.local();
+
+       /* alert(testa_data);*/
         
-        const localTimeElements_nec = document.querySelectorAll('.local-time-nec');
-        localTimeElements_nec.forEach(element => {
-        element.innerHTML = "Confirmada em : " + localDate_nec;
-        });
+       if(testa_data.isValid()){
+            const localTimeElements_nec = document.querySelectorAll('.local-time-nec');
+            localTimeElements_nec.forEach(element => {
+            element.innerHTML = "Confirmada em : " + localDate_nec;
+            });
+          };
       </script>
    @else
       <script>
         var date_oftr = moment.utc("{{$trans->data_final_of_tr_part}}");
         var localDate_oftr = date_oftr.local().format('DD-MM-YYYY HH:mm');
-        
-        const localTimeElements_oftr = document.querySelectorAll('.local-time-oftr');
-        localTimeElements_oftr.forEach(element => {
-        element.innerHTML = "Confirmada em : " + localDate_oftr;
-        });
+
+        var testa_data = date_oftr.local();
+ 
+        if(testa_data.isValid()){
+            const localTimeElements_oftr = document.querySelectorAll('.local-time-oftr');
+            localTimeElements_oftr.forEach(element => {
+            element.innerHTML = "Confirmada em : " + localDate_oftr;
+            });
+        };
       </script>
 
    @endif

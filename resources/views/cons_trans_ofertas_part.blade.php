@@ -2,6 +2,7 @@
 
 @section('content')
 
+<script src="/js/moment.js"></script>
 
 <div class="container-fluid">
     @if($status == 2)
@@ -94,25 +95,26 @@
                                                             <div class="col">
                                                                 <h6 class="texto-oferta">Oferta : {{$of_st->desc_of}}</h6>       
                                                             </div>
-                                                            <div class="col texto_p">
-                                                              @php
-                                                                  if($of_st->data_final_of_part <> null){
+                                                            <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
+                                                             @php
+                                                                 /* if($of_st->data_final_of_part <> null){
                                                                     $date = new DateTime($of_st->data_final_of_part);
                                                                     echo "Confirmada em : ".$date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                                                  }
+                                                                  }*/
                                                               @endphp
+
 
                                                             </div>
                                                           </div>
                                                       </div>
 
                                                       <div class="card-text texto_p">Categoria : {{$of_st->desc_cat_of}} </div>
-                                                      <div class="texto_p">
+                                                      <div class="texto_p local-time-of-inic local-time-inic" data-time-inic="{{$of_st->data_inic}}">
                                                       @php
-                                                          if($of_st->data_inic <> null){
+                                                         /* if($of_st->data_inic <> null){
                                                             $date = new DateTime($of_st->data_inic);
                                                             echo "Início : ".$date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                                          }
+                                                          }*/
                                                       @endphp
                                                       </div>
 
@@ -197,12 +199,12 @@
                                                                      <h6 class="card-title texto-troca">Troca : {{$of_st->desc_of_tr}}</h6>       
                                                                   @endif
                                                               </div>
-                                                              <div class="col texto_p">
+                                                              <div class="col texto_p local-time-tr" data-time-tr="{{$of_st->data_final_of_tr_part}}">
                                                                 @php
-                                                                    if($of_st->data_final_of_tr_part <> null){
+                                                                   /* if($of_st->data_final_of_tr_part <> null){
                                                                       $date = new DateTime($of_st->data_final_of_tr_part);
                                                                       echo "Confirmada em : ".$date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                                                    }
+                                                                    }*/
                                                                 @endphp
 
                                                               </div>
@@ -227,12 +229,12 @@
                                                             <div class="col">
                                                                 <h6 class="card-title texto-necessidade">Necessidade : {{$of_st->desc_nec}}</h6>       
                                                             </div>
-                                                            <div class="col texto_p">
+                                                            <div class="col texto_p local-time-nec" data-time-nec="{{$of_st->data_final_nec_part}}">
                                                               @php
-                                                                  if($of_st->data_final_nec_part <> null){
+                                                                 /* if($of_st->data_final_nec_part <> null){
                                                                     $date = new DateTime($of_st->data_final_nec_part);
                                                                     echo "Confirmada em : ".$date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                                                  }
+                                                                  }*/
                                                               @endphp
 
                                                             </div>
@@ -320,6 +322,62 @@
     @endif 
 
 <div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let localTime = Array.from(document.getElementsByClassName("local-time-of"));
+      
+      localTime.forEach(function(el) {
+        let utcTime = el.getAttribute("data-time");
+        let time = moment.utc(utcTime).toDate();
+        time = moment(time).local().format('DD-MM-YYYY HH:mm');
+        el.innerHTML = "Confirmada em : " + time;
+       
+       
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      let localTime = Array.from(document.getElementsByClassName("local-time-inic"));
+      
+      localTime.forEach(function(el) {
+        let utcTime = el.getAttribute("data-time-inic");
+        let time = moment.utc(utcTime).toDate();
+        time = moment(time).local().format('DD-MM-YYYY HH:mm');
+       
+        el.innerHTML = "Confirmada em : " + time;
+       
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      let localTime = Array.from(document.getElementsByClassName("local-time-tr"));
+      
+      localTime.forEach(function(el) {
+        let utcTime = el.getAttribute("data-time-tr");
+        let time = moment.utc(utcTime).toDate();
+        time = moment(time).local().format('DD-MM-YYYY HH:mm');
+       
+        el.innerHTML = "Confirmada em : " + time;
+       
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      let localTime = Array.from(document.getElementsByClassName("local-time-nec"));
+      
+      localTime.forEach(function(el) {
+        let utcTime = el.getAttribute("data-time-nec");
+        let time = moment.utc(utcTime).toDate();
+        time = moment(time).local().format('DD-MM-YYYY HH:mm');
+        
+       /* if(time <> "Invalid date"){*/
+        el.innerHTML = "Confirmada em : " + time;
+       /* }*/
+      });
+    });
+
+  </script>
 
 @endsection
 

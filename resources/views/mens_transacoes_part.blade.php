@@ -1049,12 +1049,6 @@
 
    @endif
 
-  
-   
-  
- </script>
-
-
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -1064,7 +1058,7 @@
       let utcTime = el.getAttribute("data-time");
       let time = moment.utc(utcTime).toDate();
       time = moment(time).local().format('DD-MM-YYYY HH:mm');
-      el.innerHTML = time;
+      el.innerHTML = time;  
     });
   });
 </script>

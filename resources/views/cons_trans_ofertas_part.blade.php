@@ -96,26 +96,14 @@
                                                                 <h6 class="texto-oferta">Oferta : {{$of_st->desc_of}}</h6>       
                                                             </div>
                                                             <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
-                                                             @php
-                                                                 /* if($of_st->data_final_of_part <> null){
-                                                                    $date = new DateTime($of_st->data_final_of_part);
-                                                                    echo "Confirmada em : ".$date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                                                  }*/
-                                                              @endphp
-
-
+                                                            
                                                             </div>
                                                           </div>
                                                       </div>
 
                                                       <div class="card-text texto_p">Categoria : {{$of_st->desc_cat_of}} </div>
                                                       <div class="texto_p local-time-of-inic local-time-inic" data-time-inic="{{$of_st->data_inic}}">
-                                                      @php
-                                                         /* if($of_st->data_inic <> null){
-                                                            $date = new DateTime($of_st->data_inic);
-                                                            echo "Início : ".$date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                                          }*/
-                                                      @endphp
+                                                      
                                                       </div>
 
                                                       <div class="card-text texto_p">Participante : {{$of_st->nome_part_of}} </div>
@@ -200,13 +188,7 @@
                                                                   @endif
                                                               </div>
                                                               <div class="col texto_p local-time-tr" data-time-tr="{{$of_st->data_final_of_tr_part}}">
-                                                                @php
-                                                                   /* if($of_st->data_final_of_tr_part <> null){
-                                                                      $date = new DateTime($of_st->data_final_of_tr_part);
-                                                                      echo "Confirmada em : ".$date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                                                    }*/
-                                                                @endphp
-
+                                                                
                                                               </div>
 
                                                             </div>
@@ -230,12 +212,7 @@
                                                                 <h6 class="card-title texto-necessidade">Necessidade : {{$of_st->desc_nec}}</h6>       
                                                             </div>
                                                             <div class="col texto_p local-time-nec" data-time-nec="{{$of_st->data_final_nec_part}}">
-                                                              @php
-                                                                 /* if($of_st->data_final_nec_part <> null){
-                                                                    $date = new DateTime($of_st->data_final_nec_part);
-                                                                    echo "Confirmada em : ".$date->format('d-m-Y'). " (UTC: ".$date->format('H:i').")" ;
-                                                                  }*/
-                                                              @endphp
+                                                              
 
                                                             </div>
 
@@ -331,8 +308,10 @@
         let utcTime = el.getAttribute("data-time");
         let time = moment.utc(utcTime).toDate();
         time = moment(time).local().format('DD-MM-YYYY HH:mm');
-        el.innerHTML = "Confirmada em : " + time;
-       
+        
+        if (moment(time, 'DD-MM-YYYY HH:mm', true).isValid()) {
+          el.innerHTML = "Confirmada em : " + time;
+        };
        
       });
     });
@@ -344,8 +323,10 @@
         let utcTime = el.getAttribute("data-time-inic");
         let time = moment.utc(utcTime).toDate();
         time = moment(time).local().format('DD-MM-YYYY HH:mm');
-       
-        el.innerHTML = "Confirmada em : " + time;
+
+        if (moment(time, 'DD-MM-YYYY HH:mm', true).isValid()) {
+        el.innerHTML = "Data Inicio : " + time;
+        };
        
       });
     });
@@ -357,8 +338,10 @@
         let utcTime = el.getAttribute("data-time-tr");
         let time = moment.utc(utcTime).toDate();
         time = moment(time).local().format('DD-MM-YYYY HH:mm');
-       
-        el.innerHTML = "Confirmada em : " + time;
+
+        if (moment(time, 'DD-MM-YYYY HH:mm', true).isValid()) {
+           el.innerHTML = "Confirmada em : " + time;
+        };   
        
       });
     });
@@ -371,9 +354,9 @@
         let time = moment.utc(utcTime).toDate();
         time = moment(time).local().format('DD-MM-YYYY HH:mm');
         
-       /* if(time <> "Invalid date"){*/
+        if (moment(time, 'DD-MM-YYYY HH:mm', true).isValid()) {
         el.innerHTML = "Confirmada em : " + time;
-       /* }*/
+        };
       });
     });
 

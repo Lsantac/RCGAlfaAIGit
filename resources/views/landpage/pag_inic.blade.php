@@ -6,25 +6,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 	<link rel="icon" type="image/png" href="/imagens/logo.jpg" /> 
+	<link rel="stylesheet" href="{{ asset('/css/pag_inic.css') }}">
 </head>
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
+				<a class="navbar-brand" href="/"><img id="imagem_logo"  src="/imagens/{{App\Http\Controllers\IdentController::consulta_logo()}}" class="imagem-header"></a>
 				<a class="navbar-brand" href="#">Rede Colaborativa Global</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="#sistema">Sistema</a>
-						</li>
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 						<li class="nav-item">
 							<a class="nav-link" href="#contato">Contato</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#tutoriais">Tutoriais</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#sistema">Entrar</a>
 						</li>
 					</ul>
 				</div>
@@ -34,36 +36,21 @@
 	<main>
 		<section class="intro">
 			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-6">
-						<img src="/imagens/logo.jpg" alt="Logo da Minha Landpage" class="img-fluid">
-					</div>
-				</div>
 				<div class="row mt-3">
 					<div class="col-md-12">
-						<p>Que tal participar de uma rede colaborativa global? Com o nosso sistema, você terá acesso a diversos recursos de produtos, serviços e itens por meio da troca ou uso de moedas solidárias.</p>
-						<p>Seria um site que funcionaria como uma ferramenta para criação de redes solidárias de trocas e distribuição de recursos de vários tipos gerando um ambiente propício para a existência de grupos cooperativos onde os participantes teriam acesso a produtos, serviços e itens diversos usando desde a simples troca como a utilização de moedas solidárias.</p>
+						<h5>Que tal participar de uma rede colaborativa global? Com o nosso sistema, você terá acesso a diversos recursos para fazer fluir seus produtos, serviços e itens por meio da trocas, doações ou uso de moedas de vários tipos.</h5>
+						<h5>É uma ferramenta para criação de redes solidárias facilitando a circulação de produtos, serviços e itens de vários tipos gerando um ambiente propício para a existência de grupos cooperativos, com mapeamento dos recursos da rede e com ferramentas
+							de analise da qualidade da prosperidade dessas redes, fazendo com que esses recursos cheguem aonde são realmente necessários.</h5>
 					</div>
 				</div>
 			</div>
 		</section>
-	
+	<br>
 <section class="features">
 <div class="container">
   <h2>Funcionalidades Principais</h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-	<div class="col">
-	  <div class="card h-100">
-		<div class="card-body">
-		  <h3 class="card-title">Redes</h3>
-		  <ul class="card-text">
-			<li>Poderiam ser criadas a vontade, e seriam cadastradas com nome, localização e uma breve descrição.</li>
-			<li>Essas redes seriam compostas de “participantes” de uma cidade, comunidade, escola, clube ou qualquer ou tipo de agrupamento de pessoas.</li>
-			<li>Seriam criadas categorias e tipos de redes para facilitar a busca de recursos pela rede. Ex. Redes de pessoas físicas, de profissionais autônomos, empresas de vários ramos e até fábricas.</li>
-		  </ul>
-		</div>
-	  </div>
-	</div>
+	
 	<div class="col">
 	  <div class="card h-100">
 		<div class="card-body">
@@ -72,6 +59,18 @@
 		  <p class="card-text">Cada participante cadastrará suas “ofertas” e/ou  “necessidades”, como produtos que produz ou que precisa, serviços e outros itens possíveis.</p>
 		</div>
 	  </div>
+	</div>
+	<div class="col">
+		<div class="card h-100">
+		  <div class="card-body">
+			<h3 class="card-title">Redes</h3>
+			<ul class="card-text">
+			  <li>Poderiam ser criadas a vontade, e seriam cadastradas com nome, localização e uma breve descrição.</li>
+			  <li>Essas redes seriam compostas de “participantes” de uma cidade, comunidade, escola, clube ou qualquer ou tipo de agrupamento de pessoas.</li>
+			  <li>Seriam criadas categorias e tipos de redes para facilitar a busca de recursos pela rede. Ex. Redes de pessoas físicas, de profissionais autônomos, empresas de vários ramos e até fábricas.</li>
+			</ul>
+		  </div>
+		</div>
 	</div>
 	<div class="col">
 	  <div class="card h-100">
@@ -115,11 +114,11 @@
 	</div>	  
 
   </section>
-  <footer class="footer mt-auto py-3">
-	<div class="container">
-	  <p class="text-muted">&copy; 2023 Rede Colaborativa Global</p>
-	</div>
-  </footer>
+  <footer class="footer mt-auto py-3 text-center">
+    <div class="container">
+        <p class="text-muted">&copy; 2023 Rede Colaborativa Global</p>
+    </div>
+</footer>
 
 </main>
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>

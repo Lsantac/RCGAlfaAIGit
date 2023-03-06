@@ -52,7 +52,7 @@
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 	
 	<div class="col">
-	  <div class="card h-100">
+	  <div class="card h-100 card_partic">
 		<div class="card-body">
 		  <h3 class="card-title">Participantes</h3>
 		  <p class="card-text">Seriam pessoas físicas ou jurídicas que fariam parte de uma ou mais redes. Poderiam participar de eventos e projetos.</p>
@@ -61,7 +61,7 @@
 	  </div>
 	</div>
 	<div class="col">
-		<div class="card h-100">
+		<div class="card h-100 card_redes">
 		  <div class="card-body">
 			<h3 class="card-title">Redes</h3>
 			<ul class="card-text">
@@ -73,7 +73,7 @@
 		</div>
 	</div>
 	<div class="col">
-	  <div class="card h-100">
+	  <div class="card h-100 card_ofertas">
 		<div class="card-body">
 		  <h3 class="card-title">Ofertas</h3>
 		  <p class="card-text">Qualquer tipo de produto ou serviço que o participante produza ou queira doar ou troca na rede. Produtos e serviços devem atender a algumas regras básicas de ética comunitária.</p>
@@ -81,7 +81,7 @@
 	  </div>
 	</div>
 	<div class="col">
-	  <div class="card h-100">
+	  <div class="card h-100 card_necessidades">
 		<div class="card-body">
 		  <h3 class="card-title">Necessidades</h3>
 		  <p class="card-text">Da mesma forma que as Ofertas, as Necessidades que cada participante tem de produtos, serviços ou qualquer outro tipo de item ofertado na rede.</p>
@@ -89,7 +89,7 @@
 	  </div>
 	</div>
 	<div class="col">
-		<div class="card h-100">
+		<div class="card h-100 card_transacoes">
 		  <div class="card-body">
 			<h3 class="card-title">Transações</h3>
 			<p class="card-text">São feitas entre os participantes, um que disponibilizou uma “oferta” e outro que tem uma “necessidade” compatível. Podem ser realizadas durante um evento, pessoalmente, por correio, ou outra forma a combinar. Cada transação possui uma avaliação e uma confirmação de execução pelos participantes que receberam as “ofertas”. Podem haver também trocas entre participantes que estão ofertando seus produtos ou serviços. As transações podem ser vinculadas a algum evento ou projeto para futura referência.</p>
@@ -97,7 +97,7 @@
 		</div>
 	</div>
 	<div class="col">
-		<div class="card h-100">
+		<div class="card h-100 card_eventos">
 		  <div class="card-body">
 			<h3 class="card-title">Eventos</h3>
 			<p class="card-text">Feiras e encontros dos participantes para entrega das ofertas e realizar as transações. Define-se local, data e periodicidade. Não é obrigatório que as transações sejam feitas durante um evento.</p>
@@ -105,13 +105,21 @@
 		</div>
 	</div>	  
 	<div class="col">
-		<div class="card h-100">
+		<div class="card h-100 card_projetos">
 		  <div class="card-body">
 			<h3 class="card-title">Projetos</h3>
 			<p class="card-text">Projetos de natureza comunitária ou colaborativa que podem ser criados pelos participantes e que podem ser favorecidos por transações feitas nas redes. Exemplos incluem melhoria ou criação de escolas, comunidades sustentáveis, auxílio a famílias carentes e assim por diante.</p>
 		  </div>
 		</div>
-	</div>	  
+	</div>	
+	<div class="col">
+		<div class="card h-100 card_estat">
+		  <div class="card-body">
+			<h3 class="card-title">Estatísticos</h3>
+			<p class="card-text">Gráficos e dados estatísticos mostrando a performance das redes e participantes, indicando a saúde do fluxo dos recursos por toda a rede.</p>
+		  </div>
+		</div>
+	</div>	   
 
   </section>
   <footer class="footer mt-auto py-3 text-center">

@@ -38,9 +38,7 @@
 			<div class="container">
 				<div class="row mt-3">
 					<div class="col-md-12">
-						<h5>Que tal participar de uma rede colaborativa global? Com o nosso sistema, você terá acesso a diversos recursos para fazer fluir seus produtos, serviços e itens por meio da trocas, doações ou uso de moedas de vários tipos.</h5>
-						<h5>É uma ferramenta para criação de redes solidárias facilitando a circulação de produtos, serviços e itens de vários tipos gerando um ambiente propício para a existência de grupos cooperativos, com mapeamento dos recursos da rede e com ferramentas
-							de analise da qualidade da prosperidade dessas redes, fazendo com que esses recursos cheguem aonde são realmente necessários.</h5>
+						<h5>Que tal participar de uma rede colaborativa versátil, que oferece diversas ferramentas para impulsionar a circulação de seus produtos, serviços e outros itens por meio de trocas, doações ou uso de moedas solidárias? Essa plataforma facilita a criação de redes, estimulando o trabalho cooperativo e o compartilhamento de recursos, além de fornecer estatísticas para análise da prosperidade dessas redes. Com essa iniciativa, os recursos são direcionados de forma mais eficiente para onde são mais necessários.</h5>
 					</div>
 				</div>
 			</div>
@@ -48,7 +46,8 @@
 	<br>
 <section class="features">
 <div class="container">
-  <h2>Funcionalidades Principais</h2>
+  <h3>Módulos Conceituais</h3>
+  <br>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 	
 	<div class="col">

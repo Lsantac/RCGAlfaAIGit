@@ -25,9 +25,9 @@
         <h1 style="text-align: center; color:blue;">{{$ident->nome_ident}}</h1>
         <img src="/imagens/imagem3.jpg" class="d-block" style="width: 80%; height: auto; object-fit: cover; margin: 0 auto;" alt="...">
       </div>
-      
-
+    
     </div>
+    
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>

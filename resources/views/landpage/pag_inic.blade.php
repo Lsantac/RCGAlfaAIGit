@@ -4,7 +4,7 @@
 	<title>Rede Colaborativa Global</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="icon" type="image/png" href="/imagens/logo.jpg" /> 
 	<link rel="stylesheet" href="{{ asset('/css/pag_inic.css') }}">
 </head>
@@ -17,7 +17,7 @@
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="nav-link" href="#Conceitos">Módulos</a>
+				<a class="nav-link" href="#caracteristicas">Características</a>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 						<li class="nav-item">
@@ -35,19 +35,31 @@
 		</nav>
 	</header>
 	<main>
-		<section class="intro">
-			<div class="container">
-				<div class="row mt-3">
-					<div class="col-md-12">
-						<h5>Que tal participar de uma rede colaborativa versátil, que oferece diversas ferramentas para impulsionar a circulação de seus produtos, serviços e outros itens por meio de trocas, doações ou uso de moedas solidárias? Essa plataforma facilita a criação de redes, estimulando o trabalho cooperativo e o compartilhamento de recursos, além de fornecer estatísticas para análise da prosperidade dessas redes. Com essa iniciativa, os recursos são direcionados de forma mais eficiente para onde são mais necessários.</h5>
+		<div class="container">
+
+			<div class="row justify-content-center mt-5">
+			  <div class="col-lg-6 col-md-8 col-sm-10">
+				<div class="card bg-white shadow rounded-lg border-0">
+
+				  <div class="card-img-top rounded-lg" style="background-image: url('/imagens/imagem_inicial1.jpg'); height: 450px; background-size: cover; background-position: center;"></div>
+
+				  <div class="card-body">
+					<h5 class="card-title text-left">Bem-vindo à nossa plataforma colaborativa!</h5>
+					<p class="card-text text-left" style="background-color: rgba(255, 255, 255, 0.7); padding: 10px;">Que tal participar de uma rede colaborativa versátil, que oferece diversas ferramentas para impulsionar a circulação de seus produtos, serviços e outros itens por meio de trocas, doações ou uso de moedas solidárias? Essa plataforma facilita a criação de redes, estimulando o trabalho cooperativo e o compartilhamento de recursos, além de fornecer estatísticas para análise da prosperidade dessas redes. Com essa iniciativa, os recursos são direcionados de forma mais eficiente para onde são mais necessários.</p>
+					<div class="text-center mt-3">
+					  <a href="/auth/login" class="btn btn-primary" style="background: linear-gradient(to right, #e74c3c, #f1c40f, #2ecc71);">Venha participar também!!</a>
 					</div>
+				  </div>
 				</div>
+			  </div>
 			</div>
-		</section>
-	<br>
+		  </div>
+		 
+	<br><br>
 <section class="features">
-<div class="container">
-  <h3>Módulos</h3>
+<div class="container" id="caracteristicas">
+	<h3 style="text-align: center;">Características</h3>
+
   <br>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 	
@@ -158,5 +170,7 @@
 
 </main>
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+
+
 </body>
 </html>

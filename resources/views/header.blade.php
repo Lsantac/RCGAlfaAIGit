@@ -85,13 +85,13 @@
               </div>
               &nbsp&nbsp
 
-              <button class="btn btn-sair btn-sm" type="submit">Sair</button>  
+             <button class="btn btn-sair btn-sm" type="submit">Sair</button>
           
           </form>
 
       @else
           <a style="margin-right:10px;" class="btn btn-success btn-sm" href="novo_participante" role="button">Novo Participante</a>
-          <button class="btn btn-primary btn-sm" type="button"><a style="color:white; text-decoration:none;" href="/login">Login</a></button>  
+         <!-- <button class="btn btn-primary btn-sm" type="button"><a style="color:white; text-decoration:none;" href="/login">Login</a></button>  -->
           
           
       @endif

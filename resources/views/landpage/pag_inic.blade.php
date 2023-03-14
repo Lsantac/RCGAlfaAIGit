@@ -116,9 +116,8 @@
 		  <div class="card-body">
 			<h3 class="card-title text-center">Redes</h3>
 			<p class="card-text">
-				As redes podem ser criadas conforme a necessidade e cadastradas com nome e breve descrição. Elas são compostas por "participantes" que compartilham interesses em comum, podendo ser de uma cidade, comunidade, escola, clube ou qualquer outro tipo de agrupamento de pessoas.
+				As redes podem ser criadas conforme a necessidade e cadastradas com nome e breve descrição. Elas são compostas por "participantes" que compartilham interesses em comum, podendo ser de uma cidade, comunidade, escola, clube ou qualquer outro tipo de pessoa.
                 Por exemplo, podem existir redes de pessoas físicas ligadas a algum interesse específico, de profissionais de várias áreas, empresas e até mesmo fábricas.
-				Os participantes podem participar de eventos e projetos que são promovidos pela rede, e cada um deles cadastrará suas "ofertas" e/ou "necessidades", como produtos ou serviços que produz ou que precisa, entre outros itens possíveis.
 			</p>
 
 		  </div>

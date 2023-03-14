@@ -19,7 +19,7 @@ class IniciaController extends Controller
 
        /* dd($ident);*/
         
-        return view('home',['ident'=>$ident]);
+        return view('landpage.pag_inic',['ident'=>$ident]);
     }
 
     public static function consulta_status_transacoes_of_anda($id_of_part){

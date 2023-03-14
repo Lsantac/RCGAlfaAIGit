@@ -900,6 +900,10 @@
 
         
     @endif
+
+
+
+
 @endif
 
 
@@ -1001,54 +1005,58 @@
    
   </script>
 
-<script>
- 
-  var date = moment.utc("{{$trans->data_final_of_part}}");
-  var localDate = date.local().format('DD-MM-YYYY HH:mm');
+@if(isset($trans))
+    <script>
 
-  var testa_data = date.local();
+      var date = moment.utc("{{$trans->data_final_of_part}}");
+      var localDate = date.local().format('DD-MM-YYYY HH:mm');
 
-  if(testa_data.isValid()){
-    const localTimeElements = document.querySelectorAll('.local-time-of');
-    localTimeElements.forEach(element => {
-    element.innerHTML = "Confirmada em : " + localDate;
-    });
-  };
-  
-  </script>
+      var testa_data = date.local();
 
-   @if(isset($necps))
-      <script>
-        var date_nec = moment.utc("{{$trans->data_final_nec_part}}");
-        var localDate_nec = date_nec.local().format('DD-MM-YYYY HH:mm');
-        var testa_data = date_nec.local();
+      if(testa_data.isValid()){
+        const localTimeElements = document.querySelectorAll('.local-time-of');
+        localTimeElements.forEach(element => {
+        element.innerHTML = "Confirmada em : " + localDate;
+        });
+      };
+      
+    </script>
 
-       /* alert(testa_data);*/
-        
-       if(testa_data.isValid()){
-            const localTimeElements_nec = document.querySelectorAll('.local-time-nec');
-            localTimeElements_nec.forEach(element => {
-            element.innerHTML = "Confirmada em : " + localDate_nec;
-            });
-          };
-      </script>
-   @else
-      <script>
-        var date_oftr = moment.utc("{{$trans->data_final_of_tr_part}}");
-        var localDate_oftr = date_oftr.local().format('DD-MM-YYYY HH:mm');
+    @if(isset($necps))
+          <script>
+            var date_nec = moment.utc("{{$trans->data_final_nec_part}}");
+            var localDate_nec = date_nec.local().format('DD-MM-YYYY HH:mm');
+            var testa_data = date_nec.local();
 
-        var testa_data = date_oftr.local();
- 
-        if(testa_data.isValid()){
-            const localTimeElements_oftr = document.querySelectorAll('.local-time-oftr');
-            localTimeElements_oftr.forEach(element => {
-            element.innerHTML = "Confirmada em : " + localDate_oftr;
-            });
-        };
-      </script>
+            /* alert(testa_data);*/
+            
+            if(testa_data.isValid()){
+                const localTimeElements_nec = document.querySelectorAll('.local-time-nec');
+                localTimeElements_nec.forEach(element => {
+                element.innerHTML = "Confirmada em : " + localDate_nec;
+                });
+              };
 
-   @endif
+          </script>
+      
+    @else
+          <script>
+            var date_oftr = moment.utc("{{$trans->data_final_of_tr_part}}");
+            var localDate_oftr = date_oftr.local().format('DD-MM-YYYY HH:mm');
 
+            var testa_data = date_oftr.local();
+
+            if(testa_data.isValid()){
+                const localTimeElements_oftr = document.querySelectorAll('.local-time-oftr');
+                localTimeElements_oftr.forEach(element => {
+                element.innerHTML = "Confirmada em : " + localDate_oftr;
+                });
+            };
+          </script>
+
+    @endif
+
+@endif
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {

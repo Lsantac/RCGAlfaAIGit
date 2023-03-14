@@ -8,6 +8,13 @@ body {
   
 }
 
+.imagem-logo {
+  width:45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
 .imagem_inic{
   max-height: 400px;
   object-fit:cover;
@@ -46,11 +53,6 @@ body::before {
   margin-left: 10px; /* ajuste o valor do espaçamento aqui conforme necessário */
 }
 
-
-#imagem_logo {
-      width: 35px;
-      height: 35px;
-}
 
 .card_partic {
       background: linear-gradient(to bottom right, #98d8f3, #c0d7ee);

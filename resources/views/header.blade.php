@@ -4,14 +4,14 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid ">
-    <a class="navbar-brand" href="/"><img id="imagem_logo"  src="/imagens/{{App\Http\Controllers\IdentController::consulta_logo()}}" class="imagem-header"></a>
+    <a class="navbar-brand" href="/inicio"><img id="imagem_logo"  src="/imagens/{{App\Http\Controllers\IdentController::consulta_logo()}}" class="imagem-header"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a style="color:rgb(0, 50, 97); " class="nav-link active" aria-current="page" href="/inicio">Início</a>
+              <a style="color:rgb(50, 34, 189); " class="nav-link active" aria-current="page" href="/inicio">Início</a>
             </li>
             <li class="nav-item">
               <a style=" color:rgb(17, 88, 196);" class="nav-link" href="/participantes">Participantes</a>

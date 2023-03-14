@@ -794,7 +794,7 @@ class TransacoesController extends Controller
                                             ->leftjoin('moedas','transacoes.id_moeda','=','moedas.id') 
                                             ->first();
 
-          /* dd($trans,$id_trans);*/
+           /*dd($trans,$id_trans);*/
 
            #consulta avaliações na tabela transaction_ratings
            $rating_of = DB::table('transaction_ratings')->where('transaction_ratings.id_trans',$id_trans)

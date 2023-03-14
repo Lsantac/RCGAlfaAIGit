@@ -27,13 +27,13 @@ use App\Http\Controllers\ChartController;
 |
 */
 /*LandPage */
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('landpage.pag_inic');
-});
+});*/
 
 /*Tela Inicial */
 Route::get('/home', [IniciaController::class,'home'])->middleware('islogged');
-/*Route::get('/', [IniciaController::class,'ident']);*/
+Route::get('/', [IniciaController::class,'ident']);
 Route::get('/inicio', [IniciaController::class,'inicio'])->middleware('islogged');
 Route::get('/cons_trans_ofertas_part/{status}/{id_part}', [IniciaController::class,'cons_trans_ofertas_part'])->middleware('islogged');;
 Route::get('/cons_trans_necessidades_part/{status}/{id_part}', [IniciaController::class,'cons_trans_necessidades_part'])->middleware('islogged');;

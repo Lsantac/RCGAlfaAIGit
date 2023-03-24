@@ -461,8 +461,14 @@
                         
                         <div class="col">
 
-                            @if(Session::get('id_logado') == $part->id)
-                                <button class="btn btn-danger btn-sm bi bi-trash texto_p" type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluinecessidade-{{$necp->id_nec_part}}" >Excluir</button>
+                            @php
+                              $exclusao = App\Http\Controllers\NecessidadesController::verif_exclusao_necessidade($necp->id_nec_part);
+                            @endphp
+
+                            @if(!($exclusao))
+                                @if(Session::get('id_logado') == $part->id)
+                                    <button class="btn btn-danger btn-sm bi bi-trash texto_p" type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluinecessidade-{{$necp->id_nec_part}}" >Excluir</button>
+                                @endif
                             @endif
 
                             <form class="" action="/deleta_necessidade_part/{{$necp->id_nec_part}}" method="POST">

@@ -530,6 +530,19 @@ class NecessidadesController extends Controller
     }else{
         return back()->with('fail','Tipo de Necessidade já existente!');
     }
-} 
+}
+
+public static function verif_exclusao_necessidade($id) {
+
+  $trans = DB::table('transacoes')->where('id_nec_part',$id)->first();
+
+  if($trans){
+      return true;
+  }
+  else{
+      return false;
+      }
+  
+}
 
 }

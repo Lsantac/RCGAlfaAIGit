@@ -525,15 +525,15 @@ class ofertasController extends Controller
     }
   } 
 
-  public function verif_exclusao_oferta($id) {
+  public static function verif_exclusao_oferta($id) {
 
-    $trans = DB::table('transacao')->where('id_of_part',$id)->first();
+    $trans = DB::table('transacoes')->where('id_of_part',$id)->first();
 
     if($trans){
         return true;
     }
     else{
-        $trans = DB::table('transacao')->where('id_of_tr_part',$id)->first();
+        $trans = DB::table('transacoes')->where('id_of_tr_part',$id)->first();
         if($trans){
             return true;
         }

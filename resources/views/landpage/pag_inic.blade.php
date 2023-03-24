@@ -22,7 +22,7 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" href="#conceitual">
+							<a class="nav-link" href="#conceitual" style="color:rgb(45, 45, 175);">
 								<div class="conceitual">C<span>o</span><span>n</span><span>c</span><span>e</span><span>i</span><span>t</span><span>u</span><span>a</span><span>l</span>
 								</div>
 							</a>
@@ -52,8 +52,9 @@
 						<div class="card-body">
 							<div id="carouselExampleSlidesOnly" class="carousel slide rounded-top carousel_inic" data-bs-ride="carousel" style="max-height: 400px;">
 								<div class="carousel-inner">
+									
 									<div class="carousel-item active">
-									<img src="/imagens/imagem_inicial1.jpg" class="d-block w-100 imagem_inic" alt="...">
+									    <img src="/imagens/imagem_inicial1.jpg" class="d-block w-100 imagem_inic" alt="...">
 									</div>	
 									<div class="carousel-item">
 										<img src="/imagens/imagem_inicial2.jpg" class="d-block w-100 imagem_inic" alt="...">
@@ -70,6 +71,8 @@
 									<div class="carousel-item">
 										<img src="/imagens/imagem_inicial6.jpg" class="d-block w-100 imagem_inic" alt="...">
 									</div>
+									
+
 								</div>
 							</div>
 							<br>

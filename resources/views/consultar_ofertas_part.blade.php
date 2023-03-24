@@ -495,9 +495,15 @@
                         </div> 
                         <div class="col">
 
-                              @if(Session::get('id_logado') == $part->id)
-                                  <button class="btn btn-danger btn-sm bi bi-trash texto_p" type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluiOferta-{{$ofp->id_of_part}}" >
-                                  Excluir</button>
+                             @php
+                               $exclusao = App\Http\Controllers\OfertasController::verif_exclusao_oferta($ofp->id_of_part);
+                             @endphp
+
+                              @if(!($exclusao))
+                                @if(Session::get('id_logado') == $part->id)
+                                    <button class="btn btn-danger btn-sm bi bi-trash texto_p" type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluiOferta-{{$ofp->id_of_part}}" >
+                                    Excluir</button>
+                                @endif
                               @endif
                           
                               <form action="/deleta_oferta_part/{{$ofp->id_of_part}}" method="POST">

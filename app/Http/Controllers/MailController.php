@@ -44,6 +44,35 @@ class MailController extends Controller
         return back()->with('success', 'Email enviado para '.$email. ' com sucesso! Verifique sua caixa de entrada e use o link para redefinir sua senha !');
          
 
+    } 
+    
+    public function MensContato(Request $request){
+
+        $email = $request->input('email_enviado');
+        
+        $ident = DB::table('identidade')->first();
+        $nome_ident = $ident->nome_ident;
+        $part = DB::table('participantes')->where('email', $email)->first();
+
+        if(!$part){
+            return redirect('/login')->with('fail','Email não cadastrado!');
+        }  
+
+        $nome_part = $part->nome_part;
+
+        $details = [
+            'title' => '',
+            'body' => '',
+            'image' => '',
+            'id' => $part->id,
+           
+        ];
+
+        Mail::to($email)->send(new \App\Mail\SendMail($details),['html' => 'email.EnviarMail']);
+
+        return back()->with('success', 'Email enviado para '.$email. ' com sucesso! Verifique sua caixa de entrada e use o link para redefinir sua senha !');
+         
+
     }  
 
     public function SendEmail_teste($email)

@@ -8,6 +8,11 @@ body {
   
 }
 
+.hr-separator {
+  border-top: 3px solid black; /* define a espessura da linha */
+}
+
+
 .imagem-logo {
   width:45px;
   height: 45px;

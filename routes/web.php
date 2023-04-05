@@ -38,6 +38,9 @@ Route::get('/inicio', [IniciaController::class,'inicio'])->middleware('islogged'
 Route::get('/cons_trans_ofertas_part/{status}/{id_part}', [IniciaController::class,'cons_trans_ofertas_part'])->middleware('islogged');;
 Route::get('/cons_trans_necessidades_part/{status}/{id_part}', [IniciaController::class,'cons_trans_necessidades_part'])->middleware('islogged');;
 
+
+
+
 /*Configura Identidade */
 Route::get('/identidade', [IdentController::class,'conf_ident'])->middleware('islogged');
 Route::post('/altera_ident', [IdentController::class,'altera_ident'])->name('altera_ident');
@@ -167,6 +170,7 @@ Route::get('/geocode', function ()
 
 /*Emails */
 route::get ('/SendEmail', [MailController::class,'SendEmail'])->name('SendEmail');
+route::get ('/MensContato', [MailController::class,'MensContato'])->name('MensContato');
 
 /*Charts (gráficos) */
 route::get ('/chart_part/{id_part}', [ChartController::class,'ChartStatus_part'])->name('chart_part')->middleware('islogged');

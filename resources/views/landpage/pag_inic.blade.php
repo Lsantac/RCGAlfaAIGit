@@ -89,9 +89,10 @@
 			</div>
 		</div>
 		 
-	<br><br><br><br>
-<section class="features">
-<div class="container" id="conceitual">
+	<br id="conceitual"><br><br>
+	<br>
+<section class="features" >
+<div class="container" >
 	<h3 style="text-align: center;">Conceitual</h3>
 
   <br>
@@ -210,8 +211,50 @@
 			</p>
 		  </div>
 		</div>
-	</div>		   
+	</div>		
+</div>	
 
+	<hr class="hr-separator">
+	<br>
+	<br>
+	
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+				<div class="card">
+					<div class="card-body">
+						<form action="{{ route('MensContato') }}" method="POST">
+							@csrf
+	
+							<h3 class="text-center mb-4">Contato</h3>
+	
+							<div class="mb-3">
+								<label for="nome" class="form-label">Nome</label>
+								<input type="text" id="nome" name="nome" class="form-control">
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">E-mail</label>
+								<input type="email" id="email" name="email" class="form-control">
+							</div>
+							<div class="mb-3">
+								<label for="assunto" class="form-label">Assunto</label>
+								<input type="text" id="assunto" name="assunto" class="form-control">
+							</div>
+							<div class="mb-3">
+								<label for="mensagem" class="form-label">Mensagem</label>
+								<textarea id="mensagem" name="mensagem" class="form-control"></textarea>
+							</div>
+							<button type="submit" class="btn btn-primary">Enviar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
   </section>
   <footer class="footer mt-auto py-3 text-center">
     <div class="container">

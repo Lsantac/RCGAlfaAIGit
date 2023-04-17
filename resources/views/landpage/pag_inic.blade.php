@@ -223,10 +223,10 @@
 			<div class="col-lg-8">
 				<div class="card">
 					<div class="card-body">
-						<form action="{{ route('MensContato') }}" method="POST">
+						<form action="{{ route('MensContato') }}" method="GETt">
 							@csrf
 	
-							<h3 class="text-center mb-4">Contato</h3>
+							<h3 class="text-center mb-4" id="contato">Contato</h3>
 	
 							<div class="mb-3">
 								<label for="nome" class="form-label">Nome</label>
@@ -234,7 +234,7 @@
 							</div>
 							<div class="mb-3">
 								<label for="email" class="form-label">E-mail</label>
-								<input type="email" id="email" name="email" class="form-control">
+								<input type="email" id="email_contato" name="email_contato" class="form-control">
 							</div>
 							<div class="mb-3">
 								<label for="assunto" class="form-label">Assunto</label>

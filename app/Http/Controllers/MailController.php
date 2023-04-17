@@ -31,6 +31,7 @@ class MailController extends Controller
             'body' => 'Essa mensagem é para voce poder resetar sua senha, clique no link abaixo. Seja Bem Vindo a '. $nome_ident.' !',
             'image' => 'http://redecolaborativa.ddns.net:8222/img/logo.jpg',
             'id' => $part->id,
+            'tipo' => 'esqueci-senha',
            
         ];
 
@@ -48,29 +49,30 @@ class MailController extends Controller
     
     public function MensContato(Request $request){
 
-        $email = $request->input('email_enviado');
+        $email = 'lsantac@gmail.com';
+        $email_contato = $request->input('email_contato');
+        $nome = $request->input('nome');
+        $mensagem = $request->input('mensagem');
+        $assunto = $request->input('assunto');
         
         $ident = DB::table('identidade')->first();
         $nome_ident = $ident->nome_ident;
-        $part = DB::table('participantes')->where('email', $email)->first();
-
-        if(!$part){
-            return redirect('/login')->with('fail','Email não cadastrado!');
-        }  
-
-        $nome_part = $part->nome_part;
-
+        
         $details = [
-            'title' => '',
-            'body' => '',
-            'image' => '',
-            'id' => $part->id,
+            'title' => 'Mensagem do visitante : '. $nome.' da '. $nome_ident,
+            'name' => $nome,
+            'email' => $email_contato,
+            'subject' => $assunto,
+            'body' => $mensagem, 
+            'image' => '/img/logo.jpg',
+            'id' => '',
+            'tipo' => 'contato',
            
         ];
 
         Mail::to($email)->send(new \App\Mail\SendMail($details),['html' => 'email.EnviarMail']);
 
-        return back()->with('success', 'Email enviado para '.$email. ' com sucesso! Verifique sua caixa de entrada e use o link para redefinir sua senha !');
+        return back()->with('success', 'Email enviado para '.$email. ' com sucesso!');
          
 
     }  

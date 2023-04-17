@@ -39,8 +39,6 @@ Route::get('/cons_trans_ofertas_part/{status}/{id_part}', [IniciaController::cla
 Route::get('/cons_trans_necessidades_part/{status}/{id_part}', [IniciaController::class,'cons_trans_necessidades_part'])->middleware('islogged');;
 
 
-
-
 /*Configura Identidade */
 Route::get('/identidade', [IdentController::class,'conf_ident'])->middleware('islogged');
 Route::post('/altera_ident', [IdentController::class,'altera_ident'])->name('altera_ident');

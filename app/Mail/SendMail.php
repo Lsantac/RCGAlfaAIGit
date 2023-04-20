@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+
 class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -33,7 +34,7 @@ class SendMail extends Mailable
     {
         return $this->subject('Mensagem da Rede Colaborativa Global')->view('emails.EnviarMail');
     }
-
    
     
 }
+

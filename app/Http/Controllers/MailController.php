@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Mail\SendMail;
-
+use App\Mail\ContatoEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
@@ -53,7 +53,7 @@ class MailController extends Controller
         $email_contato = $request->input('email_contato');
         $nome = $request->input('nome');
         $mensagem = $request->input('mensagem');
-        $assunto = $request->input('assunto');
+        $subject = $request->input('assunto');
         
         $ident = DB::table('identidade')->first();
         $nome_ident = $ident->nome_ident;
@@ -61,8 +61,8 @@ class MailController extends Controller
         $details = [
             'title' => 'Mensagem do visitante : '. $nome.' da '. $nome_ident,
             'name' => $nome,
-            'email' => $email_contato,
-            'subject' => $assunto,
+            'email_contato' => $email_contato,
+            'subject' => $subject,
             'body' => $mensagem, 
             'image' => '/img/logo.jpg',
             'id' => '',
@@ -70,7 +70,12 @@ class MailController extends Controller
            
         ];
 
-        Mail::to($email)->send(new \App\Mail\SendMail($details),['html' => 'email.EnviarMail']);
+        /*Mail::to($email)->send(new \App\Mail\SendMail($details),['html' => 'email.EnviarMail']);*/
+
+        $name = $request->input('name');
+        $data = array('name' => $name);
+
+        Mail::to($email)->send(new \App\Mail\ContatoMail($data, $subject,$details),['html' => 'email.EnviarMail']);
 
         return back()->with('success', 'Email enviado para '.$email. ' com sucesso!');
          

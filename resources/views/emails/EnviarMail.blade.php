@@ -29,9 +29,8 @@
     @else
        @if($details['tipo'] == 'contato')
             <h1>{{$details['title']}}</h1>
-            <h2>Email : {{$details['email']}}</h2>
+            <h2>Email : {{$details['email_contato']}}</h2>
             <br>
-            <h2>{{$details['subject']}}</h3>
             <h3>{{$details['body']}}</h3>
             <br>
             <img src="{{$details['image']}}" alt="">

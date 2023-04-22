@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/pag_inic.css') }}">
 </head>
 <body>
+
 	<br><br>
 	<header class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,7 +29,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#contato">Contato</a>
+							<a href="#contato" class="nav-link btn-contato">Contato</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#tutoriais">Tutoriais</a>
@@ -43,6 +44,16 @@
 	</header>
 	<main>
 		<div class="container">
+
+			<div class="results" id="success-message">
+				<br><br>
+				@if(Session::get('success'))
+					<div class="alert alert-success">
+						{{Session::get('success')}}
+					</div>
+				@endif
+							
+			</div>
 
 			<div class="row justify-content-center mt-5">
 			    <div class="col-lg-7 col-md-10 col-sm-11">
@@ -266,6 +277,17 @@
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+	  $('#success-message').fadeIn();
+	  setTimeout(function() {
+		$('#success-message').fadeOut();
+	  }, 5000);
+	});
+</script>
+  
 
 </body>
 </html>

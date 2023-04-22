@@ -47,40 +47,41 @@ class MailController extends Controller
 
     } 
     
-    public function MensContato(Request $request){
+   /**
+ * Send a message from a visitor.
+ *
+ * @param \Illuminate\Http\Request $request
+ * @return \Illuminate\Http\Response
+ */
+public function MensContato(Request $request)
+{
+    $email = 'lsantac@gmail.com';
+    $email_contato = $request->input('email_contato');
+    $nome = $request->input('nome');
+    $mensagem = $request->input('mensagem');
+    $subject = $request->input('assunto');
 
-        $email = 'lsantac@gmail.com';
-        $email_contato = $request->input('email_contato');
-        $nome = $request->input('nome');
-        $mensagem = $request->input('mensagem');
-        $subject = $request->input('assunto');
-        
-        $ident = DB::table('identidade')->first();
-        $nome_ident = $ident->nome_ident;
-        
-        $details = [
-            'title' => 'Mensagem do visitante : '. $nome.' da '. $nome_ident,
-            'name' => $nome,
-            'email_contato' => $email_contato,
-            'subject' => $subject,
-            'body' => $mensagem, 
-            'image' => '/img/logo.jpg',
-            'id' => '',
-            'tipo' => 'contato',
-           
-        ];
+    $nome_ident = DB::table('identidade')->value('nome_ident');
 
-        /*Mail::to($email)->send(new \App\Mail\SendMail($details),['html' => 'email.EnviarMail']);*/
+    $details = [
+        'title' => 'Mensagem do visitante : '. $nome.' da '. $nome_ident,
+        'name' => $nome,
+        'email_contato' => $email_contato,
+        'subject' => $subject,
+        'body' => $mensagem, 
+        'id' => '',
+        'tipo' => 'contato',
+    ];
+ 
+    $message = new \App\Mail\ContatoMail(compact('nome'), $subject, $details);
+    /*  $imagePath = public_path('/imagens/logo.jpg');*/
+    /* $message->attach($imagePath, ['as' => 'logo.jpg']);*/
 
-        $name = $request->input('name');
-        $data = array('name' => $name);
+    Mail::to($email)->send($message, ['html' => 'email.EnviarMail']);
 
-        Mail::to($email)->send(new \App\Mail\ContatoMail($data, $subject,$details),['html' => 'email.EnviarMail']);
+    return back()->with('success', 'Email enviado para '.$email. ' com sucesso!');
+}
 
-        return back()->with('success', 'Email enviado para '.$email. ' com sucesso!');
-         
-
-    }  
 
     public function SendEmail_teste($email)
     {

@@ -17,6 +17,7 @@
 <body>
 
     @if($details['tipo'] == 'esqueci-senha')
+        <img style="width: 100px; height: 100px" src="{{ $message->embed(public_path('imagens/logo.jpg')) }}" alt="Logo" />
         <h1>{{$details['title']}}</h1>
         <br>
         <img src="{{$details['image']}}" alt="">
@@ -28,12 +29,14 @@
 
     @else
        @if($details['tipo'] == 'contato')
+
+            <img style="width: 100px; height: 100px" src="{{ $message->embed(public_path('imagens/logo.jpg')) }}" alt="Logo" />
             <h1>{{$details['title']}}</h1>
             <h2>Email : {{$details['email_contato']}}</h2>
             <br>
             <h3>{{$details['body']}}</h3>
             <br>
-            <img src="{{$details['image']}}" alt="">
+           
             
        @endif 
     @endif

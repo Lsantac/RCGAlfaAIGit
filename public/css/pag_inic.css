@@ -12,6 +12,13 @@ body {
   border-top: 3px solid black; /* define a espessura da linha */
 }
 
+.btn-contato {
+  color: black !important;
+}
+.btn-contato:hover {
+  color: rgb(8, 80, 212) !important;
+}
+
 
 .imagem-logo {
   width:45px;

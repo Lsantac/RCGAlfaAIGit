@@ -46,9 +46,10 @@
 		<div class="container">
 
 			<div class="results" id="success-message">
-				<br><br>
+				
 				@if(Session::get('success'))
-					<div class="alert alert-success">
+				   <br><br><br>
+					<div class="alert alert-success" style="background-color: rgb(99, 42, 204);color:white;">
 						{{Session::get('success')}}
 					</div>
 				@endif
@@ -234,26 +235,29 @@
 			<div class="col-lg-8">
 				<div class="card">
 					<div class="card-body">
-						<form action="{{ route('MensContato') }}" method="GETt">
+
+						<div id="loading-message" class="alert alert-info" style="display:none;">Enviando e-mail, aguarde...</div>
+
+						<form action="{{ route('MensContato') }}" method="GETt" onsubmit="enviarFormulario()">
 							@csrf
 	
 							<h3 class="text-center mb-4" id="contato">Contato</h3>
 	
 							<div class="mb-3">
 								<label for="nome" class="form-label">Nome</label>
-								<input type="text" id="nome" name="nome" class="form-control">
+								<input type="text" id="nome" name="nome" class="form-control" required>
 							</div>
 							<div class="mb-3">
 								<label for="email" class="form-label">E-mail</label>
-								<input type="email" id="email_contato" name="email_contato" class="form-control">
+								<input type="email" id="email_contato" name="email_contato" class="form-control" required>
 							</div>
 							<div class="mb-3">
 								<label for="assunto" class="form-label">Assunto</label>
-								<input type="text" id="assunto" name="assunto" class="form-control">
+								<input type="text" id="assunto" name="assunto" class="form-control" required>
 							</div>
 							<div class="mb-3">
 								<label for="mensagem" class="form-label">Mensagem</label>
-								<textarea id="mensagem" name="mensagem" class="form-control"></textarea>
+								<textarea id="mensagem" name="mensagem" class="form-control" required></textarea>
 							</div>
 							<button type="submit" class="btn btn-primary">Enviar</button>
 						</form>
@@ -261,11 +265,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	
 
-	
+		
+
+	</div>
+
   </section>
   <footer class="footer mt-auto py-3 text-center">
     <div class="container">
@@ -287,6 +291,27 @@
 	  }, 5000);
 	});
 </script>
+ 
+<script>
+	function enviarFormulario() {
+	  // Mostrar a mensagem de "aguarde"
+	  $('#loading-message').show();
+
+	  // Enviar o formulário usando AJAX
+	  $.ajax({
+		type: "GET",
+		url: "{{ route('MensContato') }}",
+		data: $('form').serialize(),
+		success: function(data) {
+		  // Ocultar a mensagem de "aguarde" após o envio do formulário
+		  $('#loading-message').hide();
+		}
+	  });
+
+	  // Impedir o envio padrão do formulário
+	  return false;
+	}
+  </script>
   
 
 </body>

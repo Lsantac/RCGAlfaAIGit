@@ -47,11 +47,8 @@ class MailController extends Controller
 
     } 
     
-   /**
- * Send a message from a visitor.
- *
- * @param \Illuminate\Http\Request $request
- * @return \Illuminate\Http\Response
+ /*
+  Send a message from a visitor.
  */
 public function MensContato(Request $request)
 {
@@ -79,7 +76,7 @@ public function MensContato(Request $request)
 
     Mail::to($email)->send($message, ['html' => 'email.EnviarMail']);
 
-    return back()->with('success', 'Email enviado para '.$email. ' com sucesso!');
+    return back()->with('success', 'Sua mensagem foi enviada com sucesso!');
 }
 
 

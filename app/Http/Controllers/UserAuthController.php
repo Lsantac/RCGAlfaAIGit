@@ -13,6 +13,7 @@ use App\Models\participantes;
 /*use App\Models\users;*/
 use Illuminate\Support\Facades\DB;
 use App\Helpers\Helper;
+use Illuminate\Support\Facades\App;
 
 /*use function PHPUnit\Framework\isNull;*/
 
@@ -113,6 +114,10 @@ class UserAuthController extends Controller
         $part->id_tipo_acesso = 1;
 
         $query = $part->save();
+
+        $novo_part =($part->attributesToArray());
+
+        $retorno_sendmail = App::call('App\Http\Controllers\MailController@SendMailNewUser',['part' => $novo_part]);
 
         if($query){
             return redirect('/')->with('success','Olá '.$part->nome_part.'! Voce foi incluído com successo! Bem Vindo ao Sistema Rede Colaborativa Global! Faça do Planeta um lugar melhor para se viver! ');

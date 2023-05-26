@@ -79,6 +79,38 @@ public function MensContato(Request $request)
     return back()->with('success', 'Sua mensagem foi enviada com sucesso!');
 }
 
+public function SendMailNewUser(Request $request,$part)
+{
+    
+    /*dd($part,$part['nome_part']);*/
+
+    $email = 'lsantac@gmail.com';
+    $email_contato = $part['email'];
+    $nome = $part['nome_part'];
+    $mensagem = 'Novo Participante!';
+    $subject = 'Novo Participante se cadastrou na nossa rede!!';
+
+    $nome_ident = DB::table('identidade')->value('nome_ident');
+
+    $details = [
+        'title' => 'Novo Participante : '. $nome.' da '. $nome_ident,
+        'name' => $nome,
+        'email_contato' => $email_contato,
+        'subject' => $subject,
+        'body' => $mensagem, 
+        'id' => '',
+        'tipo' => 'novo-participante',
+    ];
+ 
+    $message = new \App\Mail\ContatoMail(compact('nome'), $subject, $details);
+    /*  $imagePath = public_path('/imagens/logo.jpg');*/
+    /* $message->attach($imagePath, ['as' => 'logo.jpg']);*/
+
+    Mail::to($email)->send($message, ['html' => 'email.EnviarMail']);
+
+    return back()->with('success', 'Sua mensagem foi enviada com sucesso!');
+}
+
 
     public function SendEmail_teste($email)
     {

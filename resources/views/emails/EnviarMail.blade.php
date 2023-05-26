@@ -28,7 +28,7 @@
         </p>
 
     @else
-       @if($details['tipo'] == 'contato')
+        @if($details['tipo'] == 'contato' || $details['tipo'] == 'novo-participante')
 
             <img style="width: 100px; height: 100px" src="{{ $message->embed(public_path('imagens/logo.jpg')) }}" alt="Logo" />
             <h1>{{$details['title']}}</h1>

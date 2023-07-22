@@ -10,7 +10,10 @@ class IniciaController extends Controller
 {
 
     public function home(request $request){
-        return view('home');
+
+        $ident = DB::table('identidade')->first();
+        
+        return view('landpage.pag_inic',['ident'=>$ident]);
     }    
 
     public function ident(request $request){

@@ -35,7 +35,12 @@
 							<a class="nav-link" href="#tutoriais">Tutoriais</a>
 						</li>
 						<li class="nav-item btn-entrar">
-							<a href="login" class="btn btn-primary" style="background: linear-gradient(to right, #e74c3c, #f1c40f, #2ecc71);">Entrar</a>
+
+							@if(Session::get('id_logado') > 0 )
+        						<a href="/inicio" class="btn btn-primary" style="background: linear-gradient(to right, #e74c3c, #f1c40f, #2ecc71);">Entrar</a>
+						    @else
+						    	<a href="/login" class="btn btn-primary" style="background: linear-gradient(to right, #e74c3c, #f1c40f, #2ecc71);">Entrar</a>
+						    @endif
 						</li>
 					</ul>
 				</div>

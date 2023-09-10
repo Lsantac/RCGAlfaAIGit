@@ -243,7 +243,7 @@
 
 						<div id="loading-message" class="alert alert-info" style="display:none;">Enviando e-mail, aguarde...</div>
 
-						<form action="{{ route('MensContato') }}" method="GETt" onsubmit="enviarFormulario()">
+						<form action="" method="GET" onsubmit="enviarFormulario()">
 							@csrf
 	
 							<h3 class="text-center mb-4" id="contato">Contato</h3>

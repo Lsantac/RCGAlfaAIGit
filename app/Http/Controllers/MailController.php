@@ -58,26 +58,35 @@ public function MensContato(Request $request)
     $mensagem = $request->input('mensagem');
     $subject = $request->input('assunto');
 
+    // Verificar se o email está vazio ou contém "no.reply@"
+    if (empty($email_contato) || strpos($email_contato, 'no.reply@') !== false) {
+        return back()->with('error', 'O email é inválido.');
+    }
+
+    // Verificar se a mensagem contém "I was reviewing your website"
+    if (strpos($mensagem, 'I was reviewing your website') !== false) {
+        return back()->with('error', 'A mensagem é inválida.');
+    }
+
     $nome_ident = DB::table('identidade')->value('nome_ident');
 
     $details = [
-        'title' => 'Mensagem do visitante : '. $nome.' da '. $nome_ident,
+        'title' => 'Mensagem do visitante: ' . $nome . ' da ' . $nome_ident,
         'name' => $nome,
         'email_contato' => $email_contato,
         'subject' => $subject,
-        'body' => $mensagem, 
+        'body' => $mensagem,
         'id' => '',
         'tipo' => 'contato',
     ];
- 
+
     $message = new \App\Mail\ContatoMail(compact('nome'), $subject, $details);
-    /*  $imagePath = public_path('/imagens/logo.jpg');*/
-    /* $message->attach($imagePath, ['as' => 'logo.jpg']);*/
 
     Mail::to($email)->send($message, ['html' => 'email.EnviarMail']);
 
     return back()->with('success', 'Sua mensagem foi enviada com sucesso!');
 }
+
 
 public function SendMailNewUser(Request $request,$part)
 {

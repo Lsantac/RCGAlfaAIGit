@@ -36,7 +36,7 @@
               @if(Session::get('id_logado') > 0 )
                  <a style="color:indianred" class="nav-link" href="/chart_part/{{Session('id_logado')}}">Estatístico</a>
               @else
-                 <a style="color:indianred" class="nav-link" href="/inicio'; ?>">Estatístico</a>
+                 <a style="color:indianred" class="nav-link" href="/inicio">Estatístico</a>
               @endif
             </li>
           </ul>

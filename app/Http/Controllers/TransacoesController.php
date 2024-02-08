@@ -1027,6 +1027,10 @@ class TransacoesController extends Controller
             $id_part_of = request('id_part_of');
             $id_part_nec = request('id_part_nec');
             $id_part_of_tr = request('id_part_of_tr');
+            $id_moeda = request('Fluxo');
+            $quant_moeda = request('QtFluxo');
+
+           // dd("id_moeda :" . $id_moeda); 
             
             if(request('id_logado')==$id_part_of){
                $of_nec_tr = 'of';
@@ -1045,16 +1049,19 @@ class TransacoesController extends Controller
                                             ->where('id_of_tr_part', request('id_of_tr_part_t'))
                                             ->select('*')
                                             ->first();
+
+          //  dd($trans);
+                                                    
             
             if($trans) { 
                 $trans_up = DB::table('transacoes')->where('id',$trans->id);
 
-                /*dd(request('Fluxo'));*/
+               // dd("id_moeda :" . $id_moeda);
                              
                 $trans_up->update([
-                  'quant_moeda'=>request('QtFluxo'),
-                  'id_moeda'=>request('Fluxo'),
-                  'quant_of'=>request('QtOf'),
+                  'quant_moeda'=>$quant_moeda,
+                  'id_moeda'=>$id_moeda,
+                  'quant_of'=>$QtOf,
                  ]);
 
                  if($of_nec_tr=='of'){
@@ -1062,13 +1069,13 @@ class TransacoesController extends Controller
                  }else{
                       if($of_nec_tr=='nec'){
                          $trans_up->update(['data_final_nec_part'=> date('Y-m-d H:i:s'),
-                                            'quant_nec'=>request('QtNec'),
+                                            'quant_nec'=>$QtNec,
                                             'quant_of_tr'=>0,
                          ]); 
                       }else{
                            if($of_nec_tr=='tr'){ 
                               $trans_up->update(['data_final_of_tr_part'=> date('Y-m-d H:i:s'),
-                                                 'quant_of_tr'=>request('QtOfTr'),
+                                                 'quant_of_tr'=>$QtOfTr,
                                                  'quant_nec'=>0,
                               ]); 
                            }
@@ -1088,11 +1095,11 @@ class TransacoesController extends Controller
                   
                     //Incluindo registro de quantidade de moeda/fluxo no historico do participante da oferta
                    
-                   /* dd(request('Fluxo') );*/
+                   // dd(request('Fluxo') );
                     
                     $moedas_part_of = DB::table('moedas_part')->updateOrInsert(
-                    ['id_part'=>request('id_part_of'),'id_moeda'=>request('Fluxo'),'id_trans'=>$trans->id],  
-                    ['quant_moeda'=> request('QtFluxo'),
+                    ['id_part'=>request('id_part_of'),'id_moeda'=>$id_moeda,'id_trans'=>$trans->id],  
+                    ['quant_moeda'=> $quant_moeda,
                     'data' => date('Y-m-d H:i:s')]);
                     
                     //Incluindo registro de quantidade de moeda/fluxo no historico do participante da necessidade
@@ -1109,8 +1116,8 @@ class TransacoesController extends Controller
                    /* dd($fator,$id_part_of,$id_part_nec,$id_part_of_tr);*/
 
                     $moedas_part_nec = DB::table('moedas_part')->updateOrInsert(
-                    ['id_part'=>$id_part_inclui_moeda,'id_moeda'=>request('Fluxo'),'id_trans'=>$trans->id],  
-                    ['quant_moeda'=> request('QtFluxo') * $fator,
+                    ['id_part'=>$id_part_inclui_moeda,'id_moeda'=>$id_moeda,'id_trans'=>$trans->id],  
+                    ['quant_moeda'=> $quant_moeda * $fator,
                     'data' => date('Y-m-d H:i:s')]);
 
                  }else{

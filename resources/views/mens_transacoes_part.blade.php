@@ -267,7 +267,7 @@
 
               <div class="col-auto ">
                 @if(isset($oftrps))
-                    <input  class="form-control" value="Troca" name="Fluxo_tr" id="Fluxo_tr" readonly>
+                    <input form="finalizar_transacao" class="form-control" value="Troca" name="Fluxo_tr" id="Fluxo_tr" readonly>
                     <input form="finalizar_transacao" value="1" name="Fluxo" id="Fluxo" type="hidden">
                 @else 
                     <select form="finalizar_transacao" class="form-select texto_m" aria-label="Default select example" name="Fluxo" id="Fluxo" required>
@@ -893,7 +893,8 @@
       
        <script>
            document.getElementById("QtFluxo").readOnly = true ;
-           document.getElementById("Fluxo").disabled = true ;
+           //document.getElementById("Fluxo").disabled = true ;
+           $('#Fluxo').on('mousedown', false);
            document.getElementById("QtOf").readOnly = true ;
            document.getElementById("QtNec").readOnly = true ;
        </script>

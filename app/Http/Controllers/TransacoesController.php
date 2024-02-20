@@ -17,6 +17,11 @@ class TransacoesController extends Controller
 
       $id_trans = request('id_trans');
       $origem = request('origem');
+      $id_logado = request('id_logado');
+      $id_part_of = request('id_part_of');
+      $id_part_nec = request('id_part_nec');
+      $id_part_of_tr = request('id_part_of_tr');
+      $mensagem_motivo = request('mensagem_motivo');
 
       $trans = DB::table('transacoes')
       ->where('id',$id_trans)
@@ -34,7 +39,11 @@ class TransacoesController extends Controller
                $trans->update(['data_final_nec_part'=>null]);
             }else{
                 if($origem =="tr"){
-                   $trans->update(['data_final_of_tr_part'=>null]);
+                   if($id_part_of == $id_logado){
+                      $trans->update(['data_final_of_part'=>null]);
+                   }else{
+                      $trans->update(['data_final_of_tr_part'=>null]);
+                   }
                 } 
             }  
          }
@@ -53,10 +62,6 @@ class TransacoesController extends Controller
             }   
          }  
 
-         $id_part_of = request('id_part_of');
-         $id_part_nec = request('id_part_nec');
-         $id_part_of_tr = request('id_part_of_tr');
-         $mensagem_motivo = request('mensagem_motivo');
 
          /*dd($mensagem_motivo);*/
 

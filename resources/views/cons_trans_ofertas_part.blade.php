@@ -58,6 +58,10 @@
               @foreach($of_status as $of_st)
 
                        <tr>
+                       <td>
+                         {{$of_st->id_trans}}
+
+                        </td> 
                         
                         <td>
                            
@@ -95,9 +99,22 @@
                                                             <div class="col">
                                                                 <h6 class="texto-oferta">Oferta : {{$of_st->desc_of}}</h6>       
                                                             </div>
-                                                            <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
+
+                                                            @if($of_st->fluxo == 'Troca')
+                                                               @if($of_st->id_of == $of_st->id_of_tr_part)
+                                                                  <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_tr_part}}">
+                                                                  </div>
+                                                               @else
+                                                                  <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
+                                                                  </div>
+                                                               @endif
                                                             
-                                                            </div>
+                                                            @else
+                                                              <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
+                                                              </div>
+                                                            @endif
+
+
                                                           </div>
                                                       </div>
 
@@ -187,9 +204,17 @@
                                                                      <h6 class="card-title texto-troca">Troca : {{$of_st->desc_of_tr}}</h6>       
                                                                   @endif
                                                               </div>
-                                                              <div class="col texto_p local-time-tr" data-time-tr="{{$of_st->data_final_of_tr_part}}">
+  
+                                                              <!--   <div class="col texto_p local-time-tr" data-time-tr="{{$of_st->data_final_of_tr_part}}">
+                                                                 </div> -->
                                                                 
-                                                              </div>
+                                                                @if($of_st->id_of == $of_st->id_of_tr_part)
+                                                                    <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
+                                                                    </div>
+                                                                @else
+                                                                    <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_tr_part}}">
+                                                                    </div>
+                                                                @endif
 
                                                             </div>
                                                           </div>

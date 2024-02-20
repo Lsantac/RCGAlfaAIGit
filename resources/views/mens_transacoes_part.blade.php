@@ -462,7 +462,8 @@
                           
                               @if(($origem == "of"  and $trans->data_final_of_part > 0) or 
                                   ($origem == "nec" and $trans->data_final_nec_part > 0) or 
-                                  ($origem == "tr"  and $trans->data_final_of_tr_part > 0)) 
+                                  ($origem == "tr"  and $trans->data_final_of_tr_part > 0) or 
+                                  ($origem == "tr" and $trans->data_final_of_part > 0)) 
                                       <button  id="botao_cancelar" type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#cancelar">
                                         Cancelar
                                       </button>      

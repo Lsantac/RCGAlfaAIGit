@@ -766,8 +766,8 @@ class IniciaController extends Controller
         ->paginate(5);
         $of_status_tr_final->appends($request->all());
         
-        /*->get();
-        dd($of_status_tr_final);*/
+        //->get();
+       // dd($of_status_tr_final);
 
 
         /*---------------------------------------------------------------------------------------------------------------------*/

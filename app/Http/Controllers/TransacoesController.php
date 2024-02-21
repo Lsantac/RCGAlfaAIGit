@@ -86,7 +86,11 @@ class TransacoesController extends Controller
             'canc_conf' => true
          ]);
 
-          
+         //deleta todos os registros de moedas_part com id_trans = $id_trans e id_part = id_logado
+         DB::table('moedas_part')
+         ->where('id_trans', $id_trans)
+         ->where('id_part', $id_logado)
+         ->delete();
 
       }
                             

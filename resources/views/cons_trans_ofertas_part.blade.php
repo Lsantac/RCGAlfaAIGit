@@ -58,13 +58,7 @@
               @foreach($of_status as $of_st)
 
                        <tr>
-                       <td>
-                         {{$of_st->id_trans}}
-
-                        </td> 
-                        
                         <td>
-                           
                             <div class="card" >
                               
                                   <div class="card-body" style="background-color:rgb(199, 245, 207) ">

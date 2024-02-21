@@ -166,30 +166,13 @@
             </div>
             @enderror
         </div>
-
-        <div class="col-md-2">
-            <label for="latitude" class="form-label">Latitude</label>
-            <input type="text" value="{{old('latitude')}}" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude">
-            @error('latitude')
-            <div class="invalid-feedback">
-                {{$message}}
-            </div>
-            @enderror
-        </div>
-
-        <div class="col-md-2">
-            <label for="longitude" class="form-label">longitude</label>
-            <input type="text" value="{{old('longitude')}}" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude">
-            @error('longitude')
-            <div class="invalid-feedback">
-                {{$message}}
-            </div>
-            @enderror
-        </div>
+          
+            <input hidden type="text" value="{{old('latitude')}}" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude">
+          
+            <input hidden type="text" value="{{old('longitude')}}" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude">
 
         <div class="col-12">
-
-        <button type="submit" class="btn btn-primary texto_m">Confirmar</button>
+            <button type="submit" class="btn btn-primary texto_m">Confirmar</button>
         </div>
     </form>
 </div>

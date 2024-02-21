@@ -77,6 +77,8 @@
                     <!--<li><a class="dropdown-item" href="#">Mapas</a></li>-->
                     <!--<li><a class="dropdown-item" href="#">Configurar Redes</a></li>-->
                     <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
+                    <li><a class="dropdown-item" href="/tipos_of">Tipos de Ofertas</a></li>
+                    <li><a class="dropdown-item" href="/tipos_nec">Tipos de Necessidades</a></li>
                     <li><a class="dropdown-item" href="/moedas">Moedas</a></li>
                     <li><a class="dropdown-item" href="/consulta_saldos/{{Session('id_logado')}}">Consulta Saldos</a></li>
                     <li><a class="dropdown-item" href="/identidade">Identidade do Sistema</a></li>

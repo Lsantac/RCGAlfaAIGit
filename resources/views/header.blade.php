@@ -65,19 +65,20 @@
                   Configurações
                 </button>
                 <ul class="dropdown-menu texto_m" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="{{route('auth.alterpass')}}">Alterar Senha</a></li>
-
-                  @if(Session::get('id_tipo_acesso_logado') == 1)
-                    <li><a style="color: red;"  class="dropdown-item" href="{{route('auth.resetpass')}}">Resetar Senha</a></li>
-                    <li><a class="dropdown-item" href="/unidades">Unidades</a></li>
-                  @endif
-
+                 
                   @if(Session::get('id_logado') > 0)
                     <li><a class="dropdown-item" href="/alterar_participantes/{{Session('id_logado')}}">Alterar Perfil</a></li>
-                    <!--<li><a class="dropdown-item" href="#">Mapas</a></li>-->
-                    <!--<li><a class="dropdown-item" href="#">Configurar Redes</a></li>-->
+                    <li><a class="dropdown-item" href="{{route('auth.alterpass')}}">Alterar Senha</a></li>
+                    <div class="dropdown-divider"></div>
+                    
+                    @if(Session::get('id_tipo_acesso_logado') == 1)
+                    <li><a style="color: red;"  class="dropdown-item" href="{{route('auth.resetpass')}}">Resetar Senha</a></li>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="dropdown-item" href="/unidades">Unidades</a></li>
+                    @endif
+                  
                     <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
-                    <li><a class="dropdown-item" href="/tipos_of">Tipos de Ofertas</a></li>
+                    <li><a class="dropdown-item" href="/tipos_ofertas">Tipos de Ofertas</a></li>
                     <li><a class="dropdown-item" href="/tipos_nec">Tipos de Necessidades</a></li>
                     <li><a class="dropdown-item" href="/moedas">Moedas</a></li>
                     <li><a class="dropdown-item" href="/consulta_saldos/{{Session('id_logado')}}">Consulta Saldos</a></li>

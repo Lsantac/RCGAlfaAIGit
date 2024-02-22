@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h2 class="texto-categoria">Tipos de Ofertas</h2> 
+    <h2 style="color:rgb(98, 138, 25)">Tipos de Ofertas</h2> 
     <br>
 
     <div class='results'>
@@ -22,7 +22,7 @@
 
     </div>
 
-    <form class="row g-3" method="GET" action="consulta_tipos_ofertas">
+    <form class="row g-3" method="GET" action="consultar_tipos_ofertas">
 
           @csrf
      
@@ -46,8 +46,10 @@
         <thead>
           <tr>
             <th scope="col">Descrição</th>
-            <th>Categoria</th>
-            <th>Ações</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Unidade</th>
+            <th scope="col">Ações</th>
+         
           </tr>
         </thead>
         <tbody>
@@ -56,11 +58,71 @@
               @foreach($tipo_of as $tipo)
                 <div>
                   <tr>
-                    
                     <td>{{$tipo->descricao}}</td>
-                    
-                    <td>
-                      <button class="btn btn-danger btn-sm bi bi-trash" type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluiTipo-{{$tipo->id}}" >Excluir</button>
+                    <td>{{$tipo->categoria}}</td>
+                    <td>{{$tipo->unidade}}</td>
+
+                    <td style="width: 100px">
+                      <button class="btn btn-warning btn-sm bi bi-pencil-square" type="button" data-bs-toggle="modal" data-bs-target="#ModalAlteraTipo-{{$tipo->id}}"> Alterar</button>
+
+                      <!-- Modal altera tipo de oferta-->
+                      <div class="modal fade" id="ModalAlteraTipo-{{$tipo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Alterar Tipo de Oferta</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+
+                            <div class="mb-3">
+                              <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
+                              <textarea form="form_altera_oferta" class="form-control" id="exampleFormControlTextarea1" name="descricao" required>{{$tipo->descricao}}</textarea>
+                            </div>
+                        
+                            <div class="mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Selecione uma Categoria</label>
+                              <select form="form_altera_oferta" type="text" name="categoria" id="categoria" class="form-select" aria-label="Default select example" required>
+                                <option value = "{{$tipo->categoria}}"></option>
+                                @foreach ($cats as $cat)
+                                  <option value="{{$cat->id}}">
+                                        {{$cat->descricao}}
+                                  </option>
+                                @endforeach
+                              </select>
+
+                              <br>
+
+                              <label for="unidade" class="form-label">Selecione uma Unidade</label>
+                              <select form="form_altera_oferta" type="text" name="unidade" id="unidade" class="form-select" aria-label="Default select example" required>
+                                <option value = ""></option>
+                                @foreach ($unids as $unid)
+                                  <option value="{{$unid->id}}">
+                                        {{$unid->descricao}}
+                                  </option>
+                                @endforeach
+
+                              </select>
+                            </div>
+
+                            <div class="modal-footer">
+                              <form action="" method="POST" name="form_alterar_oferta">
+                                 @csrf
+                                <input name="id" type="hidden" value="{{$tipo->id}}">
+
+                                <button type="button" class="btn btn-sair" data-bs-dismiss="modal">Sair</button>
+                                <button type="submit" class="btn btn-warning">Alterar</button>
+                              </form>
+                             
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+  
+                    <td style="width: 100px">
+                      <button class="btn btn-danger btn-sm bi bi-trash" type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluiTipo-{{$tipo->id}}" > Excluir</button>
 
                       <form class="" action="/deleta_tipo_oferta/{{$tipo->id}}" method="POST">
                           @csrf
@@ -84,6 +146,7 @@
                           </div>
 
                       </form>
+                      
                     </td>
                   </tr>
                 </div> 
@@ -98,7 +161,7 @@
       </table>
 
       <div class="pagination">
-           {{$cats->links('layouts.paginationlinks')}}
+           {{$tipo_of->links('layouts.paginationlinks')}}
            
       </div>
 

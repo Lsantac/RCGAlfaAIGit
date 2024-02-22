@@ -51,7 +51,7 @@
           <tr>
             <th class="col-foto" scope="col">Foto</th>
             <th class="col-part" scope="col">Participante</th>
-            <th  class="col-nome" scope="col">Nome</th>
+            <th class="col-nome" scope="col">Nome</th>
             <th class="col-local" scope="col">Localização</th>
                         
             @if(Session::get('cons_rede'))

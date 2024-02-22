@@ -15,6 +15,8 @@ use App\Http\Controllers\UnidadesController;
 use App\Http\Controllers\IdentController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\TipoOfertasController;
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -83,31 +85,40 @@ Route::get('/login', function () {
 /*Participantes*/
 Route::get('/participantes', [ParticipantesController::class,'show_none'])->middleware('islogged');
 Route::get('/consulta',  [ParticipantesController::class,'query'])->name('procura')->middleware('islogged');
-Route::post('/participantes', [ParticipantesController::class,'store'])->middleware('islogged');;
-Route::get('/alterar_participantes/{id}',  [ParticipantesController::class,'show'])->middleware('islogged');;
-Route::get('/consultar_participante/{id}',  [ParticipantesController::class,'query_details'])->middleware('islogged');;
+Route::post('/participantes', [ParticipantesController::class,'store'])->middleware('islogged');
+Route::get('/alterar_participantes/{id}',  [ParticipantesController::class,'show'])->middleware('islogged');
+Route::get('/consultar_participante/{id}',  [ParticipantesController::class,'query_details'])->middleware('islogged');
 Route::post('/alterar_participantes/{id}',  [ParticipantesController::class,'update'])->middleware('islogged');
-Route::delete('/participantes/{id}',  [ParticipantesController::class,'destroy'])->middleware('islogged');;
+Route::delete('/participantes/{id}',  [ParticipantesController::class,'destroy'])->middleware('islogged');
 
 /*Ofertas*/
 Route::get('/ofertas',  [OfertasController::class,'show_none'])->middleware('islogged');
-Route::get('/consultar_ofertas',  [OfertasController::class,'consultar_ofertas'])->name('consultar_ofertas')->middleware('islogged');;
+Route::get('/consultar_ofertas',  [OfertasController::class,'consultar_ofertas'])->name('consultar_ofertas')->middleware('islogged');
 Route::get('/consultar_ofertas_part',  [OfertasController::class,'consultar_ofertas_part'])->name('consultar_ofertas_part')->middleware('islogged');
 Route::get('/ofertas_part/{id}',  [OfertasController::class,'show_ofertas_part'])->name('show_ofertas_part')->middleware('islogged');
-Route::post('incluir_ofertas_part',  [OfertasController::class,'incluir_ofertas_part'])->name('incluir_ofertas_part');
-Route::delete('/deleta_oferta_part/{id}',  [OfertasController::class,'deleta_oferta_part'])->name('deleta_oferta_part');
-Route::post('nova_oferta',  [OfertasController::class,'nova_oferta'])->name('nova_oferta');
-Route::post('altera_oferta_part',  [OfertasController::class,'altera_oferta_part'])->name('altera_oferta_part');
+Route::post('incluir_ofertas_part',  [OfertasController::class,'incluir_ofertas_part'])->name('incluir_ofertas_part')->middleware('islogged');
+Route::delete('/deleta_oferta_part/{id}',  [OfertasController::class,'deleta_oferta_part'])->name('deleta_oferta_part')->middleware('islogged');
+Route::post('nova_oferta',  [OfertasController::class,'nova_oferta'])->name('nova_oferta')->middleware('islogged');
+Route::post('altera_oferta',  [OfertasController::class,'altera_oferta'])->name('altera_oferta')->middleware('islogged');
+Route::post('altera_oferta_part',  [OfertasController::class,'altera_oferta_part'])->name('altera_oferta_part')->middleware('islogged');
+
+//Tipos de Ofertas
+Route::get('/tipos_ofertas',  [TipoOfertasController::class,'show_all'])->middleware('islogged');
+Route::get('/consultar_tipos_ofertas',  [TipoOfertasController::class,'consultar_tipos_ofertas'])->name('consultar_tipos_ofertas')->middleware('islogged');
+Route::post('incluir_tipos_ofertas',  [TipoOfertasController::class,'incluir_tipos_ofertas'])->name('incluir_tipos_ofertas')->middleware('islogged');
+Route::delete('/deleta_tipo_oferta/{id}',  [TipoOfertasController::class,'deleta_tipo_oferta'])->name('deleta_tipo_oferta')->middleware('islogged');
+Route::get('/alterar_tipo_oferta/{id}',  [TipoOfertasController::class,'show_tipo_oferta'])->name('show_tipo_oferta')->middleware('islogged');
+Route::post('altera_tipo_oferta',  [TipoOfertasController::class,'altera_tipo_oferta'])->name('altera_tipo_oferta')->middleware('islogged');
 
 /*Necessidades*/
 Route::get('/necessidades',  [NecessidadesController::class,'show_none'])->middleware('islogged');
 Route::get('/consultar_necessidades',  [NecessidadesController::class,'consultar_necessidades'])->name('consultar_necessidades')->middleware('islogged');
 Route::get('/consultar_necessidades_part',  [NecessidadesController::class,'consultar_necessidades_part'])->name('consultar_necessidades_part')->middleware('islogged');
 Route::get('/necessidades_part/{id}',  [NecessidadesController::class,'show_necessidades_part'])->name('show_necessidades_part')->middleware('islogged');
-Route::post('incluir_necessidades_part',  [NecessidadesController::class,'incluir_necessidades_part'])->name('incluir_necessidades_part');
-Route::delete('/deleta_necessidade_part/{id}',  [NecessidadesController::class,'deleta_necessidade_part'])->name('deleta_necessidade_part');
-Route::post('nova_necessidade',  [NecessidadesController::class,'nova_necessidade'])->name('nova_necessidade');
-Route::post('altera_necessidade_part',  [NecessidadesController::class,'altera_necessidade_part'])->name('altera_necessidade_part');
+Route::post('incluir_necessidades_part',  [NecessidadesController::class,'incluir_necessidades_part'])->name('incluir_necessidades_part')->middleware('islogged');
+Route::delete('/deleta_necessidade_part/{id}',  [NecessidadesController::class,'deleta_necessidade_part'])->name('deleta_necessidade_part')->middleware('islogged');
+Route::post('nova_necessidade',  [NecessidadesController::class,'nova_necessidade'])->name('nova_necessidade')->middleware('islogged');
+Route::post('altera_necessidade_part',  [NecessidadesController::class,'altera_necessidade_part'])->name('altera_necessidade_part')->middleware('islogged');
 
 /*Transações*/
 Route::get('/trans_ofertas_part',  [TransacoesController::class,'trans_ofertas_part'])->name('trans_ofertas_part')->middleware('islogged');

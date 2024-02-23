@@ -16,8 +16,8 @@ use App\Http\Controllers\IdentController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\TipoOfertasController;
+use App\Http\Controllers\TipoNecessidadesController;
  
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,7 +108,7 @@ Route::get('/consultar_tipos_ofertas',  [TipoOfertasController::class,'consultar
 Route::post('incluir_tipos_ofertas',  [TipoOfertasController::class,'incluir_tipos_ofertas'])->name('incluir_tipos_ofertas')->middleware('islogged');
 Route::delete('/deleta_tipo_oferta/{id}',  [TipoOfertasController::class,'deleta_tipo_oferta'])->name('deleta_tipo_oferta')->middleware('islogged');
 Route::get('/alterar_tipo_oferta/{id}',  [TipoOfertasController::class,'show_tipo_oferta'])->name('show_tipo_oferta')->middleware('islogged');
-Route::post('altera_tipo_oferta',  [TipoOfertasController::class,'altera_tipo_oferta'])->name('altera_tipo_oferta')->middleware('islogged');
+Route::get('altera_tipo_oferta',  [TipoOfertasController::class,'altera_tipo_oferta'])->name('altera_tipo_oferta')->middleware('islogged');
 
 /*Necessidades*/
 Route::get('/necessidades',  [NecessidadesController::class,'show_none'])->middleware('islogged');
@@ -119,6 +119,14 @@ Route::post('incluir_necessidades_part',  [NecessidadesController::class,'inclui
 Route::delete('/deleta_necessidade_part/{id}',  [NecessidadesController::class,'deleta_necessidade_part'])->name('deleta_necessidade_part')->middleware('islogged');
 Route::post('nova_necessidade',  [NecessidadesController::class,'nova_necessidade'])->name('nova_necessidade')->middleware('islogged');
 Route::post('altera_necessidade_part',  [NecessidadesController::class,'altera_necessidade_part'])->name('altera_necessidade_part')->middleware('islogged');
+
+//Tipos de Necessidades
+Route::get('/tipos_necessidades',  [TipoNecessidadesController::class,'show_all'])->middleware('islogged');
+Route::get('/consultar_tipos_necessidades',  [TipoNecessidadesController::class,'consultar_tipos_necessidades'])->name('consultar_tipos_necessidades')->middleware('islogged');
+Route::post('incluir_tipos_necessidades',  [TipoNecessidadesController::class,'incluir_tipos_necessidades'])->name('incluir_tipos_necessidades')->middleware('islogged');
+Route::delete('/deleta_tipo_necessidade/{id}',  [TipoNecessidadesController::class,'deleta_tipo_necessidade'])->name('deleta_tipo_necessidade')->middleware('islogged');
+Route::get('/alterar_tipo_necessidade/{id}',  [TipoNecessidadesController::class,'show_tipo_necessidade'])->name('show_tipo_necessidade')->middleware('islogged');
+Route::get('altera_tipo_necessidade',  [TipoNecessidadesController::class,'altera_tipo_necessidade'])->name('altera_tipo_necessidade')->middleware('islogged');
 
 /*Transações*/
 Route::get('/trans_ofertas_part',  [TransacoesController::class,'trans_ofertas_part'])->name('trans_ofertas_part')->middleware('islogged');

@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h2 style="color:rgb(98, 138, 25)">Tipos de Ofertas</h2> 
+    <h2 style="color:rgb(185, 111, 25)">Tipos de Necessidades</h2> 
     <br>
 
     <div class='results'>
@@ -22,7 +22,7 @@
 
     </div>
 
-    <form class="row g-3" method="GET" action="consultar_tipos_ofertas">
+    <form class="row g-3" method="GET" action="consultar_tipos_necessidades">
 
           @csrf
      
@@ -40,7 +40,7 @@
     
     <br>
 
-    @if (isset($tipo_of)) 
+    @if (isset($tipo_nec)) 
 
     <table class="table table-sm texto_m">
         <thead>
@@ -53,9 +53,9 @@
           </tr>
         </thead>
         <tbody>
-          @if (count($tipo_of)>0)
+          @if (count($tipo_nec)>0)
 
-              @foreach($tipo_of as $tipo)
+              @foreach($tipo_nec as $tipo)
                 <div>
                   <tr>
                     <td>{{$tipo->descricao}}</td>
@@ -65,16 +65,16 @@
                     <td style="width: 100px">
                       <button class="btn btn-warning btn-sm bi bi-pencil-square" type="button" data-bs-toggle="modal" data-bs-target="#ModalAlteraTipo-{{$tipo->id}}"> Alterar</button>
 
-                      <!-- Modal altera tipo de oferta-->
+                      <!-- Modal altera tipo de Necessidade-->
                       <div class="modal fade" id="ModalAlteraTipo-{{$tipo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Alterar Tipo de Oferta</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">Alterar Tipo de Necessidade</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form action="{{route('altera_tipo_oferta')}}" method="get" id="FormAlteraOferta">
+                            <form action="{{route('altera_tipo_necessidade')}}" method="get" id="FormAlteraNecessidade">
                                @csrf
 
                                 <div class="modal-body">
@@ -113,7 +113,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <input name="id_of" type="hidden" value="{{$tipo->id}}">
+                                    <input name="id_nec" type="hidden" value="{{$tipo->id}}">
                                     <button type="button" class="btn btn-sair" data-bs-dismiss="modal">Sair</button>
                                     <button type="submit" class="btn btn-warning">Alterar</button>
                                 </div>
@@ -165,7 +165,7 @@
       </table>
 
       <div class="pagination">
-           {{$tipo_of->links('layouts.paginationlinks')}}
+           {{$tipo_nec->links('layouts.paginationlinks')}}
            
       </div>
 

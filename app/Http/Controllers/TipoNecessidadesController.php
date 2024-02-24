@@ -73,7 +73,7 @@ class TipoNecessidadesController extends Controller
 
     $request->session()->put('criterio', request('consulta'));
 
-    $tipo_nec = DB::table('ofertas')->where(function($query) use ($searchValues){
+    $tipo_nec = DB::table('necessidades')->where(function($query) use ($searchValues){
                                      foreach ($searchValues as $value) {
                                               $query->orwhere('necessidades.descricao','like','%'.($value).'%') 
                                                     ->orwhere('categorias.descricao','like','%'.($value).'%')
@@ -101,7 +101,7 @@ class TipoNecessidadesController extends Controller
     $categorias = DB::table('categorias')->orderBy('descricao', 'asc')->get();
     $unidades = DB::table('unidades')->orderBy('descricao', 'asc') ->get();
 
-    return view('tipos_necessidades', ['tipo_of' => $tipo_nec , 'cats' => $categorias, 'unids' => $unidades]);
+    return view('tipos_necessidades', ['tipo_nec' => $tipo_nec , 'cats' => $categorias, 'unids' => $unidades]);
   
 
    }

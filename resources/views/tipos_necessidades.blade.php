@@ -125,7 +125,7 @@
                     <td style="width: 100px">
                       <button class="btn btn-danger btn-sm bi bi-trash" type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluiTipo-{{$tipo->id}}" > Excluir</button>
 
-                      <form class="" action="/deleta_tipo_oferta/{{$tipo->id}}" method="POST">
+                      <form class="" action="/deleta_tipo_necessidade/{{$tipo->id}}" method="POST">
                           @csrf
                           @method('DELETE')
                      

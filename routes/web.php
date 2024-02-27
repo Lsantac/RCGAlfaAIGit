@@ -17,6 +17,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\TipoOfertasController;
 use App\Http\Controllers\TipoNecessidadesController;
+use App\Http\Controllers\MensagensGeralController;
  
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +91,10 @@ Route::get('/alterar_participantes/{id}',  [ParticipantesController::class,'show
 Route::get('/consultar_participante/{id}',  [ParticipantesController::class,'query_details'])->middleware('islogged');
 Route::post('/alterar_participantes/{id}',  [ParticipantesController::class,'update'])->middleware('islogged');
 Route::delete('/participantes/{id}',  [ParticipantesController::class,'destroy'])->middleware('islogged');
+
+//cria rotas para consultar as mensagens do participante no controller MensagensGeralController
+Route::get('/consultar_mensagens/{id}',  [MensagensGeralController::class,'query'])->middleware('islogged');
+
 
 /*Ofertas*/
 Route::get('/ofertas',  [OfertasController::class,'show_none'])->middleware('islogged');

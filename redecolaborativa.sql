@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Fev-2023 às 13:47
+-- Tempo de geração: 24/02/2024 às 19:38
 -- Versão do servidor: 10.4.25-MariaDB
--- versão do PHP: 8.1.10
+-- Versão do PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias`
+-- Estrutura para tabela `categorias`
 --
 
 CREATE TABLE `categorias` (
@@ -37,7 +37,7 @@ CREATE TABLE `categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `categorias`
+-- Despejando dados para a tabela `categorias`
 --
 
 INSERT INTO `categorias` (`id`, `descricao`, `status`, `id_part_cat`, `id_rede_cat`, `dt_criacao`) VALUES
@@ -51,12 +51,17 @@ INSERT INTO `categorias` (`id`, `descricao`, `status`, `id_part_cat`, `id_rede_c
 (8, 'Social', 0, NULL, NULL, NULL),
 (10, 'Radioamadorismo', 0, NULL, NULL, NULL),
 (12, 'Ayahuasqueiros', 0, 26, NULL, '2022-02-06'),
-(13, 'Fauna', 0, 26, NULL, '2022-05-18');
+(13, 'Fauna', 0, 26, NULL, '2022-05-18'),
+(14, 'Alimentos orgânicos', 0, 26, NULL, '2023-07-22'),
+(15, 'Analista de Sistemas', 0, 26, NULL, '2024-02-23'),
+(16, 'Seres da natureza', 0, 26, NULL, '2024-02-24'),
+(17, 'Artes Plasticas', 0, 26, NULL, '2024-02-24'),
+(18, 'Artes Digitais', 0, 26, NULL, '2024-02-24');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `eventos`
+-- Estrutura para tabela `eventos`
 --
 
 CREATE TABLE `eventos` (
@@ -74,7 +79,7 @@ CREATE TABLE `eventos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `eventos_part`
+-- Estrutura para tabela `eventos_part`
 --
 
 CREATE TABLE `eventos_part` (
@@ -86,7 +91,7 @@ CREATE TABLE `eventos_part` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `identidade`
+-- Estrutura para tabela `identidade`
 --
 
 CREATE TABLE `identidade` (
@@ -96,7 +101,7 @@ CREATE TABLE `identidade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `identidade`
+-- Despejando dados para a tabela `identidade`
 --
 
 INSERT INTO `identidade` (`id`, `nome_ident`, `logo`) VALUES
@@ -105,7 +110,7 @@ INSERT INTO `identidade` (`id`, `nome_ident`, `logo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `identidade_imgs`
+-- Estrutura para tabela `identidade_imgs`
 --
 
 CREATE TABLE `identidade_imgs` (
@@ -117,7 +122,7 @@ CREATE TABLE `identidade_imgs` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `markers`
+-- Estrutura para tabela `markers`
 --
 
 CREATE TABLE `markers` (
@@ -130,16 +135,28 @@ CREATE TABLE `markers` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `markers`
+-- Despejando dados para a tabela `markers`
 --
 
 INSERT INTO `markers` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`) VALUES
-(1830, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL);
+(10, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
+(8, 'Pedro de Alcantara', 'Quinta da Boa Vista, São Cristovão', -22.9051933, -43.2217865, NULL),
+(9, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
+(11, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL),
+(12, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
+(13, 'Joao Batista', 'Rua Brasil 104', -22.7455845, -45.1327324, NULL),
+(14, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
+(15, 'Ana Claudia', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL),
+(16, 'Amanda Pereira', 'Rua Irlanda, 20', -16.7167072, -49.3069305, NULL),
+(17, 'Ana Claudia', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL),
+(18, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', -19.9150295, -43.9596977, NULL),
+(19, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
+(20, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `markers_nec`
+-- Estrutura para tabela `markers_nec`
 --
 
 CREATE TABLE `markers_nec` (
@@ -153,16 +170,16 @@ CREATE TABLE `markers_nec` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `markers_nec`
+-- Despejando dados para a tabela `markers_nec`
 --
 
 INSERT INTO `markers_nec` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`, `status`) VALUES
-(1518, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL, 4);
+(1774, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `markers_of`
+-- Estrutura para tabela `markers_of`
 --
 
 CREATE TABLE `markers_of` (
@@ -175,10 +192,26 @@ CREATE TABLE `markers_of` (
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Despejando dados para a tabela `markers_of`
+--
+
+INSERT INTO `markers_of` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`, `status`) VALUES
+(13402, 'Pedro de Alcantara', 'Quinta da Boa Vista, São Cristovão', -22.9051933, -43.2217865, NULL, 4),
+(13401, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4),
+(13400, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 4),
+(13399, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', -19.9150295, -43.9596977, NULL, 4),
+(13398, 'Joao Batista', 'Rua Brasil 104', -22.7455845, -45.1327324, NULL, 3),
+(13397, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 2),
+(13396, 'Amanda Pereira', 'Rua Irlanda, 20', -16.7167072, -49.3069305, NULL, 2),
+(13395, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 4),
+(13394, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 4),
+(13393, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `mensagens_trans`
+-- Estrutura para tabela `mensagens_trans`
 --
 
 CREATE TABLE `mensagens_trans` (
@@ -193,7 +226,7 @@ CREATE TABLE `mensagens_trans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `mensagens_trans`
+-- Despejando dados para a tabela `mensagens_trans`
 --
 
 INSERT INTO `mensagens_trans` (`id`, `id_trans`, `id_part`, `id_part_dest`, `mensagem`, `data`, `of_nec_tr`, `canc_conf`) VALUES
@@ -203,19 +236,13 @@ INSERT INTO `mensagens_trans` (`id`, `id_trans`, `id_part`, `id_part_dest`, `men
 (172, 58, 26, 33, 'oi', '2021-12-09 15:54:19', 'of', 0),
 (173, 61, 26, 5, 'oi João', '2021-12-09 15:55:06', 'of', 0),
 (174, 62, 26, 14, 'oi Ricardo', '2021-12-09 16:15:07', 'of', 0),
-(175, 63, 26, 14, 'oi Ricardo, ta precisando de ator?', '2021-12-09 16:15:48', 'nec', 0),
 (176, 58, 26, 33, 'vamos fechar então.', '2021-12-10 17:59:48', 'of', 0),
-(177, 63, 26, 14, 'blz', '2021-12-10 18:05:05', 'nec', 0),
 (178, 62, 26, 14, 'está por ai?', '2022-01-11 21:56:16', 'of', 0),
 (179, 62, 14, 26, 'vamos finalizar então ok?', '2022-01-22 21:50:21', 'nec', 0),
-(180, 64, 26, 38, 'oi Shama vamos trocar feijão por terapia quantica ?', '2022-01-28 21:29:50', 'tr', 0),
-(181, 64, 26, 38, 'oi Shama tudo bem?', '2022-02-14 14:31:48', 'tr', 0),
 (182, 60, 26, 27, 'oi Ana desculpe, já fechei com um outro amigo. até a proxima.', '2022-02-10 16:25:25', 'of', 0),
-(183, 65, 26, 27, 'preciso de um professor bem bacana ! Tem que ser bonzinho!', '2022-02-17 18:25:48', 'of', 0),
+(183, 65, 26, 27, 'Sou um professor bem banaca.', '2024-02-21 18:03:12', 'of', 0),
 (185, 59, 26, 24, 'Tudo bem Amanda! Estou bem!', '2022-02-14 18:59:27', 'of', 0),
-(199, 64, 26, 38, 'Cancelamento da confirmação. agora sim!!', '2022-02-18 21:57:04', 'tr', 1),
-(200, 64, 26, 38, 'Cancelamento da confirmação. de novo', '2022-02-18 21:59:56', 'tr', 1),
-(202, 67, 26, 38, 'vamos trocar feijão por reiki ??', '2022-03-05 23:35:15', 'tr', 0),
+(202, 67, 26, 38, 'vamos trocar feijão por um projeto permacultural ??', '2024-02-20 14:45:08', 'tr', 0),
 (203, 68, 26, 27, 'oi Ana, vamos trocar aulas? heim?', '2022-03-22 13:39:31', 'tr', 0),
 (204, 62, 26, 14, 'Ola', '2022-03-22 00:18:53', 'of', 0),
 (205, 69, 26, 24, 'olá!', '2022-03-23 18:57:07', 'of', 0),
@@ -223,7 +250,6 @@ INSERT INTO `mensagens_trans` (`id`, `id_trans`, `id_part`, `id_part_dest`, `men
 (207, 66, 26, 38, 'ola de novo meu amigo', '2022-05-30 18:12:14', 'of', 0),
 (208, 66, 26, 38, 'Cancelamento da confirmação. por que sim', '2022-05-30 20:33:20', 'of', 1),
 (209, 67, 26, 38, 'Cancelamento da confirmação. teste', '2022-05-30 21:46:48', 'tr', 1),
-(210, 64, 26, 38, 'Cancelamento da confirmação. sim', '2022-08-09 17:26:35', 'tr', 1),
 (211, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-01-31 22:00:16', 'of', 1),
 (212, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-01-31 22:35:38', 'of', 1),
 (213, 69, 26, 24, 'Mas essa Babá é Permacultora também? Maravilha!! rss', '2023-02-01 21:29:04', 'of', 0),
@@ -244,16 +270,41 @@ INSERT INTO `mensagens_trans` (`id`, `id_trans`, `id_part`, `id_part_dest`, `men
 (228, 70, 26, 39, 'Cancelamento da confirmação. mudança de moeda', '2023-02-09 21:09:14', 'of', 1),
 (229, 70, 39, 26, 'Grato Luiz!! Quando puder , venha na Quinta tomar um chá e conversaremos sobre astronomia e permacultura. Isabel também adora. Mas não pode ser ayahuasca porque senão no dia seguinte vou ter inauguração do Colegio Pedro II e tenho que estar bem, rss. ', '2023-02-13 20:25:30', 'nec', 0),
 (230, 69, 26, 24, 'Cancelamento da confirmação. não vou mais doar não. vou usar uma moeda social.', '2023-02-12 21:50:08', 'of', 1),
-(231, 63, 14, 26, 'Cancelamento da confirmação. cancelar', '2023-02-12 22:19:10', 'of', 1),
-(232, 63, 14, 26, 'teste de data', '2023-02-12 22:57:31', 'of', 0),
 (233, 70, 26, 39, 'teste de local-time', '2023-02-13 22:15:12', 'of', 0),
 (234, 70, 26, 39, 'Cancelamento da confirmação. teste de data', '2023-02-13 22:34:22', 'of', 1),
-(235, 70, 39, 26, 'Cancelamento da confirmação. teste', '2023-02-13 23:23:06', 'nec', 1);
+(235, 70, 39, 26, 'Cancelamento da confirmação. teste', '2023-02-13 23:23:06', 'nec', 1),
+(236, 70, 26, 39, 'novo tesde data local', '2023-02-14 16:12:39', 'of', 0),
+(237, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 21:57:52', 'tr', 1),
+(238, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 21:58:18', 'tr', 1),
+(239, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 22:10:11', 'tr', 1),
+(240, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-02-14 22:10:33', 'of', 1),
+(241, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-02-14 22:10:55', 'of', 1),
+(242, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-02-14 22:12:33', 'of', 1),
+(243, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 22:13:20', 'tr', 1),
+(244, 70, 26, 39, 'Cancelamento da confirmação. ', '2023-03-14 21:00:02', 'of', 1),
+(245, 71, 26, 5, 'olá João Batista!! Vamos fazer um som??', '2023-03-14 21:20:45', 'of', 0),
+(248, 68, 26, 27, 'Cancelamento da confirmação. teste de cancelamento', '2024-02-20 17:30:02', 'tr', 1),
+(249, 67, 26, 38, 'Cancelamento da confirmação. ', '2024-02-20 17:44:44', 'tr', 1),
+(250, 73, 26, 33, 'Nossa! Criar uma casa de bioconstrução pra mim é como uma terapia!!', '2024-02-20 20:58:12', 'nec', 0),
+(251, 73, 26, 33, 'Cancelamento da confirmação. teste', '2024-02-20 21:00:36', 'nec', 1),
+(252, 67, 38, 38, 'Cancelamento da confirmação. teste', '2024-02-20 21:31:53', 'tr', 1),
+(253, 67, 38, 38, 'Cancelamento da confirmação. testando cancelamento', '2024-02-20 21:38:53', 'tr', 1),
+(254, 67, 38, 38, 'Cancelamento da confirmação. outro teste', '2024-02-20 21:46:53', 'tr', 1),
+(255, 67, 38, 38, 'Cancelamento da confirmação. por que sim', '2024-02-20 21:55:14', 'tr', 1),
+(256, 67, 38, 38, 'Cancelamento da confirmação. ', '2024-02-20 21:55:58', 'tr', 1),
+(257, 67, 26, 38, 'Cancelamento da confirmação. testando', '2024-02-20 21:57:08', 'tr', 1),
+(258, 67, 26, 38, 'Cancelamento da confirmação. ', '2024-02-20 21:57:14', 'tr', 1),
+(259, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:06:36', 'nec', 1),
+(260, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:07:11', 'nec', 1),
+(261, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:07:50', 'nec', 1),
+(262, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:08:32', 'nec', 1),
+(263, 65, 27, 26, 'Cancelamento da confirmação. teste de exclusão do registro de moedas_part', '2024-02-21 21:25:21', 'nec', 1),
+(264, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:26:04', 'nec', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `migrations`
+-- Estrutura para tabela `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -263,7 +314,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `migrations`
+-- Despejando dados para a tabela `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -273,7 +324,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `moedas`
+-- Estrutura para tabela `moedas`
 --
 
 CREATE TABLE `moedas` (
@@ -287,7 +338,7 @@ CREATE TABLE `moedas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `moedas`
+-- Despejando dados para a tabela `moedas`
 --
 
 INSERT INTO `moedas` (`id`, `desc_moeda`, `obs`, `id_part_moeda`, `id_rede_moeda`, `dt_criacao`, `status`) VALUES
@@ -301,7 +352,7 @@ INSERT INTO `moedas` (`id`, `desc_moeda`, `obs`, `id_part_moeda`, `id_rede_moeda
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `moedas_part`
+-- Estrutura para tabela `moedas_part`
 --
 
 CREATE TABLE `moedas_part` (
@@ -314,7 +365,7 @@ CREATE TABLE `moedas_part` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `moedas_part`
+-- Despejando dados para a tabela `moedas_part`
 --
 
 INSERT INTO `moedas_part` (`id`, `id_part`, `id_moeda`, `id_trans`, `quant_moeda`, `data`) VALUES
@@ -335,15 +386,26 @@ INSERT INTO `moedas_part` (`id`, `id_part`, `id_moeda`, `id_trans`, `quant_moeda
 (19, 39, 2, 70, -1, '2023-02-13'),
 (20, 26, 2, 69, 1, '2023-02-12'),
 (21, 24, 2, 69, -1, '2023-02-12'),
-(22, 26, 7, 69, 1, '2023-02-12'),
-(23, 24, 7, 69, -1, '2023-02-12'),
-(24, 27, 1, 68, 1, '2023-02-12'),
-(25, 26, 1, 68, 1, '2023-02-12');
+(22, 26, 7, 69, 1, '2023-02-14'),
+(23, 24, 7, 69, -1, '2023-02-14'),
+(24, 27, 1, 68, 1, '2024-02-20'),
+(25, 26, 1, 68, 1, '2024-02-20'),
+(26, 26, 3, 70, 1, '2024-02-08'),
+(27, 39, 3, 70, -1, '2024-02-08'),
+(28, 38, 8, 72, 1, '2023-03-15'),
+(29, 26, 8, 72, -1, '2023-03-15'),
+(30, 38, 1, 67, 1, '2024-02-20'),
+(31, 26, 1, 67, 1, '2024-02-20'),
+(32, 26, 2, 65, 1, '2024-02-21'),
+(34, 26, 3, 65, 2, '2024-02-21'),
+(36, 26, 4, 65, 2, '2024-02-21'),
+(39, 26, 7, 65, 1, '2024-02-21'),
+(40, 27, 7, 65, -1, '2024-02-21');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `necessidades`
+-- Estrutura para tabela `necessidades`
 --
 
 CREATE TABLE `necessidades` (
@@ -355,7 +417,7 @@ CREATE TABLE `necessidades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `necessidades`
+-- Despejando dados para a tabela `necessidades`
 --
 
 INSERT INTO `necessidades` (`id`, `descricao`, `status`, `id_cat`, `id_unid`) VALUES
@@ -368,12 +430,13 @@ INSERT INTO `necessidades` (`id`, `descricao`, `status`, `id_cat`, `id_unid`) VA
 (7, 'Musico', 1, 7, 4),
 (8, 'Comida solidaria', 1, 1, 1),
 (9, 'Terapia quantica', 1, 5, 3),
-(10, 'Animais Fantásticos', 1, 13, 4);
+(11, 'Artista de Imagens AI', 1, 18, 4),
+(12, 'piloto de avião', 1, 3, 4);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `necessidades_part`
+-- Estrutura para tabela `necessidades_part`
 --
 
 CREATE TABLE `necessidades_part` (
@@ -390,7 +453,7 @@ CREATE TABLE `necessidades_part` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `necessidades_part`
+-- Despejando dados para a tabela `necessidades_part`
 --
 
 INSERT INTO `necessidades_part` (`id`, `id_nec`, `id_part`, `id_rede`, `data`, `quant`, `obs`, `ranking`, `imagem`, `status`) VALUES
@@ -399,20 +462,19 @@ INSERT INTO `necessidades_part` (`id`, `id_nec`, `id_part`, `id_rede`, `data`, `
 (3, 3, 14, 0, '2021-08-19', 1, 'Desenvolvedor de sistemas de banco de dados.', NULL, NULL, 2),
 (4, 1, 27, 0, '2021-08-23', 1, 'Preciso de cozinheiro vegano com urgencia.', NULL, NULL, 2),
 (5, 4, 24, 0, '2021-08-23', 1, 'Preciso de um profissional de permacultura para criar um sitio ecologico para futuramente virar uma ecovila.', NULL, NULL, 4),
-(6, 5, 27, 0, '2021-09-07', 1, 'Jardineira Waldorf trabalho de manhã na escola Jardim Michaelis, Rio de Janeiro.', NULL, NULL, 2),
+(6, 5, 27, 0, '2021-09-07', 1, 'Jardineira Waldorf trabalho de manhã na escola Jardim Michaelis, Rio de Janeiro.', NULL, NULL, 4),
 (7, 6, 26, 0, '2021-09-15', 1, 'Preciso de um ator para um filme que estou fazendo sobre ecovilas.', NULL, '6_1646332030.jpg', 2),
 (8, 7, 5, 0, '2021-11-24', 5, 'Preciso de musicos para montar uma banda. Guitarrista, baterista, vocalista, tecladista e arranjador.', NULL, NULL, 3),
 (9, 8, 26, 0, '2022-03-03', 10, 'comida organica, vegetariana. muito gostosa.', NULL, '8_1646332608.jpg', 0),
 (10, 9, 38, 0, '2022-03-05', 10, 'grupo para desenvolver curso', NULL, '9.jpg', 3),
-(11, 10, 26, 11, '2022-05-18', 1, 'Precisa-se de um Pegasus para completar 12 trabalhos de Hercules. Pode ser femea também.', NULL, '10_26_1652900629.jpg', 0),
-(12, 9, 26, 10, '2022-09-10', 1, 'tecnica com bolha de cura com luz azul', NULL, '9_26_1662842139.jpg', 0),
+(12, 9, 26, 10, '2022-09-10', 1, 'tecnica com bolha de cura com luz azul', NULL, '9_26_1662842139.jpg', 3),
 (13, 3, 26, 0, '2022-09-13', 2, 'preciso de programadores de PHP/Laravel/HTML/CSS/JavaScript', NULL, '3_26_1663077714.jpg', 0),
-(14, 9, 39, 0, '2023-02-09', 1, 'Preciso de uma sessão de terapia Quantica para resolver os problemas do Imperio Brasileiro!! Me ajudem!', NULL, '9_39_1675965660.jpg', 4);
+(14, 9, 39, 0, '2023-02-09', 1, 'Preciso de uma sessão de terapia Quantica para resolver os problemas do Imperio Brasileiro!!', NULL, '9_39_1675965660.jpg', 4);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ofertas`
+-- Estrutura para tabela `ofertas`
 --
 
 CREATE TABLE `ofertas` (
@@ -424,7 +486,7 @@ CREATE TABLE `ofertas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `ofertas`
+-- Despejando dados para a tabela `ofertas`
 --
 
 INSERT INTO `ofertas` (`id`, `descricao`, `status`, `id_cat`, `id_unid`) VALUES
@@ -449,7 +511,7 @@ INSERT INTO `ofertas` (`id`, `descricao`, `status`, `id_cat`, `id_unid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ofertas_part`
+-- Estrutura para tabela `ofertas_part`
 --
 
 CREATE TABLE `ofertas_part` (
@@ -466,7 +528,7 @@ CREATE TABLE `ofertas_part` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `ofertas_part`
+-- Despejando dados para a tabela `ofertas_part`
 --
 
 INSERT INTO `ofertas_part` (`id`, `id_of`, `id_part`, `id_rede`, `data`, `quant`, `obs`, `ranking`, `imagem`, `status`) VALUES
@@ -475,31 +537,27 @@ INSERT INTO `ofertas_part` (`id`, `id_of`, `id_part`, `id_rede`, `data`, `quant`
 (6, 3, 26, 0, '2021-07-27', 5, 'sapateiro', 0, '3_26_1652899973.jpg', 1),
 (7, 2, 26, 0, '2021-08-04', 2, 'Aulas de Pintura e artes em geral.', 0, NULL, 4),
 (8, 6, 24, 0, '2021-08-04', 1, 'Psicologia infantil', 0, NULL, 1),
-(9, 7, 33, 0, '2021-08-13', 1, 'Bioconstrutor capacitado em inumeras tecnicas como : Adobe, Pau-a-pique , Super-Adobe, Bambu, entre outros.', NULL, NULL, 0),
+(9, 7, 33, 0, '2021-08-13', 1, 'Bioconstrutor capacitado em inumeras tecnicas como : Adobe, Pau-a-pique , Super-Adobe, Bambu, entre outros.', NULL, NULL, 3),
 (10, 1, 26, 0, '2021-08-23', 1, 'Cozinha vegetariana e vegana. Sou bom mesmo. :-)', NULL, NULL, 0),
 (11, 10, 27, 0, '2021-09-07', 1, 'Aulas de Shantala para gestantes. Horario a combinar.', NULL, NULL, 3),
-(12, 11, 14, 0, '2021-09-15', 1, 'Sou ator de Hollywood famoso e bem requisitado. Ofereço meus talentos para filmes sobre regeneração global.', NULL, '11_1647973638.jpg', 2),
 (13, 12, 26, 0, '2021-09-15', 2, 'ofereço companhia para bate papos e passeios, para quem se sentir solitário e quiser compartilhar suas experiencias de vida. Horario a combinar.\r\nGosto de ir ao teatro e criar peças.', NULL, '12_26_1663015464.jpg', 3),
-(14, 9, 26, 11, '2021-10-01', 2, 'tenho dois kilos de feijão para doar.', NULL, '9_1647635444.jpg', 3),
+(14, 9, 26, 11, '2021-10-01', 2, 'tenho dois kilos de feijão para doar.', NULL, '9_1647635444.jpg', 4),
 (15, 7, 26, 0, '2021-10-01', 1, 'faço casas bem legais', NULL, '7_1646403021.jpg', 2),
-(16, 13, 38, 0, '2021-10-27', 1, 'é muito bom', NULL, '13_1646511808.jpg', 3),
-(17, 7, 38, 0, '2021-10-27', 1, 'permacultor quantico', NULL, '7_1647636775.jpg', 3),
+(17, 7, 38, 0, '2021-10-27', 1, 'permacultor quantico', NULL, '7_1647636775.jpg', 4),
 (20, 13, 26, 0, '2022-03-02', 2, 'terapia permacultural', NULL, '13_1646315419.jpg', 4),
-(21, 8, 26, 0, '2022-03-02', 2, 'gosto de bebês e de cães e gatos.', NULL, '8_1648141614.jpg', 4),
 (22, 15, 26, 0, '2022-03-03', 1, 'Casa em otimo estado num lugar maravilhoso na mata atlantica e totalmente sustentável.', NULL, '15_1646333417.jpg', 1),
 (23, 12, 26, 0, '2022-04-12', 1, 'Companhia para conversar sobre espiritualidade.', NULL, '12.jpg', 0),
 (24, 3, 26, 0, '2022-04-21', 1, 'Faço sapatos de couro.', NULL, '3_26_1653418481.jpg', 0),
 (25, 16, 26, 0, '2022-05-17', 1000, 'Terras com florestas, rios e cachoeiras maravilhosas.', NULL, '16.jpg', 0),
 (26, 16, 26, 10, '2022-05-17', 500, 'ecovilas em Matchu Picchu', NULL, '16_26_1652899916.jpg', 0),
-(27, 17, 26, 8, '2022-05-18', 1, 'Um litro de ayahuasca Estrela 7x1.', NULL, '17_26_1652900169.jpg', 0),
 (28, 10, 40, 10, '2022-05-31', 1, 'Aulas para gestantes', NULL, '10_40_1663268671.jpeg', 0),
-(29, 13, 26, 10, '2022-09-09', 2, 'simbolos quanticos para cura de outra galaxia. Ahow', NULL, '13_26_1672856467.jpg', 0),
-(30, 18, 26, 0, '2022-09-13', 1, 'sou violonista reconhecido mundialmente!!', NULL, '18_26_1672856446.jpg', 0);
+(30, 18, 26, 0, '2022-09-13', 1, 'sou violonista renomado', NULL, '18_26_1672856446.jpg', 3),
+(31, 18, 26, 0, '2023-08-02', 1, 'musico bão mesmo!!', NULL, '18_26_1691001055.jpeg', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `participantes`
+-- Estrutura para tabela `participantes`
 --
 
 CREATE TABLE `participantes` (
@@ -523,7 +581,7 @@ CREATE TABLE `participantes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `participantes`
+-- Despejando dados para a tabela `participantes`
 --
 
 INSERT INTO `participantes` (`id`, `nome_part`, `endereco`, `cidade`, `cep`, `estado`, `pais`, `email`, `senha`, `imagem`, `latitude`, `longitude`, `timezone`, `ranking`, `id_tipo_acesso`, `created_at`, `updated_at`) VALUES
@@ -538,7 +596,7 @@ INSERT INTO `participantes` (`id`, `nome_part`, `endereco`, `cidade`, `cep`, `es
 (22, 'Gustavo Alfredo', 'Rua Coronel Moreira Cesar 30,Icarai', 'Niteroi', '24230-060', 'RJ', 'Brasil', 'gustavo@gmail.com', '$2y$10$BLjpzKmMfZbU24VD.sRVxOV.KSDqXOKUxVD6MfkATv.uMO7o6GUSK', '', -22.9104176, -43.1069756, NULL, 0, NULL, '2021-05-28 21:50:25', '2021-05-28 21:50:25'),
 (24, 'Amanda Pereira', 'Rua Irlanda, 20', 'Goiania', '68552', 'GO', 'Brasil', 'amandinha@gmail.com', '$2y$10$rOMseaROi3kuX1UQ2E1RXunH4dCls1piOvN7Cw2Y80izyjB12Rzg2', 'Amanda Pereira_1638986834.jpg', -16.7167072, -49.3069305, NULL, 0, NULL, '2021-05-29 21:54:05', '2021-12-08 21:07:14'),
 (25, 'Bianca', 'Rua Pouso Alto', 'Itamonte', '37466-000', 'MG', 'Brasil', 'bianca@gmail.com', '$2y$10$i8FOjrwGkofaysz0OhBdPeOhZeX.CJjHmISuiiWzTRE6aTb2Yq6Ui', NULL, -22.2761383, -44.8721161, NULL, 0, NULL, '2021-05-29 22:01:41', '2021-05-29 22:01:41'),
-(26, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', 'Guaratinguetá - Vila Paraiba', '12500', 'SP', 'Brasil', 'Lsantac@gmail.com', '$2y$10$sgwS6n/oR0wEp1gh/sUxPe9ntudguDyHgi/fnQEjqT8V5igsWMZ6e', 'Luiz Eduardo Castro_1648060370.jpg', -22.8105164, -45.1904182, NULL, 0, 1, '2021-06-01 01:29:36', '2022-03-23 21:32:50'),
+(26, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', 'Guaratinguetá - Vila Paraiba', '12500', 'SP', 'Brasil', 'Lsantac@gmail.com', '$2y$10$bcMhvB0fdNvgYl3TnKQhweALvbIdc/k/u/TCqvPT0nx3yWV6waHB2', 'Luiz Eduardo Castro_1648060370.jpg', -22.8105164, -45.1904182, NULL, 0, 1, '2021-06-01 01:29:36', '2022-03-23 21:32:50'),
 (27, 'Ana Claudia ', 'Rua do Catete, 200', 'Rio de Janeiro', '22220-000', 'RJ', 'Brasil', 'anaclaudia@gmail.com', '$2y$10$u2.FJ0y3LRAImEWGSc7xQe1a32Ac.VA1Mj4cEOKZMnd4hDdZA904a', 'Ana Claudia_1623160847.JPG', -22.9254646, -43.1766167, NULL, 0, NULL, '2021-06-02 01:11:04', '2021-06-08 17:00:47'),
 (28, 'Pedro Augusto', 'Rua Augusta, 129', 'São Paulo', '01305-900', 'AM', 'Brasil', 'pedro@gmail.com', '$2y$10$Q9u6J7oANAT3BD3jBsxzWOubBNbikXvNHK4VKZ8t3eINNxMpdlP.W', '', -23.5505238, -46.6473541, NULL, 0, NULL, '2021-06-04 21:48:47', '2021-06-04 21:48:47'),
 (29, 'Luiz Augusto', 'R. Maj. Carvalho, 115 - Várzea', 'Teresopolis', '25953-460', 'RJ', 'Brasil', 'augusto@gmail.com', '$2y$10$uGE7QIDlRgsk1IjlDO7iyO9U55JMUJMHrKmp3Ai2cPvsxxFVMhmmq', '', -22.4152031, -42.9689827, NULL, 0, NULL, '2021-06-04 22:46:33', '2021-06-06 01:18:19'),
@@ -549,20 +607,17 @@ INSERT INTO `participantes` (`id`, `nome_part`, `endereco`, `cidade`, `cep`, `es
 (38, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', 'Garopaba', '88495-000', 'SC', 'Brasil', 'marceloshama@gmail.com', '$2y$10$vicG.yStiLkiMf97gCdV.OEuaq9a2AlnPjCvB0rollBVaUupfh6lW', 'Marcelo Shama_1635348782.jpg', -28.0606689, -48.6789703, NULL, 0, NULL, '2021-10-27 18:32:34', '2021-10-27 18:33:02'),
 (39, 'Pedro de Alcantara', 'Quinta da Boa Vista, São Cristovão', 'Rio de Janeiro', '22210-999', 'RJ', 'Brasil', 'pedrodealcantara@gmail.com', '$2y$10$xzgRxhiroVg6QIV650X4TeKRNh4MWMF9aNlCB7yfxltQki2TFsWSC', 'Pedro de Alcantara_1644872371.png', -22.9051933, -43.2217865, NULL, 0, NULL, '2022-02-14 23:59:31', '2022-02-14 23:59:31'),
 (40, 'Clarice da Silva', 'Botafogo', 'Rio de Janeiro', '22210180', 'RJ', 'Brasil', 'clarice@gmail.com', '$2y$10$UCV.pU1KNJZVRJHmc7ZxL.wMlF/StOwQyPrLEGS8668/iXys8zcD2', 'Clarice da Silva_1663268536.jpg', -22.9511929, -43.1807823, NULL, 0, NULL, '2022-03-22 02:58:19', '2022-09-15 22:02:16'),
-(41, 'Amigo das Estrelas', 'Rua principal', 'Alto Paraiso', '88495-000', 'GO', 'Brasil', 'starfriend@gmail.com', '$2y$10$RUolVJi0NXxOk/Q2xnd.v.WSehd6ATR/7TZbg3iUZDqJ/62c7NsLu', 'Amigo das Estrelas_1649251273.jpg', -14.1340199, -47.5139809, NULL, 0, NULL, '2022-04-06 16:21:13', '2022-04-06 16:22:59'),
-(42, 'João das Estrelas', 'Rua das Flores.', 'Ipatinga', '35160', 'MG', 'Brasil', 'joao_estrela@gmail.com', '$2y$10$/SP0qVUh6WqTnl4BCDCxOOQloBTVLllnyZZRFn8N6y2K7SmW72pYS', 'João das Estrelas_1650642594.jpg', -19.4631901, -42.5592804, NULL, 0, NULL, '2022-04-22 18:49:11', '2022-04-22 18:49:54'),
-(43, 'Maga da Floresta', 'Rua da Floresta', 'Ibitipoca', '36140-000', 'MG', 'Brasil', 'maga@gmail.com', '$2y$10$WuFQVxi85IlP9XcIBYsdTOklowb.HfUXYBu/10G5mOmpo/jPDcY06', 'Maga da Floresta_1653052545.jpg', -21.7189445, -43.9252167, NULL, 0, NULL, '2022-05-20 16:06:59', '2022-05-20 16:15:45'),
-(44, 'Michael Arcanjo', 'Rua dos anjos 999', 'Alto Paraiso', '76862-000', 'GO', 'Brasil', 'michael@gmail.com', '$2y$10$zmY6WRAOSVHvOUFhUrsNZeqp/fhLfUKmP.FRgSoHBHGCZl2ASN4c6', NULL, -14.2350044, -51.9252815, NULL, 0, NULL, '2022-05-20 16:46:48', '2022-05-20 16:46:48'),
-(45, 'Pedro Segundo', 'Quinta da Boa Vista', 'Rio de Janeiro', '20940-040', 'RJ', 'Brasil', 'pedro_2@gmail.com', '$2y$10$t3CKyMZpGGZ7Yd1kNLReCurFtCYBzi/uCLYVI8kGV8I7XXJ.ViiSO', 'Pedro Segundo_1653056312.png', -22.9051933, -43.2217865, NULL, 0, 1, '2022-05-20 17:18:32', '2022-05-20 17:18:32'),
-(46, 'Lara Kraft', 'Rua Augusta 456', 'São Paulo', '01305-000', 'SP', 'Brasil', 'lara@gmail.com', '$2y$10$tJD2SbUNKktLiOMM9HCjne6fVBKrQQR29byIzGqwVZ9Gb5BvlxtU2', 'Lara Kraft_1653056520.jpg', -23.5511971, -46.6504517, NULL, 0, 1, '2022-05-20 17:22:00', '2022-05-20 17:22:00'),
 (47, 'Mackena Dantaz', 'Estrada Dr. Casemiro 8', 'Embu Gauçu', '06925680', 'SP', 'Brasil', 'collab.redecolaborativa@gmail.com', '$2y$10$FYZt2go9UEML627oNjBiueZQMhPh7bLqiyn9whOzeQ.OPwnrteSzG', 'Mackena Dantaz_1673526190.jpg', -23.6498089, -46.8532791, NULL, 0, 1, '2023-01-12 14:55:35', '2023-01-12 15:23:10'),
 (48, 'Allamo Farias de Oliveira', 'Rua Erico Verissimo, 3397', 'Natal', '59065460', 'RN', 'Brasil', 'allamofarias@hotmail.com', '$2y$10$4HeMCnIzDuGGJLEnUKC3IOo/sxW/GBwNj6qeKAv7gRA/0l.3FTvI.', NULL, -5.8353839, -35.2209625, NULL, 0, 1, '2023-01-12 17:58:14', '2023-01-12 17:58:14'),
-(49, 'adriano assante', 'ramos ferreira 1117', 'manaus', '69010120', 'AM', 'brasil', 'adriano50assante@gmail.com', '$2y$10$tMRF6M2OIijuX.pOLpZ65.osjMk/abaIRvw9vaFio.umrANs4/BM2', 'adriano assante_1674496799.png', -3.1278131, -60.0218468, NULL, 0, 1, '2023-01-23 21:00:00', '2023-01-23 21:00:00');
+(49, 'adriano assante', 'ramos ferreira 1117', 'manaus', '69010120', 'AM', 'brasil', 'adriano50assante@gmail.com', '$2y$10$tMRF6M2OIijuX.pOLpZ65.osjMk/abaIRvw9vaFio.umrANs4/BM2', 'adriano assante_1674496799.png', -3.1278131, -60.0218468, NULL, 0, 1, '2023-01-23 21:00:00', '2023-01-23 21:00:00'),
+(50, 'Nativo Tupinambá', 'lagoa dos indios', 'Maricá', '20000', 'RJ', 'Brasil', 'indio_tupi@gmail.com', '$2y$10$gUP7vgK6AUWNLhjy7pZJOOF.VJVAbs0m1if.YdPXvg4f8yD3qshuW', NULL, -22.9160995, -42.8191910, NULL, 0, 1, '2023-05-25 16:26:19', '2023-05-25 16:26:19'),
+(72, 'Planta Amorosa da Floresta Amazonica', 'R. Rita Barbosa, 163 - Coroado  69082-600', 'Manaus', '69082-600', 'AM', 'Brasil', 'planta@gmail.com', '$2y$10$ldEFh.hBfb/ixEvBViMr6.EUFUjqIok5M8xQ.617z13AAdEUSDXHy', 'planta amorosa_1685131827.jpg', -3.0822041, -59.9713821, NULL, 0, 1, '2023-05-26 23:10:28', '2023-05-26 23:12:35'),
+(73, 'xaman da agua', 'Floresta Amazonica', 'Maraã', '1302801', 'AM', 'Brasil', 'xamandaagua@gmail.com', '$2y$10$UuIk7w04CXH154j5D/w6suA.3boVhz6eJdK/ae6xMLp.fpQpz7ioO', 'xaman da agua_1708538271.jfif', -1.8516970, -65.5883484, NULL, 0, 1, '2024-02-21 20:57:51', '2024-02-21 20:57:51');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `projetos`
+-- Estrutura para tabela `projetos`
 --
 
 CREATE TABLE `projetos` (
@@ -578,7 +633,7 @@ CREATE TABLE `projetos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `projetos_part`
+-- Estrutura para tabela `projetos_part`
 --
 
 CREATE TABLE `projetos_part` (
@@ -590,7 +645,7 @@ CREATE TABLE `projetos_part` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ratings`
+-- Estrutura para tabela `ratings`
 --
 
 CREATE TABLE `ratings` (
@@ -601,7 +656,7 @@ CREATE TABLE `ratings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `ratings`
+-- Despejando dados para a tabela `ratings`
 --
 
 INSERT INTO `ratings` (`id`, `description`, `created_at`, `updated_at`) VALUES
@@ -614,7 +669,7 @@ INSERT INTO `ratings` (`id`, `description`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `redes`
+-- Estrutura para tabela `redes`
 --
 
 CREATE TABLE `redes` (
@@ -627,7 +682,7 @@ CREATE TABLE `redes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `redes`
+-- Despejando dados para a tabela `redes`
 --
 
 INSERT INTO `redes` (`id`, `nome`, `descricao`, `imagem`, `id_part_inic`, `data_inic`) VALUES
@@ -644,7 +699,7 @@ INSERT INTO `redes` (`id`, `nome`, `descricao`, `imagem`, `id_part_inic`, `data_
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `redesparts`
+-- Estrutura para tabela `redesparts`
 --
 
 CREATE TABLE `redesparts` (
@@ -655,7 +710,7 @@ CREATE TABLE `redesparts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `redesparts`
+-- Despejando dados para a tabela `redesparts`
 --
 
 INSERT INTO `redesparts` (`id`, `id_rede`, `id_part`, `admin`) VALUES
@@ -682,7 +737,7 @@ INSERT INTO `redesparts` (`id`, `id_rede`, `id_part`, `admin`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status_eve`
+-- Estrutura para tabela `status_eve`
 --
 
 CREATE TABLE `status_eve` (
@@ -693,7 +748,7 @@ CREATE TABLE `status_eve` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status_proj`
+-- Estrutura para tabela `status_proj`
 --
 
 CREATE TABLE `status_proj` (
@@ -704,7 +759,7 @@ CREATE TABLE `status_proj` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status_trans`
+-- Estrutura para tabela `status_trans`
 --
 
 CREATE TABLE `status_trans` (
@@ -713,7 +768,7 @@ CREATE TABLE `status_trans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `status_trans`
+-- Despejando dados para a tabela `status_trans`
 --
 
 INSERT INTO `status_trans` (`id`, `descricao`) VALUES
@@ -726,7 +781,7 @@ INSERT INTO `status_trans` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tipos_acessos`
+-- Estrutura para tabela `tipos_acessos`
 --
 
 CREATE TABLE `tipos_acessos` (
@@ -735,7 +790,7 @@ CREATE TABLE `tipos_acessos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `tipos_acessos`
+-- Despejando dados para a tabela `tipos_acessos`
 --
 
 INSERT INTO `tipos_acessos` (`id`, `desc_tipo_acesso`) VALUES
@@ -745,7 +800,7 @@ INSERT INTO `tipos_acessos` (`id`, `desc_tipo_acesso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `transacoes`
+-- Estrutura para tabela `transacoes`
 --
 
 CREATE TABLE `transacoes` (
@@ -766,28 +821,28 @@ CREATE TABLE `transacoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `transacoes`
+-- Despejando dados para a tabela `transacoes`
 --
 
 INSERT INTO `transacoes` (`id`, `id_nec_part`, `id_of_part`, `id_of_tr_part`, `id_st_trans`, `quant_moeda`, `id_moeda`, `quant_of`, `quant_of_tr`, `quant_nec`, `data_inic`, `data_final_nec_part`, `data_final_of_part`, `data_final_of_tr_part`) VALUES
-(58, 1, 14, 0, 4, 100, 3, 2, 0, 2, '2021-12-08 15:41:00', '2022-01-20 18:19:12', '2022-01-20 18:21:25', NULL),
+(58, 1, 14, 0, 4, 100, 3, 2, 0, 2, '2021-12-08 15:41:00', '2022-01-20 18:19:12', '2024-02-08 18:27:17', NULL),
 (59, 5, 15, 0, 2, 0, NULL, 0, 0, 0, '2021-12-08 18:08:24', NULL, NULL, NULL),
 (60, 4, 14, 0, 2, 0, NULL, 0, 0, 0, '2021-12-09 12:52:27', NULL, NULL, NULL),
-(61, 8, 13, 0, 3, 1, 2, 2, 0, 0, '2021-12-09 12:55:06', NULL, '2022-02-12 21:31:52', NULL),
+(61, 8, 13, 0, 3, 1, 2, 2, 0, 0, '2021-12-09 12:55:06', NULL, '2024-02-08 19:40:50', NULL),
 (62, 3, 15, 0, 4, 1, 2, 1, 0, 1, '2021-12-09 13:15:07', '2022-01-22 18:49:46', '2022-01-22 18:48:13', NULL),
-(63, 7, 12, 0, 4, 1, 4, 1, 0, 1, '2021-12-09 13:15:48', '2023-02-09 19:18:31', '2023-02-12 19:19:22', NULL),
-(64, 0, 16, 14, 2, 1, 1, 1, 1, 0, '2022-01-28 18:29:50', NULL, NULL, NULL),
-(65, 6, 7, 0, 2, 0, NULL, 0, 0, 0, '2022-02-11 20:49:43', NULL, NULL, NULL),
+(65, 6, 7, 0, 4, 1, 7, 1, 0, 1, '2022-02-11 20:49:43', '2024-02-21 18:26:11', '2024-02-21 18:04:30', NULL),
 (66, 10, 20, 0, 4, 30, 3, 1, 0, 1, '2022-03-05 18:57:28', '2023-02-09 17:54:37', '2023-02-09 17:55:47', NULL),
-(67, 0, 17, 14, 2, 1, 1, 0, 1, 0, '2022-03-05 20:35:15', NULL, NULL, NULL),
-(68, 0, 11, 7, 4, 1, 1, 0, 1, 0, '2022-03-05 20:50:13', NULL, '2023-02-12 20:10:00', '2023-02-03 19:36:33'),
-(69, 5, 21, 0, 4, 1, 7, 1, 0, 1, '2022-03-23 15:57:07', '2023-02-12 18:46:46', '2023-02-12 18:51:27', NULL),
-(70, 14, 20, 0, 4, 1, 2, 1, 0, 1, '2023-02-09 18:02:46', '2023-02-13 20:23:17', '2023-02-13 19:34:34', NULL);
+(67, 0, 17, 14, 4, 1, 1, 1, 1, 0, '2022-03-05 20:35:15', NULL, '2024-02-20 18:56:12', '2024-02-20 18:57:27'),
+(68, 0, 11, 7, 4, 1, 1, 0, 1, 0, '2022-03-05 20:50:13', NULL, '2023-02-12 20:10:00', '2024-02-20 14:30:54'),
+(69, 5, 21, 0, 4, 1, 7, 1, 0, 1, '2022-03-23 15:57:07', '2023-02-12 18:46:46', '2023-02-14 19:12:45', NULL),
+(70, 14, 20, 0, 4, 1, 3, 1, 0, 1, '2023-02-09 18:02:46', '2023-02-13 20:23:17', '2024-02-08 19:19:29', NULL),
+(71, 8, 30, 0, 3, 2, 8, 1, 0, 0, '2023-03-14 18:20:45', NULL, '2024-02-08 18:15:12', NULL),
+(73, 12, 9, 0, 2, 20, 7, 0, 0, 1, '2024-02-20 17:58:12', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `transaction_ratings`
+-- Estrutura para tabela `transaction_ratings`
 --
 
 CREATE TABLE `transaction_ratings` (
@@ -801,24 +856,30 @@ CREATE TABLE `transaction_ratings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `transaction_ratings`
+-- Despejando dados para a tabela `transaction_ratings`
 --
 
 INSERT INTO `transaction_ratings` (`id`, `id_part`, `id_trans`, `id_rating`, `obs_rating`, `created_at`, `updated_at`) VALUES
-(3, 26, 69, 4, 'Foi tudo feito com transparencia e rapidez. Esse sistema é muito bom. Que todos usem cada vez mais!! mudei o fluxo para moeda.', '2023-02-02 21:33:07', '2023-02-12 21:51:27'),
-(7, 26, 66, 4, 'gostei muito do espaço e clientes. Foi legalzinho. ;-)', '2023-02-03 16:56:17', '2023-02-09 20:55:47'),
-(8, 38, 66, 4, 'gostei muito do terapeuta!! pessoa muito legal! outro teste', '2023-02-03 17:04:56', '2023-02-09 20:54:37'),
-(9, 26, 68, 5, 'muito boa instrutora!! Eu recomeindu!!', '2023-02-03 22:36:33', '2023-02-03 22:36:33'),
+(3, 26, 69, 4, 'Foi tudo feito com transparencia e rapidez. Esse sistema é muito bom. Que todos usem cada vez mais!! mudei o fluxo para moeda.', '2023-02-02 21:33:07', '2023-02-14 22:12:45'),
+(7, 26, 66, 4, 'gostei muito do espaço e clientes. ;-)', '2023-02-03 16:56:17', '2023-02-09 20:55:47'),
+(8, 38, 66, 4, 'gostei muito do terapeuta!! pessoa muito legal!', '2023-02-03 17:04:56', '2023-02-09 20:54:37'),
+(9, 26, 68, 5, 'muito boa instrutora!! Eu recomendo!! confirmei de novo.', '2023-02-03 22:36:33', '2024-02-20 17:30:54'),
 (10, 39, 70, 5, 'Luiz é ótimo!', '2023-02-09 21:04:19', '2023-02-13 23:23:17'),
-(11, 26, 70, 5, 'Pedro é ótimo cliente!', '2023-02-09 21:08:50', '2023-02-13 22:34:34'),
+(11, 26, 70, 4, 'Pedro é ótimo cliente! gostei de tudo!', '2023-02-09 21:08:50', '2024-02-08 22:19:29'),
 (12, 24, 69, 5, 'um bom babá, rss', '2023-02-12 21:46:46', '2023-02-12 21:46:46'),
-(13, 14, 63, 3, NULL, '2023-02-12 22:19:22', '2023-02-12 22:19:22'),
-(14, 27, 68, 5, 'Muito bom professor!! também recomendo!!', '2023-02-12 23:10:00', '2023-02-12 23:10:00');
+(14, 27, 68, 5, 'Muito bom professor!! também recomendo!!', '2023-02-12 23:10:00', '2023-02-12 23:10:00'),
+(15, 26, 61, 4, NULL, '2023-03-14 21:01:00', '2024-02-08 22:40:50'),
+(16, 26, 71, 4, 'muito bom musico!!', '2023-03-14 21:21:23', '2024-02-08 21:15:12'),
+(20, 26, 67, 5, 'show de bola!', '2024-02-20 17:44:10', '2024-02-20 21:57:27'),
+(21, 26, 73, 4, 'gostei muito.', '2024-02-20 20:59:39', '2024-02-20 20:59:39'),
+(22, 38, 67, 5, 'top!! gostei', '2024-02-20 21:32:22', '2024-02-20 21:56:12'),
+(23, 26, 65, 4, 'espero que gostem das minhas aulas.', '2024-02-21 21:04:30', '2024-02-21 21:04:30'),
+(24, 27, 65, 5, 'gostei sim, parabens!!', '2024-02-21 21:06:18', '2024-02-21 21:26:11');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `unidades`
+-- Estrutura para tabela `unidades`
 --
 
 CREATE TABLE `unidades` (
@@ -828,7 +889,7 @@ CREATE TABLE `unidades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `unidades`
+-- Despejando dados para a tabela `unidades`
 --
 
 INSERT INTO `unidades` (`id`, `descricao`, `dt_criacao`) VALUES
@@ -842,7 +903,7 @@ INSERT INTO `unidades` (`id`, `descricao`, `dt_criacao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Estrutura para tabela `users`
 --
 
 CREATE TABLE `users` (
@@ -854,21 +915,22 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `users`
+-- Despejando dados para a tabela `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `senha`, `created_at`, `updated_at`) VALUES
 (663, 'joao_estrela@gmail.com', '$2y$10$5Q/vo6dgYxWfmPfI2pJYT.cPeENe37Zevnvv2ZaQCFRzj6tnTT0Yi', NULL, NULL),
 (816, 'collab.redecolaborativa@gmail.com', '$2y$10$H4BrhFSS5G8xTsM6yKv8FubMBfLkrE9ssRgXsvWzlvyfyLep/SNJ.', NULL, NULL),
 (818, 'allamofarias@hotmail.com', '$2y$10$cXTdCIGFtnF2SiKg3MQSiO0LDKiE0KYfY0616IL60PpZSAklsmyuS', NULL, NULL),
-(898, 'pedrodealcantara@gmail.com', '$2y$10$Wxx7dsKkJPIpSd03GHUkae/jbkAk5aEFUovmOliuJ1xzNg/kLlIcC', NULL, NULL);
+(947, 'adriano50assante@gmail.com', '$2y$10$QNCpNe4be4xpvbbfnosTcOH44fkrZjFSoCHPB/aXAPdsHxDNojM0K', NULL, NULL),
+(978, 'planta_amorosa@gmail.com', '$2y$10$XW17OJ3gbJF7HWRz60z.Tegd1wSJlg9Idpln1PIDuAfUm/BChOeMK', NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `categorias`
+-- Índices de tabela `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`),
@@ -879,7 +941,7 @@ ALTER TABLE `categorias`
   ADD KEY `dt_inclusao` (`dt_criacao`);
 
 --
--- Índices para tabela `eventos`
+-- Índices de tabela `eventos`
 --
 ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id`),
@@ -890,7 +952,7 @@ ALTER TABLE `eventos`
   ADD KEY `descricao` (`descricao`(768));
 
 --
--- Índices para tabela `eventos_part`
+-- Índices de tabela `eventos_part`
 --
 ALTER TABLE `eventos_part`
   ADD PRIMARY KEY (`id`),
@@ -898,37 +960,37 @@ ALTER TABLE `eventos_part`
   ADD KEY `id_part` (`id_part`);
 
 --
--- Índices para tabela `identidade`
+-- Índices de tabela `identidade`
 --
 ALTER TABLE `identidade`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `identidade_imgs`
+-- Índices de tabela `identidade_imgs`
 --
 ALTER TABLE `identidade_imgs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `markers`
+-- Índices de tabela `markers`
 --
 ALTER TABLE `markers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `markers_nec`
+-- Índices de tabela `markers_nec`
 --
 ALTER TABLE `markers_nec`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `markers_of`
+-- Índices de tabela `markers_of`
 --
 ALTER TABLE `markers_of`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `mensagens_trans`
+-- Índices de tabela `mensagens_trans`
 --
 ALTER TABLE `mensagens_trans`
   ADD PRIMARY KEY (`id`),
@@ -940,13 +1002,13 @@ ALTER TABLE `mensagens_trans`
   ADD KEY `canc_conf` (`canc_conf`) USING BTREE;
 
 --
--- Índices para tabela `migrations`
+-- Índices de tabela `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `moedas`
+-- Índices de tabela `moedas`
 --
 ALTER TABLE `moedas`
   ADD PRIMARY KEY (`id`),
@@ -957,7 +1019,7 @@ ALTER TABLE `moedas`
   ADD KEY `status` (`status`);
 
 --
--- Índices para tabela `moedas_part`
+-- Índices de tabela `moedas_part`
 --
 ALTER TABLE `moedas_part`
   ADD PRIMARY KEY (`id`),
@@ -969,7 +1031,7 @@ ALTER TABLE `moedas_part`
   ADD KEY `id_trans` (`id_trans`);
 
 --
--- Índices para tabela `necessidades`
+-- Índices de tabela `necessidades`
 --
 ALTER TABLE `necessidades`
   ADD PRIMARY KEY (`id`),
@@ -979,7 +1041,7 @@ ALTER TABLE `necessidades`
   ADD KEY `id_unid` (`id_unid`);
 
 --
--- Índices para tabela `necessidades_part`
+-- Índices de tabela `necessidades_part`
 --
 ALTER TABLE `necessidades_part`
   ADD PRIMARY KEY (`id`),
@@ -991,7 +1053,7 @@ ALTER TABLE `necessidades_part`
   ADD KEY `id_rede` (`id_rede`);
 
 --
--- Índices para tabela `ofertas`
+-- Índices de tabela `ofertas`
 --
 ALTER TABLE `ofertas`
   ADD PRIMARY KEY (`id`),
@@ -1001,7 +1063,7 @@ ALTER TABLE `ofertas`
   ADD KEY `id_unidade` (`id_unid`);
 
 --
--- Índices para tabela `ofertas_part`
+-- Índices de tabela `ofertas_part`
 --
 ALTER TABLE `ofertas_part`
   ADD PRIMARY KEY (`id`),
@@ -1013,7 +1075,7 @@ ALTER TABLE `ofertas_part`
   ADD KEY `id_rede` (`id_rede`);
 
 --
--- Índices para tabela `participantes`
+-- Índices de tabela `participantes`
 --
 ALTER TABLE `participantes`
   ADD PRIMARY KEY (`id`),
@@ -1031,7 +1093,7 @@ ALTER TABLE `participantes`
   ADD KEY `updated_at` (`updated_at`);
 
 --
--- Índices para tabela `projetos`
+-- Índices de tabela `projetos`
 --
 ALTER TABLE `projetos`
   ADD PRIMARY KEY (`id`),
@@ -1042,7 +1104,7 @@ ALTER TABLE `projetos`
   ADD KEY `descricao` (`descricao`);
 
 --
--- Índices para tabela `projetos_part`
+-- Índices de tabela `projetos_part`
 --
 ALTER TABLE `projetos_part`
   ADD PRIMARY KEY (`id`),
@@ -1050,13 +1112,13 @@ ALTER TABLE `projetos_part`
   ADD KEY `id_part` (`id_part`);
 
 --
--- Índices para tabela `ratings`
+-- Índices de tabela `ratings`
 --
 ALTER TABLE `ratings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `redes`
+-- Índices de tabela `redes`
 --
 ALTER TABLE `redes`
   ADD PRIMARY KEY (`id`),
@@ -1065,7 +1127,7 @@ ALTER TABLE `redes`
   ADD KEY `data_inic` (`data_inic`);
 
 --
--- Índices para tabela `redesparts`
+-- Índices de tabela `redesparts`
 --
 ALTER TABLE `redesparts`
   ADD PRIMARY KEY (`id`),
@@ -1074,35 +1136,35 @@ ALTER TABLE `redesparts`
   ADD KEY `admin` (`admin`);
 
 --
--- Índices para tabela `status_eve`
+-- Índices de tabela `status_eve`
 --
 ALTER TABLE `status_eve`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `descricao` (`descricao`);
 
 --
--- Índices para tabela `status_proj`
+-- Índices de tabela `status_proj`
 --
 ALTER TABLE `status_proj`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `descricao` (`descricao`);
 
 --
--- Índices para tabela `status_trans`
+-- Índices de tabela `status_trans`
 --
 ALTER TABLE `status_trans`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `descricao` (`descricao`);
 
 --
--- Índices para tabela `tipos_acessos`
+-- Índices de tabela `tipos_acessos`
 --
 ALTER TABLE `tipos_acessos`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `desc_tipo_acesso` (`desc_tipo_acesso`);
 
 --
--- Índices para tabela `transacoes`
+-- Índices de tabela `transacoes`
 --
 ALTER TABLE `transacoes`
   ADD PRIMARY KEY (`id`),
@@ -1117,7 +1179,7 @@ ALTER TABLE `transacoes`
   ADD KEY `data_final_of_tr_part` (`data_final_of_tr_part`);
 
 --
--- Índices para tabela `transaction_ratings`
+-- Índices de tabela `transaction_ratings`
 --
 ALTER TABLE `transaction_ratings`
   ADD PRIMARY KEY (`id`),
@@ -1126,7 +1188,7 @@ ALTER TABLE `transaction_ratings`
   ADD KEY `transaction_id` (`id_trans`) USING BTREE;
 
 --
--- Índices para tabela `unidades`
+-- Índices de tabela `unidades`
 --
 ALTER TABLE `unidades`
   ADD PRIMARY KEY (`id`),
@@ -1134,21 +1196,21 @@ ALTER TABLE `unidades`
   ADD KEY `dt_criacao` (`dt_criacao`);
 
 --
--- Índices para tabela `users`
+-- Índices de tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `eventos`
@@ -1178,25 +1240,25 @@ ALTER TABLE `identidade_imgs`
 -- AUTO_INCREMENT de tabela `markers`
 --
 ALTER TABLE `markers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1831;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `markers_nec`
 --
 ALTER TABLE `markers_nec`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1519;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1775;
 
 --
 -- AUTO_INCREMENT de tabela `markers_of`
 --
 ALTER TABLE `markers_of`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11066;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13403;
 
 --
 -- AUTO_INCREMENT de tabela `mensagens_trans`
 --
 ALTER TABLE `mensagens_trans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
 
 --
 -- AUTO_INCREMENT de tabela `migrations`
@@ -1214,13 +1276,13 @@ ALTER TABLE `moedas`
 -- AUTO_INCREMENT de tabela `moedas_part`
 --
 ALTER TABLE `moedas_part`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de tabela `necessidades`
 --
 ALTER TABLE `necessidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `necessidades_part`
@@ -1232,19 +1294,19 @@ ALTER TABLE `necessidades_part`
 -- AUTO_INCREMENT de tabela `ofertas`
 --
 ALTER TABLE `ofertas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `ofertas_part`
 --
 ALTER TABLE `ofertas_part`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de tabela `participantes`
 --
 ALTER TABLE `participantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de tabela `projetos`
@@ -1304,13 +1366,13 @@ ALTER TABLE `tipos_acessos`
 -- AUTO_INCREMENT de tabela `transacoes`
 --
 ALTER TABLE `transacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de tabela `transaction_ratings`
 --
 ALTER TABLE `transaction_ratings`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `unidades`
@@ -1322,103 +1384,103 @@ ALTER TABLE `unidades`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=899;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1027;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `eventos`
+-- Restrições para tabelas `eventos`
 --
 ALTER TABLE `eventos`
   ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`id_rede`) REFERENCES `redes` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_2` FOREIGN KEY (`id_st_eve`) REFERENCES `status_eve` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `eventos_part`
+-- Restrições para tabelas `eventos_part`
 --
 ALTER TABLE `eventos_part`
   ADD CONSTRAINT `eventos_part_ibfk_1` FOREIGN KEY (`id_eve`) REFERENCES `eventos` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_part_ibfk_2` FOREIGN KEY (`id_part`) REFERENCES `participantes` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `mensagens_trans`
+-- Restrições para tabelas `mensagens_trans`
 --
 ALTER TABLE `mensagens_trans`
   ADD CONSTRAINT `mensagens_trans_ibfk_1` FOREIGN KEY (`id_trans`) REFERENCES `transacoes` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `moedas_part`
+-- Restrições para tabelas `moedas_part`
 --
 ALTER TABLE `moedas_part`
   ADD CONSTRAINT `moedas_part_ibfk_1` FOREIGN KEY (`id_moeda`) REFERENCES `moedas` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `moedas_part_ibfk_2` FOREIGN KEY (`id_part`) REFERENCES `participantes` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `necessidades`
+-- Restrições para tabelas `necessidades`
 --
 ALTER TABLE `necessidades`
   ADD CONSTRAINT `necessidades_ibfk_1` FOREIGN KEY (`id_cat`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `necessidades_ibfk_2` FOREIGN KEY (`id_unid`) REFERENCES `unidades` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `necessidades_part`
+-- Restrições para tabelas `necessidades_part`
 --
 ALTER TABLE `necessidades_part`
   ADD CONSTRAINT `necessidades_part_ibfk_1` FOREIGN KEY (`id_part`) REFERENCES `participantes` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `necessidades_part_ibfk_2` FOREIGN KEY (`id_nec`) REFERENCES `necessidades` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `ofertas`
+-- Restrições para tabelas `ofertas`
 --
 ALTER TABLE `ofertas`
   ADD CONSTRAINT `ofertas_ibfk_1` FOREIGN KEY (`id_cat`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `ofertas_ibfk_2` FOREIGN KEY (`id_unid`) REFERENCES `unidades` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `ofertas_part`
+-- Restrições para tabelas `ofertas_part`
 --
 ALTER TABLE `ofertas_part`
   ADD CONSTRAINT `ofertas_part_ibfk_1` FOREIGN KEY (`id_part`) REFERENCES `participantes` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `ofertas_part_ibfk_2` FOREIGN KEY (`id_of`) REFERENCES `ofertas` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `participantes`
+-- Restrições para tabelas `participantes`
 --
 ALTER TABLE `participantes`
   ADD CONSTRAINT `participantes_ibfk_1` FOREIGN KEY (`id_tipo_acesso`) REFERENCES `tipos_acessos` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `projetos`
+-- Restrições para tabelas `projetos`
 --
 ALTER TABLE `projetos`
   ADD CONSTRAINT `projetos_ibfk_1` FOREIGN KEY (`id_rede`) REFERENCES `redes` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `projetos_ibfk_2` FOREIGN KEY (`id_st_proj`) REFERENCES `status_proj` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `projetos_part`
+-- Restrições para tabelas `projetos_part`
 --
 ALTER TABLE `projetos_part`
   ADD CONSTRAINT `projetos_part_ibfk_1` FOREIGN KEY (`id_part`) REFERENCES `participantes` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `projetos_part_ibfk_2` FOREIGN KEY (`id_proj`) REFERENCES `projetos` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `redesparts`
+-- Restrições para tabelas `redesparts`
 --
 ALTER TABLE `redesparts`
   ADD CONSTRAINT `redesparts_ibfk_1` FOREIGN KEY (`id_rede`) REFERENCES `redes` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `redesparts_ibfk_2` FOREIGN KEY (`id_part`) REFERENCES `participantes` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `transacoes`
+-- Restrições para tabelas `transacoes`
 --
 ALTER TABLE `transacoes`
   ADD CONSTRAINT `transacoes_ibfk_1` FOREIGN KEY (`id_st_trans`) REFERENCES `status_trans` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `transacoes_ibfk_4` FOREIGN KEY (`id_moeda`) REFERENCES `moedas` (`id`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `transaction_ratings`
+-- Restrições para tabelas `transaction_ratings`
 --
 ALTER TABLE `transaction_ratings`
   ADD CONSTRAINT `transaction_ratings_ibfk_1` FOREIGN KEY (`id_rating`) REFERENCES `ratings` (`id`),

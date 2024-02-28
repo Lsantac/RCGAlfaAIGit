@@ -94,6 +94,7 @@ Route::delete('/participantes/{id}',  [ParticipantesController::class,'destroy']
 
 //cria rotas para consultar as mensagens do participante no controller MensagensGeralController
 Route::get('/consultar_mensagens/{id}',  [MensagensGeralController::class,'query'])->middleware('islogged');
+Route::get('/consultar_mensagens',  [MensagensGeralController::class,'show'])->middleware('islogged');
 
 
 /*Ofertas*/

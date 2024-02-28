@@ -4,24 +4,30 @@
 
 <script src="/js/moment.js"></script>
 
-<div class="container-fluid">
+<div class="container">
    
-    <h4 class="texto-oferta" style="color:rgb(37, 15, 233);">Mensagens do Participante</h4> 
-    
-    <h4 class="texto-nome-logado">{{Session::get('nomelogado')}}</h4> 
+    <h4 class="texto-oferta" style="color:rgb(116, 72, 218);">Mensagens do Participante : {{Session::get('nomelogado')}}</h4> 
+   
     <br>
 
-    <form class="row g-3" method="get" action="">
+    <form id="form_cons_mens" class="row g-3" method="get" action="/consultar_mensagens/{{Session::get('id_logado')}}">
 
           @csrf
      
-          <div class="col-sm-8">
-               <input class="form-control texto_m" name="cons_of_tela_inic" value="{{Session::get('criterio_of_tela_inic')}}" placeholder="Digite palavras para consulta..." type="search">
-          </div>
+        <div class="col-sm-4">
+             <input class="form-control texto_m" name="cons_of_tela_inic" value="{{Session::get('criterio_of_tela_inic')}}" placeholder="Digite palavras para consulta..." type="search">
+        </div>
       
-        <div class="col-sm">
+        <div class="col-sm-1">
           <button style="margin-right: 20px" class="btn btn-sm btn-primary " type="submit">Procurar</button>
-          
+        </div>
+
+        <div class="col-sm">
+          <select class="form-select texto_m" style="margin-left: 20px; width: 250px;" id="tipo_mensagem" name="tipo_mensagem" aria-label="Default select example">
+            <option selected>Selecione tipo de mensagem</option>
+            <option value="env">Mensagens Enviadas</option>
+            <option value="rec">Mensagens Recebidas</option>
+          </select>
         </div>
         
     </form>
@@ -57,16 +63,16 @@
                                                   <figure class="figure">
 
                                                     <div class="d-block d-lg-none d-md-none d-xl-none d-xxl-none">
-                                                      @if(!@empty($of_st->imagem_of))
-                                                         <img id="imagem_of_cons"  src="/uploads/of_img/{{$of_st->imagem_of}}" class="imagem-of-nec-cons-p">
+                                                      @if(!@empty($m->imagem_of))
+                                                         <img id="imagem_of_cons"  src="/uploads/of_img/{{$m->imagem_of}}" class="imagem-of-nec-cons-p">
                                                       @else
                                                          <img id="imagem_of_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons-p">
                                                       @endif 
                                                     </div>
                           
                                                     <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block d-xxl-block">
-                                                         @if(!@empty($of_st->imagem_of))
-                                                            <img id="imagem_of_cons"  src="/uploads/of_img/{{$of_st->imagem_of}}" class="imagem-of-nec-cons">
+                                                         @if(!@empty($m->imagem_of))
+                                                            <img id="imagem_of_cons"  src="/uploads/of_img/{{$m->imagem_of}}" class="imagem-of-nec-cons">
                                                          @else
                                                             <img id="imagem_of_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons">
                                                          @endif 
@@ -81,34 +87,17 @@
                                                     <div class="col">
                                                       <div class="row">
                                                             <div class="col">
-                                                                <h6 class="texto-oferta">Oferta : {{$of_st->desc_of}}</h6>       
+                                                                <h6 class="texto-oferta">Oferta : {{$m->desc_of}}</h6>       
                                                             </div>
-
-                                                            @if($of_st->fluxo == 'Troca')
-                                                               @if($of_st->id_of == $of_st->id_of_tr_part)
-                                                                  <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_tr_part}}">
-                                                                  </div>
-                                                               @else
-                                                                  <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
-                                                                  </div>
-                                                               @endif
-                                                            
-                                                            @else
-                                                              <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
-                                                              </div>
-                                                            @endif
-
-
                                                           </div>
                                                       </div>
-
-                                                      <div class="card-text texto_p">Categoria : {{$of_st->desc_cat_of}} </div>
-                                                      <div class="texto_p local-time-of-inic local-time-inic" data-time-inic="{{$of_st->data_inic}}">
+                                                      
+                                                      <div class="texto_p local-time-of-inic local-time-inic" data-time-inic="{{$m->data_inic}}">
                                                       
                                                       </div>
 
-                                                      <div class="card-text texto_p">Participante : {{$of_st->nome_part_of}} </div>
-                                                      <div class="card-text texto_p">Obs : {{$of_st->obs_of}}</div>
+                                                      <div class="card-text texto_p">Participante : {{$m->nome_part_of}} </div>
+                                                      <div class="card-text texto_p">Obs : {{$m->obs_of}}</div>
                                                     </div>
                                                 </div>
 
@@ -122,7 +111,7 @@
                         <td>
                           
                                   <div class="card" >
-                                    @if($of_st->fluxo == 'Troca')
+                                    @if($m->fluxo == 'Troca')
                                         <div class="card-body" style="background-color:rgb(172, 240, 223) ">
                                     @else
                                         <div class="card-body" style="background-color:rgb(238, 211, 194) ">
@@ -132,12 +121,12 @@
                                          <div style="width:auto;">
                                               <figure class="figure">
 
-                                                @if($of_st->fluxo == 'Troca')   
+                                                @if($m->fluxo == 'Troca')   
 
                                                       <div class="d-block d-lg-none d-md-none d-xl-none d-xxl-none">
-                                                           @if(!@empty($of_st->imagem_of_tr))
-                                                              @if($of_st->imagem_of_tr <> $of_st->imagem_of)
-                                                                 <img id="imagem_of_tr_cons"  src="/uploads/of_img/{{$of_st->imagem_of_tr}}" class="imagem-of-nec-cons-p">
+                                                           @if(!@empty($m->imagem_of_tr))
+                                                              @if($m->imagem_of_tr <> $m->imagem_of)
+                                                                 <img id="imagem_of_tr_cons"  src="/uploads/of_img/{{$m->imagem_of_tr}}" class="imagem-of-nec-cons-p">
                                                               @endif
                                                            @else
                                                               <img id="imagem_of_tr_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons-p">
@@ -145,9 +134,9 @@
                                                       </div>
                             
                                                       <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block d-xxl-block">
-                                                            @if(!@empty($of_st->imagem_of_tr))
-                                                                  @if($of_st->imagem_of_tr <> $of_st->imagem_of)
-                                                                    <img id="imagem_of_tr_cons"  src="/uploads/of_img/{{$of_st->imagem_of_tr}}" class="imagem-of-nec-cons">
+                                                            @if(!@empty($m->imagem_of_tr))
+                                                                  @if($m->imagem_of_tr <> $m->imagem_of)
+                                                                    <img id="imagem_of_tr_cons"  src="/uploads/of_img/{{$m->imagem_of_tr}}" class="imagem-of-nec-cons">
                                                                   @endif
                                                             @else
                                                                   <img id="imagem_of_tr_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons">
@@ -157,16 +146,16 @@
                                                 @else
 
                                                       <div class="d-block d-lg-none d-md-none d-xl-none d-xxl-none">
-                                                          @if(!@empty($of_st->imagem_nec))
-                                                              <img id="imagem_nec_cons"  src="/uploads/nec_img/{{$of_st->imagem_nec}}" class="imagem-of-nec-cons-p">
+                                                          @if(!@empty($m->imagem_nec))
+                                                              <img id="imagem_nec_cons"  src="/uploads/nec_img/{{$m->imagem_nec}}" class="imagem-of-nec-cons-p">
                                                           @else
                                                               <img id="imagem_nec_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons-p">
                                                           @endif 
                                                       </div>
                             
                                                       <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block d-xxl-block">
-                                                          @if(!@empty($of_st->imagem_nec))
-                                                              <img id="imagem_nec_cons"  src="/uploads/nec_img/{{$of_st->imagem_nec}}" class="imagem-of-nec-cons">
+                                                          @if(!@empty($m->imagem_nec))
+                                                              <img id="imagem_nec_cons"  src="/uploads/nec_img/{{$m->imagem_nec}}" class="imagem-of-nec-cons">
                                                           @else
                                                               <img id="imagem_nec_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons">
                                                           @endif 
@@ -179,59 +168,52 @@
                                          <div class="col">
                                               <div class="row align-items-start">
                                                 <div class="col">
-                                                      @if($of_st->fluxo == 'Troca')
+                                                      @if($m->fluxo == 'Troca')
                                                         <div class="row">
                                                               <div class="col">
-                                                                  @if($of_st->id_of == $of_st->id_of_tr_part)
-                                                                     <h6 class="card-title texto-troca">Troca : {{$of_st->desc_of_trans}}</h6>       
+                                                                  @if($m->id_of == $m->id_of_tr_part)
+                                                                     <h6 class="card-title texto-troca">Troca : {{$m->desc_of_trans}}</h6>       
                                                                   @else
-                                                                     <h6 class="card-title texto-troca">Troca : {{$of_st->desc_of_tr}}</h6>       
+                                                                     <h6 class="card-title texto-troca">Troca : {{$m->desc_of_tr}}</h6>       
                                                                   @endif
                                                               </div>
-  
-                                                              <!--   <div class="col texto_p local-time-tr" data-time-tr="{{$of_st->data_final_of_tr_part}}">
-                                                                 </div> -->
-                                                                
-                                                                @if($of_st->id_of == $of_st->id_of_tr_part)
-                                                                    <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_part}}">
+                                                                  
+                                                                @if($m->id_of == $m->id_of_tr_part)
+                                                                    <div class="col texto_p local-time-of" data-time="{{$m->data_final_of_part}}">
                                                                     </div>
                                                                 @else
-                                                                    <div class="col texto_p local-time-of" data-time="{{$of_st->data_final_of_tr_part}}">
+                                                                    <div class="col texto_p local-time-of" data-time="{{$m->data_final_of_tr_part}}">
                                                                     </div>
                                                                 @endif
 
                                                             </div>
                                                           </div>
 
-                                                        @if($of_st->id_of == $of_st->id_of_tr_part)
-                                                            <div class="card-text texto_p">Categoria : {{$of_st->desc_cat_of_trans}}</div>
-                                                            <div class="card-text texto_p">Participante : {{$of_st->nome_part_of_trans}} </div>
-                                                            <div class="card-text texto_p">Endereço : {{$of_st->endereco_of_trans}} , {{$of_st->cidade_of_trans}} </div>
-                                                            <div class="card-text texto_p">Obs : {{$of_st->obs_of_trans}}</div>   
+                                                        @if($m->id_of == $m->id_of_tr_part)
+                                                            <div class="card-text texto_p">Categoria : {{$m->desc_cat_of_trans}}</div>
+                                                            <div class="card-text texto_p">Participante : {{$m->nome_part_of_trans}} </div>
+                                                            <div class="card-text texto_p">Endereço : {{$m->endereco_of_trans}} , {{$m->cidade_of_trans}} </div>
+                                                            <div class="card-text texto_p">Obs : {{$m->obs_of_trans}}</div>   
 
                                                         @else
-                                                            <div class="card-text texto_p">Categoria : {{$of_st->desc_cat_of_tr}}</div>
-                                                            <div class="card-text texto_p">Participante : {{$of_st->nome_part_of_tr}} </div>
-                                                            <div class="card-text texto_p">Endereço : {{$of_st->endereco_of_tr}} , {{$of_st->cidade_of_tr}} </div>
-                                                            <div class="card-text texto_p">Obs : {{$of_st->obs_of_tr}}</div>   
+                                                            <div class="card-text texto_p">Categoria : {{$m->desc_cat_of_tr}}</div>
+                                                            <div class="card-text texto_p">Participante : {{$m->nome_part_of_tr}} </div>
+                                                            <div class="card-text texto_p">Endereço : {{$m->endereco_of_tr}} , {{$m->cidade_of_tr}} </div>
+                                                            <div class="card-text texto_p">Obs : {{$m->obs_of_tr}}</div>   
                                                         @endif
                                                       @else
                                                         <div class="row">
                                                             <div class="col">
-                                                                <h6 class="card-title texto-necessidade">Necessidade : {{$of_st->desc_nec}}</h6>       
+                                                                <h6 class="card-title texto-necessidade">Necessidade : {{$m->desc_nec}}</h6>       
                                                             </div>
-                                                            <div class="col texto_p local-time-nec" data-time-nec="{{$of_st->data_final_nec_part}}">
-                                                              
-
+                                                            <div class="col texto_p local-time-nec" data-time-nec="{{$m->data_final_nec_part}}">
+                                
                                                             </div>
 
                                                           </div>
                                                         </div>
-
-                                                        <div class="card-text texto_p">Categoria : {{$of_st->desc_cat_nec}}</div>
-                                                        <div class="card-text texto_p">Participante : {{$of_st->nome_part_nec}} </div>
-                                                        <div class="card-text texto_p">Endereço : {{$of_st->endereco_nec}} , {{$of_st->cidade_nec}} </div>
-                                                        <div class="card-text texto_p">Obs : {{$of_st->obs_nec}}</div>   
+                                                        <div class="card-text texto_p">Participante : {{$m->nome_part_nec}} </div>
+                                                        <div class="card-text texto_p">Obs : {{$m->obs_nec}}</div>   
                                                       @endif
                                                 </div>
                                             </div>
@@ -246,39 +228,14 @@
                         </td>
 
                         <td>
-                          <div class="col">
-                                  <div class="card" style="width: 10rem;" >
-
-                                    <div class="card-body header-trans">
-          
-                                        <div class="row align-items-start">
-                                            <div class="col">
-                                                  <h6 class="card-title">Fluxo : {{$of_st->fluxo}}</h6>
-                                                  <div class="card-text texto_p">Qt Fluxo : {{$of_st->quant_moeda}}</div>
-                                                  <div class="card-text texto_p">Qt Oferta : {{$of_st->quant_of}}</div>
-                                                  @if($of_st->fluxo == 'Troca')
-                                                      <div class="card-text texto_p">Qt Troca : {{$of_st->quant_of_tr}}</div>
-                                                  @else
-                                                      <div class="card-text texto_p">Qt Necessidade : {{$of_st->quant_nec}}</div>
-                                                  @endif
-                                                  
-                                            </div>
-                                            
-                                        </div>
-          
-                                    </div>
-                                  </div>
-                            </div>
-                        </td>
-                        <td>
                           <form action="{{route('mens_transacoes_part')}}" method="get">
                         
                             @csrf 
                             <input value="{{Session::get('id_logado')}}" name="id_part_t" type="hidden">
-                            <input value="{{$of_st->id_nec_part}}" name="id_nec_part_t" type="hidden">
-                            <input value="{{$of_st->id_of_part}}" name="id_of_part_t" type="hidden"> 
-                            <input value="{{$of_st->id_of_tr_part}}" name="id_of_tr_part_t" type="hidden"> 
-                            @if($of_st->fluxo == 'Troca')
+                            <input value="{{$m->id_nec_part}}" name="id_nec_part_t" type="hidden">
+                            <input value="{{$m->id_of_part}}" name="id_of_part_t" type="hidden"> 
+                            <input value="{{$m->id_of_tr_part}}" name="id_of_tr_part_t" type="hidden"> 
+                            @if($m->fluxo == 'Troca')
                                <input value="tr" name="origem" type="hidden"> 
                             @else
                                <input value="of" name="origem" type="hidden"> 
@@ -301,7 +258,7 @@
       </table>
 
       <div class="pagination">
-           {{$of_status->links('layouts.paginationlinks')}}
+           {{$mens->links('layouts.paginationlinks')}}
            
       </div>
 
@@ -370,6 +327,13 @@
     });
 
   </script>
+
+<script>
+   document.getElementById('tipo_mensagem').addEventListener('change', () => {
+   document.querySelector('#form_cons_mens').submit();
+   });
+</script>
+
 
 @endsection
 

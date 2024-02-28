@@ -41,7 +41,7 @@
             </li>
             
             <li class="nav-item">
-              <a style="color:rgb(116, 72, 218); font-weight: bold; " class="nav-link" href="/consultar_mensagens/{{Session('id_logado')}}">Mensagens</a>
+              <a style="color:rgb(116, 72, 218); font-weight: bold; " class="nav-link" href="/consultar_mensagens">Mensagens</a>
             </li>
 
 

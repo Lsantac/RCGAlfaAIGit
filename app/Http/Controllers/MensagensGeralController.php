@@ -27,14 +27,25 @@ class MensagensGeralController extends Controller
     ->leftJoin('ofertas as trocas', 'trocas.id', '=', 'trocas_part.id_of')
     ->leftJoin('necessidades_part', 'necessidades_part.id', '=', 'transacoes.id_nec_part')
     ->leftJoin('necessidades', 'necessidades.id', '=', 'necessidades_part.id_nec')
-    
 
+    //consulta nome participante das ofertas, trocas e necessidades
+    ->leftJoin('participantes as part_of', 'part_of.id', '=', 'ofertas_part.id_part')
+    ->leftJoin('participantes as part_tr', 'part_tr.id', '=', 'trocas_part.id_part')
+    ->leftJoin('participantes as part_nec', 'part_nec.id', '=', 'necessidades_part.id_part')
+
+    //consulta descricao da moeda da transaçao
+    ->leftJoin('moedas', 'moedas.id', '=', 'transacoes.id_moeda')
 
     //mostre os campos consultados
     ->select('mensagens_trans.*',
     'transacoes.*',
 
+    //mostra mensagem
+    'mensagens_trans.mensagem as msg',
+    'mensagens_trans.data as data_msg',
+
     'ofertas.descricao as desc_of',
+    
     'trocas.descricao as desc_tr',
     'necessidades.descricao as desc_nec',
 
@@ -46,10 +57,20 @@ class MensagensGeralController extends Controller
     'ofertas_part.imagem as imagem_of',
     'trocas_part.imagem as imagem_tr',
     'necessidades_part.imagem as imagem_nec',
+
+    //mostra os nomes das ofertas, trocas e necessidades
+    'part_of.nome_part as nome_part_of',
+    'part_tr.nome_part as nome_part_tr',
+    'part_nec.nome_part as nome_part_nec',
         
-    'participantes.nome_part as nome_part',
+    //mostra nome da moeda
+    'moedas.desc_moeda as fluxo',
+    
     'dest.nome_part as nome_dest')
-    ->get();
+    
+    ->orderBy('mensagens_trans.data', 'desc')
+    ->paginate(10)
+    ->appends($request->all());
    
     }
     else{
@@ -67,9 +88,18 @@ class MensagensGeralController extends Controller
         ->leftJoin('ofertas as trocas', 'trocas.id', '=', 'trocas_part.id_of')
         ->leftJoin('necessidades_part', 'necessidades_part.id', '=', 'transacoes.id_nec_part')
         ->leftJoin('necessidades', 'necessidades.id', '=', 'necessidades_part.id_nec')
+
+        ->leftJoin('participantes as part_of', 'part_of.id', '=', 'ofertas_part.id_part')
+        ->leftJoin('participantes as part_tr', 'part_tr.id', '=', 'trocas_part.id_part')
+        ->leftJoin('participantes as part_nec', 'part_nec.id', '=', 'necessidades_part.id_part')
+
+        ->leftJoin('moedas', 'moedas.id', '=', 'transacoes.id_moeda')
         
         ->select('mensagens_trans.*',
         'transacoes.*',
+
+        'mensagens_trans.mensagem as msg',
+        'mensagens_trans.data as data_msg',
         
         'ofertas.descricao as desc_of',
         'trocas.descricao as desc_tr',
@@ -85,9 +115,19 @@ class MensagensGeralController extends Controller
         'necessidades_part.imagem as imagem_nec',
         
         'participantes.nome_part as nome_part',
+
+        'part_of.nome_part as nome_part_of',
+        'part_tr.nome_part as nome_part_tr',
+        'part_nec.nome_part as nome_part_nec',
+
+        'moedas.desc_moeda as fluxo',
+
         'dest.nome_part as nome_dest')
 
-        ->get();
+        //ordenar por data decrescente e pagina com 10 linhas e depois faz o append geral
+        ->orderBy('mensagens_trans.data', 'desc')
+        ->paginate(10)
+        ->appends($request->all());
 
         }
 

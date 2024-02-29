@@ -40,7 +40,8 @@
         <thead style="border-bottom: 1px solid black;" class="texto_m">
           <tr>
 
-             <th>Mensagem</th>
+             <th scope="col">Mensagem</th>
+             <th scope="col">Data</th>
              <th scope="col">Ofertas</th>
              <th scope="col">Necessidades/Trocas</th>
              <th scope="col">Ações</th>
@@ -54,32 +55,15 @@
               @foreach($mens as $m)
 
                        <tr>
+                        <td style='width: 400px' class="texto_m">{{$m->msg}}</td> 
+                        <td style='width: 150px' class="texto_m">{{date('d/m/Y H:i:s', strtotime($m->data_msg))}}</td>
+
                         <td>
                             <div class="card" >
                               
                                   <div class="card-body" style="background-color:rgb(199, 245, 207) ">
                                         <div class="row">
-                                            <div style="width:auto;">
-                                                  <figure class="figure">
-
-                                                    <div class="d-block d-lg-none d-md-none d-xl-none d-xxl-none">
-                                                      @if(!@empty($m->imagem_of))
-                                                         <img id="imagem_of_cons"  src="/uploads/of_img/{{$m->imagem_of}}" class="imagem-of-nec-cons-p">
-                                                      @else
-                                                         <img id="imagem_of_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons-p">
-                                                      @endif 
-                                                    </div>
-                          
-                                                    <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block d-xxl-block">
-                                                         @if(!@empty($m->imagem_of))
-                                                            <img id="imagem_of_cons"  src="/uploads/of_img/{{$m->imagem_of}}" class="imagem-of-nec-cons">
-                                                         @else
-                                                            <img id="imagem_of_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons">
-                                                         @endif 
-                                                    </div>
-                                                  
-                                                  </figure>
-                                            </div>
+                                            
 
                                             <div class="col">
                                                   <div class="row align-items-start">
@@ -87,7 +71,7 @@
                                                     <div class="col">
                                                       <div class="row">
                                                             <div class="col">
-                                                                <h6 class="texto-oferta">Oferta : {{$m->desc_of}}</h6>       
+                                                                <h6 class="texto-oferta">{{$m->desc_of}}</h6>       
                                                             </div>
                                                           </div>
                                                       </div>
@@ -118,53 +102,7 @@
                                     @endif   
 
                                     <div class="row">
-                                         <div style="width:auto;">
-                                              <figure class="figure">
-
-                                                @if($m->fluxo == 'Troca')   
-
-                                                      <div class="d-block d-lg-none d-md-none d-xl-none d-xxl-none">
-                                                           @if(!@empty($m->imagem_of_tr))
-                                                              @if($m->imagem_of_tr <> $m->imagem_of)
-                                                                 <img id="imagem_of_tr_cons"  src="/uploads/of_img/{{$m->imagem_of_tr}}" class="imagem-of-nec-cons-p">
-                                                              @endif
-                                                           @else
-                                                              <img id="imagem_of_tr_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons-p">
-                                                           @endif 
-                                                      </div>
-                            
-                                                      <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block d-xxl-block">
-                                                            @if(!@empty($m->imagem_of_tr))
-                                                                  @if($m->imagem_of_tr <> $m->imagem_of)
-                                                                    <img id="imagem_of_tr_cons"  src="/uploads/of_img/{{$m->imagem_of_tr}}" class="imagem-of-nec-cons">
-                                                                  @endif
-                                                            @else
-                                                                  <img id="imagem_of_tr_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons">
-                                                            @endif 
-                                                      </div>
-
-                                                @else
-
-                                                      <div class="d-block d-lg-none d-md-none d-xl-none d-xxl-none">
-                                                          @if(!@empty($m->imagem_nec))
-                                                              <img id="imagem_nec_cons"  src="/uploads/nec_img/{{$m->imagem_nec}}" class="imagem-of-nec-cons-p">
-                                                          @else
-                                                              <img id="imagem_nec_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons-p">
-                                                          @endif 
-                                                      </div>
-                            
-                                                      <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block d-xxl-block">
-                                                          @if(!@empty($m->imagem_nec))
-                                                              <img id="imagem_nec_cons"  src="/uploads/nec_img/{{$m->imagem_nec}}" class="imagem-of-nec-cons">
-                                                          @else
-                                                              <img id="imagem_nec_cons" src="/imagens/logo.jpg" class="imagem-of-nec-cons">
-                                                          @endif 
-                                                      </div>
-
-                                                @endif
-                                          
-                                              </figure>
-                                         </div>
+                                         
                                          <div class="col">
                                               <div class="row align-items-start">
                                                 <div class="col">
@@ -172,9 +110,9 @@
                                                         <div class="row">
                                                               <div class="col">
                                                                   @if($m->id_of == $m->id_of_tr_part)
-                                                                     <h6 class="card-title texto-troca">Troca : {{$m->desc_of_trans}}</h6>       
+                                                                     <h6 class="card-title texto-troca">{{$m->desc_of_trans}}</h6>       
                                                                   @else
-                                                                     <h6 class="card-title texto-troca">Troca : {{$m->desc_of_tr}}</h6>       
+                                                                     <h6 class="card-title texto-troca">{{$m->desc_of_tr}}</h6>       
                                                                   @endif
                                                               </div>
                                                                   
@@ -204,7 +142,7 @@
                                                       @else
                                                         <div class="row">
                                                             <div class="col">
-                                                                <h6 class="card-title texto-necessidade">Necessidade : {{$m->desc_nec}}</h6>       
+                                                                <h6 class="card-title texto-necessidade">{{$m->desc_nec}}</h6>       
                                                             </div>
                                                             <div class="col texto_p local-time-nec" data-time-nec="{{$m->data_final_nec_part}}">
                                 

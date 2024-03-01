@@ -23,8 +23,37 @@
         </div>
 
         <div class="col-sm">
+          
+          <select class="form-select texto_m" style="margin-left: 20px; width: 250px;" id="tipo_consulta" name="tipo_consulta" aria-label="Default select example">
+            @if(isset($tipo_cons))
+                @if($tipo_cons == 'sel')
+                  <option value="sel" selected>Seletiva (E)</option>
+                @else
+                  @if($tipo_cons == 'incl')
+                     <option value="incl" selected>Inclusiva (Ou)</option>
+                  @endif
+                @endif
+            @else 
+              <option selected>Selecione tipo de consulta</option>    
+            @endif     
+
+            <option value="sel">Seletiva (E)</option>
+            <option value="incl">Inclusiva (Ou)</option>
+          </select>
+        </div>
+
+        <div class="col-sm">
           <select class="form-select texto_m" style="margin-left: 20px; width: 250px;" id="tipo_mensagem" name="tipo_mensagem" aria-label="Default select example">
-            <option selected>Selecione tipo de mensagem</option>
+            @if(isset($env_rec))
+                @if($env_rec == 'env')
+                  <option selected>Mensagens Enviadas</option>
+                @else
+                  @if($env_rec == 'rec')
+                     <option selected>Mensagens Recebidas</option>
+                  @endif
+                @endif
+            @endif     
+
             <option value="env">Mensagens Enviadas</option>
             <option value="rec">Mensagens Recebidas</option>
           </select>
@@ -56,113 +85,62 @@
 
                        <tr>
                         <td style='width: 400px' class="texto_m">{{$m->msg}}</td> 
-                        <td style='width: 150px' class="texto_m">{{date('d/m/Y H:i:s', strtotime($m->data_msg))}}</td>
+                        <td style='width: 150px' class="texto_m">{{date('d/m/Y', strtotime($m->data_msg))}}</td>
 
                         <td>
                             <div class="card" >
-                              
                                   <div class="card-body" style="background-color:rgb(199, 245, 207) ">
-                                        <div class="row">
-                                            
-
-                                            <div class="col">
-                                                  <div class="row align-items-start">
-                                                
-                                                    <div class="col">
-                                                      <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="texto-oferta">{{$m->desc_of}}</h6>       
-                                                            </div>
-                                                          </div>
-                                                      </div>
-                                                      
-                                                      <div class="texto_p local-time-of-inic local-time-inic" data-time-inic="{{$m->data_inic}}">
-                                                      
-                                                      </div>
-
-                                                      <div class="card-text texto_p">Participante : {{$m->nome_part_of}} </div>
-                                                      <div class="card-text texto_p">Obs : {{$m->obs_of}}</div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                      <div class="row align-items-start">
+                                        <div class="col">
+                                            <h6 class="texto-oferta">{{$m->desc_of}}</h6>       
                                         </div>
-                                        
+                                      </div>
+
+                                      <div class="card-text texto_p">{{$m->nome_part_of}} </div>
                                   </div>
                             </div>
-                            
                         </td>
+
                         <td>
-                          
-                                  <div class="card" >
-                                    @if($m->fluxo == 'Troca')
-                                        <div class="card-body" style="background-color:rgb(172, 240, 223) ">
-                                    @else
-                                        <div class="card-body" style="background-color:rgb(238, 211, 194) ">
-                                    @endif   
+                            <div class="card" >
+                              @if($m->fluxo == 'Troca')
+                                  <div class="card-body" style="background-color:rgb(172, 240, 223) ">
+                              @else
+                                  <div class="card-body" style="background-color:rgb(238, 211, 194) ">
+                              @endif   
 
-                                    <div class="row">
-                                         
-                                         <div class="col">
-                                              <div class="row align-items-start">
-                                                <div class="col">
-                                                      @if($m->fluxo == 'Troca')
-                                                        <div class="row">
-                                                              <div class="col">
-                                                                  @if($m->id_of == $m->id_of_tr_part)
-                                                                     <h6 class="card-title texto-troca">{{$m->desc_of_trans}}</h6>       
-                                                                  @else
-                                                                     <h6 class="card-title texto-troca">{{$m->desc_of_tr}}</h6>       
-                                                                  @endif
-                                                              </div>
-                                                                  
-                                                                @if($m->id_of == $m->id_of_tr_part)
-                                                                    <div class="col texto_p local-time-of" data-time="{{$m->data_final_of_part}}">
-                                                                    </div>
-                                                                @else
-                                                                    <div class="col texto_p local-time-of" data-time="{{$m->data_final_of_tr_part}}">
-                                                                    </div>
-                                                                @endif
-
-                                                            </div>
+                                <div class="row">
+                                    
+                                    <div class="col">
+                                          <div class="row align-items-start">
+                                            <div class="col">
+                                                  @if($m->fluxo == 'Troca')
+                                                     <div class="row">
+                                                          <div class="col">
+                                                               <h6 class="card-title texto-troca">{{$m->desc_tr}}</h6>       
                                                           </div>
+                                                      </div>
 
-                                                        @if($m->id_of == $m->id_of_tr_part)
-                                                            <div class="card-text texto_p">Categoria : {{$m->desc_cat_of_trans}}</div>
-                                                            <div class="card-text texto_p">Participante : {{$m->nome_part_of_trans}} </div>
-                                                            <div class="card-text texto_p">Endereço : {{$m->endereco_of_trans}} , {{$m->cidade_of_trans}} </div>
-                                                            <div class="card-text texto_p">Obs : {{$m->obs_of_trans}}</div>   
-
-                                                        @else
-                                                            <div class="card-text texto_p">Categoria : {{$m->desc_cat_of_tr}}</div>
-                                                            <div class="card-text texto_p">Participante : {{$m->nome_part_of_tr}} </div>
-                                                            <div class="card-text texto_p">Endereço : {{$m->endereco_of_tr}} , {{$m->cidade_of_tr}} </div>
-                                                            <div class="card-text texto_p">Obs : {{$m->obs_of_tr}}</div>   
-                                                        @endif
-                                                      @else
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="card-title texto-necessidade">{{$m->desc_nec}}</h6>       
-                                                            </div>
-                                                            <div class="col texto_p local-time-nec" data-time-nec="{{$m->data_final_nec_part}}">
-                                
-                                                            </div>
-
-                                                          </div>
+                                                      <div class="card-text texto_p">{{$m->nome_part_tr}} </div>
+                                                  @else
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <h6 class="card-title texto-necessidade">{{$m->desc_nec}}</h6>       
                                                         </div>
-                                                        <div class="card-text texto_p">Participante : {{$m->nome_part_nec}} </div>
-                                                        <div class="card-text texto_p">Obs : {{$m->obs_nec}}</div>   
-                                                      @endif
-                                                </div>
-                                            </div>
-                                        </div>
+                                                    </div>
+                                            
+                                                    <div class="card-text texto_p">{{$m->nome_part_nec}} </div>
 
-                                    </div>
-          
-                                        
-                                    </div>
-                                  </div>
+                                                  @endif
+                                              </div>
+
+                                          </div>
+                                      </div>
+
+                                </div>
+                                
                             </div>
+                      
                         </td>
 
                         <td>
@@ -173,17 +151,20 @@
                             <input value="{{$m->id_nec_part}}" name="id_nec_part_t" type="hidden">
                             <input value="{{$m->id_of_part}}" name="id_of_part_t" type="hidden"> 
                             <input value="{{$m->id_of_tr_part}}" name="id_of_tr_part_t" type="hidden"> 
+
                             @if($m->fluxo == 'Troca')
                                <input value="tr" name="origem" type="hidden"> 
                             @else
                                <input value="of" name="origem" type="hidden"> 
-                            @endif   
+                            @endif 
+
                             <button type="submit" class="btn btn-sm btn-mensagem bi-arrow-repeat texto_p">Detalhes da Transação</button>   
                            
-                      </form>
+                          </form>
                            
                        </td>
-                       </tr>
+
+                      </tr>
     
               @endforeach
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use function GuzzleHttp\Promise\all;
 
 class MensagensGeralController extends Controller
 {
@@ -14,7 +13,10 @@ class MensagensGeralController extends Controller
 
     $env_rec = $request->tipo_mensagem;
     $mens = null;
-
+    $tipo_consulta = $request->tipo_consulta;
+    $request->session()->put('criterio_cons_of_tela_inic', request('cons_of_tela_inic')); 
+    $request->session()->put('criterio_tipo_consulta', $tipo_consulta); 
+    
     //se $env_rec for null então seta para 'rec'
    if(!$env_rec){
     $env_rec = "rec";
@@ -84,7 +86,46 @@ class MensagensGeralController extends Controller
       $query->where('mensagens_trans.id_part_dest', '=', $id_part);
 
     }
-    
+
+    if ($request->cons_of_tela_inic) {
+
+      
+
+      $string = $request->cons_of_tela_inic;
+      $palavras = preg_split('/\s+/', $string, -1, PREG_SPLIT_NO_EMPTY);
+
+      if($tipo_consulta == "sel"){
+          $query->where(function ($query) use ($palavras) {
+              foreach ($palavras as $palavra) {
+                  $query->where(function ($query) use ($palavra) {
+                      $query->orWhere('mensagens_trans.mensagem', 'like', '%' . $palavra . '%')
+                          ->orWhere('mensagens_trans.data', 'like', '%' . $palavra . '%')
+                          ->orWhere('ofertas.descricao', 'like', '%' . $palavra . '%')
+                          ->orWhere('trocas.descricao', 'like', '%' . $palavra . '%')
+                          ->orWhere('necessidades.descricao', 'like', '%' . $palavra . '%')
+                          ->orWhere('part_of.nome_part', 'like', '%' . $palavra . '%')
+                          ->orWhere('part_tr.nome_part', 'like', '%' . $palavra . '%')
+                          ->orWhere('part_nec.nome_part', 'like', '%' . $palavra . '%');
+                  });
+              }
+          });
+
+      }else{
+            $query->where(function ($query) use ($palavras) {
+              foreach ($palavras as $palavra) {
+                  $query->orWhere('mensagens_trans.mensagem', 'like', '%' . $palavra . '%')
+                      ->orWhere('mensagens_trans.data', 'like', '%' . $palavra . '%')
+                      ->orWhere('ofertas.descricao', 'like', '%' . $palavra . '%')
+                      ->orWhere('trocas.descricao', 'like', '%' . $palavra . '%')
+                      ->orWhere('necessidades.descricao', 'like', '%' . $palavra . '%')
+                      ->orWhere('part_of.nome_part', 'like', '%' . $palavra . '%')
+                      ->orWhere('part_tr.nome_part', 'like', '%' . $palavra . '%')
+                      ->orWhere('part_nec.nome_part', 'like', '%' . $palavra . '%');
+              }
+          });
+      }
+  }
+      
     $query->orderBy('mensagens_trans.data', 'desc');
     $mens = $query->paginate(10)->appends($request->all());
 

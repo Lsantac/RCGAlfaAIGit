@@ -15,7 +15,7 @@
           @csrf
      
         <div class="col-sm-4">
-             <input class="form-control texto_m" name="cons_of_tela_inic" value="{{Session::get('criterio_of_tela_inic')}}" placeholder="Digite palavras para consulta..." type="search">
+             <input class="form-control texto_m" name="cons_of_tela_inic" value="{{Session::get('criterio_cons_of_tela_inic')}}" placeholder="Digite palavras para consulta..." type="search">
         </div>
       
         <div class="col-sm-1">
@@ -26,12 +26,22 @@
           
           <select class="form-select texto_m" style="margin-left: 20px; width: 250px;" id="tipo_consulta" name="tipo_consulta" aria-label="Default select example">
             @if(isset($tipo_cons))
-                @if($tipo_cons == 'sel')
-                  <option value="sel" selected>Seletiva (E)</option>
-                @else
-                  @if($tipo_cons == 'incl')
-                     <option value="incl" selected>Inclusiva (Ou)</option>
-                  @endif
+                @if(session::get('criterio_tipo_consulta') <> null)
+                    @if(session::get('criterio.tipo_consulta') == 'sel')
+                      <option value="sel" selected>Seletiva (E)</option>
+                    @else
+                      @if(session::get('criterio.tipo_consulta') == 'incl')
+                        <option value="incl" selected>Inclusiva (Ou)</option>
+                      @endif
+                    @endif
+                @else 
+                    @if($tipo_cons == 'sel')
+                      <option value="sel" selected>Seletiva (E)</option>
+                    @else
+                      @if($tipo_cons == 'incl')
+                        <option value="incl" selected>Inclusiva (Ou)</option>
+                      @endif
+                    @endif
                 @endif
             @else 
               <option selected>Selecione tipo de consulta</option>    

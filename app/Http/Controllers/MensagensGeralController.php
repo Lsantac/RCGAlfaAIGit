@@ -13,10 +13,10 @@ class MensagensGeralController extends Controller
 
     $env_rec = $request->tipo_mensagem;
     $mens = null;
-    $tipo_consulta = $request->tipo_consulta;
-    $request->session()->put('criterio_cons_of_tela_inic', request('cons_of_tela_inic')); 
-    $request->session()->put('criterio_tipo_consulta', $tipo_consulta); 
-    
+    $tipo_cons = $request->tipo_consulta;
+    //seta variavel de sessão $cons_of_tela_inic com a variavel $request->cons_of_tela_inic
+    session(['cons_of_tela_inic' => $request->cons_of_tela_inic]);
+       
     //se $env_rec for null então seta para 'rec'
    if(!$env_rec){
     $env_rec = "rec";
@@ -89,12 +89,10 @@ class MensagensGeralController extends Controller
 
     if ($request->cons_of_tela_inic) {
 
-      
-
       $string = $request->cons_of_tela_inic;
       $palavras = preg_split('/\s+/', $string, -1, PREG_SPLIT_NO_EMPTY);
 
-      if($tipo_consulta == "sel"){
+      if($tipo_cons == "sel"){
           $query->where(function ($query) use ($palavras) {
               foreach ($palavras as $palavra) {
                   $query->where(function ($query) use ($palavra) {
@@ -129,13 +127,15 @@ class MensagensGeralController extends Controller
     $query->orderBy('mensagens_trans.data', 'desc');
     $mens = $query->paginate(10)->appends($request->all());
 
-    //dd($mens->get());     
+    //dd($mens->get());  
+    
+    //dd($env_rec);
    
     //retorna para a view cons_mensagem_geral com a variavel a consulta $mens
     if ($mens) {
-        return view('cons_mensagens_geral', ['mens' => $mens,'env_rec'=>$env_rec]);
+        return view('cons_mensagens_geral', ['mens' => $mens,'env_rec'=>$env_rec,'tipo_cons'=>$tipo_cons]);
     } else {
-        return view('cons_mensagens_geral', ['mens' => null,'env_rec'=>$env_rec]);
+        return view('cons_mensagens_geral', ['mens' => null,'env_rec'=>$env_rec,'tipo_cons'=>$tipo_cons]);
     }
    
 

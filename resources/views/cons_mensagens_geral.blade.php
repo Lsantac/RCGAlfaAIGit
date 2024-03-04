@@ -2,7 +2,8 @@
 
 @section('content')
 
-<script src="/js/moment.js"></script>
+<!--<script src="/js/moment.js"></script> -->
+<!--<link rel="stylesheet" type="text/css" href="/css/styles.css"> -->
 
 <div class="container">
    
@@ -15,7 +16,7 @@
           @csrf
      
         <div class="col-sm-4">
-             <input class="form-control texto_m" name="cons_of_tela_inic" value="{{Session::get('criterio_cons_of_tela_inic')}}" placeholder="Digite palavras para consulta..." type="search">
+             <input class="form-control texto_m" name="cons_of_tela_inic" value="{{Session::get('cons_of_tela_inic')}}" placeholder="Digite palavras para consulta..." type="search">
         </div>
       
         <div class="col-sm-1">
@@ -26,29 +27,22 @@
           
           <select class="form-select texto_m" style="margin-left: 20px; width: 250px;" id="tipo_consulta" name="tipo_consulta" aria-label="Default select example">
             @if(isset($tipo_cons))
-                @if(session::get('criterio_tipo_consulta') <> null)
-                    @if(session::get('criterio.tipo_consulta') == 'sel')
-                      <option value="sel" selected>Seletiva (E)</option>
-                    @else
-                      @if(session::get('criterio.tipo_consulta') == 'incl')
-                        <option value="incl" selected>Inclusiva (Ou)</option>
-                      @endif
-                    @endif
-                @else 
-                    @if($tipo_cons == 'sel')
-                      <option value="sel" selected>Seletiva (E)</option>
-                    @else
-                      @if($tipo_cons == 'incl')
-                        <option value="incl" selected>Inclusiva (Ou)</option>
-                      @endif
-                    @endif
+               
+                @if($tipo_cons == 'sel')
+                  <option value="sel" selected>Seletiva (E)</option>
+                  <option value="incl">Inclusiva (Ou)</option>
+                @else
+                  @if($tipo_cons == 'incl')
+                    <option value="incl" selected>Inclusiva (Ou)</option>
+                    <option value="sel">Seletiva (E)</option>
+                  @endif
                 @endif
+                
             @else 
-              <option selected>Selecione tipo de consulta</option>    
+                <option value="incl" selected>Inclusiva (Ou)</option>  
+                <option value="sel">Seletiva (E)</option>
             @endif     
-
-            <option value="sel">Seletiva (E)</option>
-            <option value="incl">Inclusiva (Ou)</option>
+            
           </select>
         </div>
 
@@ -56,16 +50,15 @@
           <select class="form-select texto_m" style="margin-left: 20px; width: 250px;" id="tipo_mensagem" name="tipo_mensagem" aria-label="Default select example">
             @if(isset($env_rec))
                 @if($env_rec == 'env')
-                  <option selected>Mensagens Enviadas</option>
+                  <option value="env" selected>Mensagens Enviadas</option>
+                  <option value="rec">Mensagens Recebidas</option>
                 @else
                   @if($env_rec == 'rec')
-                     <option selected>Mensagens Recebidas</option>
+                     <option value="rec" selected>Mensagens Recebidas</option>
+                     <option value="env">Mensagens Enviadas</option>
                   @endif
                 @endif
             @endif     
-
-            <option value="env">Mensagens Enviadas</option>
-            <option value="rec">Mensagens Recebidas</option>
           </select>
         </div>
         
@@ -261,6 +254,11 @@
    document.getElementById('tipo_mensagem').addEventListener('change', () => {
    document.querySelector('#form_cons_mens').submit();
    });
+
+   document.getElementById('tipo_consulta').addEventListener('change', () => {
+   document.querySelector('#form_cons_mens').submit();
+   });
+
 </script>
 
 

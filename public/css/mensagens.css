@@ -1,0 +1,16 @@
+//crie um card com margens muito pequenas e distancia entre as linhas pequena também
+/* Default styles */
+.card {
+    margin: 1px; /* Adjust as needed for minimal margins */
+  }
+  
+  .card-body, .card-text {
+    line-height: .4; /* Set line spacing to be smaller */
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .card {
+      margin: 2px; /* Adjust margin for smaller screens */
+    }
+  }

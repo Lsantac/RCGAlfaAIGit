@@ -360,9 +360,17 @@
 
                           <div class="col">
 
-                            @if(Session::get('id_logado') == $part->id)
-                              <button class="btn btn-editar btn-sm bi bi-pencil texto_p" type="submit" data-bs-toggle="modal" data-bs-target="#Editarnecessidade-{{$necp->id_nec_part}}"> Editar</button>
-                            @endif
+                            @php
+                              $exclusao = App\Http\Controllers\NecessidadesController::verif_excl_alt_necessidade($necp->id_nec_part);
+                            @endphp
+
+                            @if(!($exclusao))
+                                @if(Session::get('id_logado') == $part->id)
+                                  <button class="btn btn-editar btn-sm bi bi-pencil texto_p" type="submit" data-bs-toggle="modal" data-bs-target="#Editarnecessidade-{{$necp->id_nec_part}}"> 
+                                    Editar
+                                  </button>
+                                @endif
+                            @endif     
 
                             <form action="{{route('altera_necessidade_part')}}" method="post" enctype="multipart/form-data">
                               @csrf
@@ -462,7 +470,7 @@
                         <div class="col">
 
                             @php
-                              $exclusao = App\Http\Controllers\NecessidadesController::verif_exclusao_necessidade($necp->id_nec_part);
+                              $exclusao = App\Http\Controllers\NecessidadesController::verif_excl_alt_necessidade($necp->id_nec_part);
                             @endphp
 
                             @if(!($exclusao))

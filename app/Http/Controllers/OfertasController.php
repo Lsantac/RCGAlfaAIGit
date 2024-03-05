@@ -527,7 +527,7 @@ class ofertasController extends Controller
 
   
 
-  public static function verif_exclusao_oferta($id) {
+  public static function verif_excl_alt_oferta($id) {
 
     $trans = DB::table('transacoes')->where('id_of_part',$id)->first();
 

@@ -532,7 +532,7 @@ class NecessidadesController extends Controller
     }
 }
 
-public static function verif_exclusao_necessidade($id) {
+public static function verif_excl_alt_necessidade($id) {
 
   $trans = DB::table('transacoes')->where('id_nec_part',$id)->first();
 

@@ -127,7 +127,7 @@ class MensagensGeralController extends Controller
     $query->orderBy('mensagens_trans.data', 'desc');
     $mens = $query->paginate(10)->appends($request->all());
 
-    //dd($mens->get());  
+    //dd($mens);  
     
     //dd($env_rec);
    

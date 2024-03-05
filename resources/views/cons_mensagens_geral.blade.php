@@ -87,6 +87,7 @@
               @foreach($mens as $m)
 
                        <tr>
+                        <td>{{$m->id_trans}}</td>
                         <td style='width: 400px' class="texto_m">{{$m->msg}}</td> 
                         <td style='width: 150px' class="texto_m">{{date('d/m/Y', strtotime($m->data_msg))}}</td>
 

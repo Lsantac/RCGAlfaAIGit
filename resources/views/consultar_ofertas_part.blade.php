@@ -394,10 +394,17 @@
 
                         <div class="col">
 
-                              @if(Session::get('id_logado') == $part->id)
-                                <button class="btn btn-editar btn-sm bi bi-pencil texto_p" type="submit" data-bs-toggle="modal" data-bs-target="#EditarOferta-{{$ofp->id_of_part}}">
-                                  Editar</button>
-                              @endif
+                             @php
+                               $exclusao = App\Http\Controllers\OfertasController::verif_excl_alt_oferta($ofp->id_of_part);
+                             @endphp
+
+                             @if(!($exclusao))
+                                @if(Session::get('id_logado') == $part->id)
+                                  <button class="btn btn-editar btn-sm bi bi-pencil texto_p" type="submit" data-bs-toggle="modal" data-bs-target="#EditarOferta-{{$ofp->id_of_part}}">
+                                    Editar
+                                  </button>
+                                @endif
+                             @endif    
 
                               <form action="{{route('altera_oferta_part')}}" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -496,7 +503,7 @@
                         <div class="col">
 
                              @php
-                               $exclusao = App\Http\Controllers\OfertasController::verif_exclusao_oferta($ofp->id_of_part);
+                               $exclusao = App\Http\Controllers\OfertasController::verif_excl_alt_oferta($ofp->id_of_part);
                              @endphp
 
                               @if(!($exclusao))

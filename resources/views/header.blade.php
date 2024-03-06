@@ -11,20 +11,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a style="color:rgb(50, 34, 189);font-weight: bold; " class="nav-link active" aria-current="page" href="/inicio">Início</a>
+              <a style="color:rgb(50, 34, 189);font-weight:600; " class="nav-link active" aria-current="page" href="/inicio">Início</a>
             </li>
             <li class="nav-item">
-              <a style=" color:rgb(17, 88, 196); font-weight: bold; " class="nav-link" href="/participantes">Participantes</a>
+              <a style=" color:rgb(17, 88, 196); font-weight: 600; " class="nav-link" href="/participantes">Participantes</a>
             </li>
             <li class="nav-item">
-              <a style="color:rgb(18, 134, 43); font-weight: bold; " class="nav-link" href="/ofertas">Ofertas</a>
+              <a style="color:rgb(18, 134, 43); font-weight: 600; " class="nav-link" href="/ofertas">Ofertas</a>
             </li>
             <li class="nav-item">
-              <a style="color:rgb(126, 49, 13); font-weight: bold; " class="nav-link" href="/necessidades">Necessidades</a>
+              <a style="color:rgb(126, 49, 13); font-weight:600; " class="nav-link" href="/necessidades">Necessidades</a>
             </li>
           
             <li class="nav-item">
-              <a style="color:rgb(126, 13, 120); font-weight: bold; "class="nav-link" href="/redes">Redes</a>
+              <a style="color:rgb(126, 13, 120); font-weight: 600; "class="nav-link" href="/redes">Redes</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">Projetos</a>
@@ -34,16 +34,25 @@
             </li>
             <li class="nav-item">
               @if(Session::get('id_logado') > 0 )
-                 <a style="color:indianred; font-weight: bold" class="nav-link" href="/chart_part/{{Session('id_logado')}}">Estatístico</a>
+                 <a style="color:indianred; font-weight:600" class="nav-link" href="/chart_part/{{Session('id_logado')}}">Estatístico</a>
               @else
-                 <a style="color:indianred ; font-weight: bold" class="nav-link" href="/inicio">Estatístico</a>
+                 <a style="color:indianred ; font-weight: 600" class="nav-link" href="/inicio">Estatístico</a>
               @endif
             </li>
-            
-            <li class="nav-item">
-              <a style="color:rgb(116, 72, 218); font-weight: bold; " class="nav-link" href="/consultar_mensagens/{{Session('id_logado')}}">Mensagens</a>
-            </li>
 
+            <li class="nav-item d-flex align-items-center">
+              <a style="color: rgb(116, 72, 218); font-weight: 600;margin-right: 0.1px;" class="nav-link" href="/consultar_mensagens/{{Session('id_logado')}}">
+                  Mensagens
+              </a>
+              <span class="badge rounded-pill bg-danger">
+                  {{App\Http\Controllers\MensagensGeralController::consulta_qt_mensagens(Session('id_logado'))}}
+              </span>
+            </li>
+          
+          
+            
+
+          </ul>
 
       </div>
 

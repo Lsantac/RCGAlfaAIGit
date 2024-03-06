@@ -69,7 +69,7 @@
     @if (isset($mens)) 
 
     <table  class="table table-sm">
-        <thead style="border-bottom: 1px solid black;" class="texto_m">
+        <thead style="border-bottom: 1px black;" class="texto_m">
           <tr>
 
              <th scope="col">Mensagem</th>
@@ -87,7 +87,7 @@
               @foreach($mens as $m)
 
                        <tr>
-                        <td>{{$m->id_trans}}</td>
+                        <!--<td>{{$m->id_trans}}</td>-->
                         <td style='width: 400px' class="texto_m">{{$m->msg}}</td> 
                         <td style='width: 150px' class="texto_m">{{date('d/m/Y', strtotime($m->data_msg))}}</td>
 
@@ -162,7 +162,7 @@
                                <input value="of" name="origem" type="hidden"> 
                             @endif 
 
-                            <button type="submit" class="btn btn-sm btn-mensagem bi-arrow-repeat texto_p">Detalhes da Transação</button>   
+                            <button type="submit" class="btn btn-sm btn-mensagem bi-arrow-repeat texto_p"> Detalhes da Transação</button>   
                            
                           </form>
                            

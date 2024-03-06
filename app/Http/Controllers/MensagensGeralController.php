@@ -294,4 +294,13 @@ class MensagensGeralController extends Controller
     return view('cons_mensagens_geral', ['mens' => null]);
   }
 
+  //crie uma função para consulta o numero de mensagens recebida por um participante
+  public static function consulta_qt_mensagens($id_part){
+    $count = DB::table('mensagens_trans')->where('mensagens_trans.id_part_dest', '=', $id_part)
+                                         ->where('mensagens_trans.data_ok', '=', null)  
+                                         ->count();
+
+    return $count;
+  }
+
 }

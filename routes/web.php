@@ -92,7 +92,7 @@ Route::get('/consultar_participante/{id}',  [ParticipantesController::class,'que
 Route::post('/alterar_participantes/{id}',  [ParticipantesController::class,'update'])->middleware('islogged');
 Route::delete('/participantes/{id}',  [ParticipantesController::class,'destroy'])->middleware('islogged');
 
-//cria rotas para consultar as mensagens do participante no controller MensagensGeralController
+//Mensagens Gerais
 Route::get('/consultar_mensagens/{id}',  [MensagensGeralController::class,'query'])->middleware('islogged');
 Route::get('/consultar_mensagens',  [MensagensGeralController::class,'show'])->middleware('islogged');
 

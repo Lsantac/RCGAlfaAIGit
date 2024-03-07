@@ -18,11 +18,12 @@ class MensagensGeralController extends Controller
     session(['cons_of_tela_inic' => $request->cons_of_tela_inic]);
        
     //se $env_rec for null então seta para 'rec'
+
+   // dd($env_rec);
+
    if(!$env_rec){
     $env_rec = "rec";
    }
-
-  // dd($env_rec);
   
     $query = DB::table('mensagens_trans')
     ->join('participantes', 'participantes.id', '=', 'mensagens_trans.id_part')
@@ -52,6 +53,7 @@ class MensagensGeralController extends Controller
     //mostra mensagem
     'mensagens_trans.mensagem as msg',
     'mensagens_trans.data as data_msg',
+    'mensagens_trans.data_ok as data_ok',
 
     'ofertas.descricao as desc_of',
     

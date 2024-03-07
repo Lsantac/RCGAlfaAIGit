@@ -105,7 +105,7 @@ class TransacoesController extends Controller
 
        $msg = DB::table('mensagens_trans')
        ->where('id',$id)
-       ->update(['mensagem'=>$mensagem])
+       ->update(['mensagem'=>$mensagem,'data'=>date('Y-m-d H:i:s')])
        ;
                                           
        return back();                                          
@@ -505,8 +505,10 @@ class TransacoesController extends Controller
             $id_part = request('id_part_t');
             $id_nec_part = request('id_nec_part_t');
             $id_logado = request('id_logado');
-
+           
             $request->session()->put('criterio_of', request('criterio_of'));
+
+           
 
             $part = DB::table('participantes')->where('id',$id_part)
                                               ->select('participantes.*')
@@ -706,8 +708,8 @@ class TransacoesController extends Controller
             $id_of_tr_part = request('id_of_tr_part_t');
             $id_nec_part = request('id_nec_part_t');
             $origem = request('origem');
-
-            /*dd($origem);*/
+            $id_trans = request('id_trans');
+            $tipo_mens = request('tipo_mens');
 
             $troca = 0;
 
@@ -718,7 +720,15 @@ class TransacoesController extends Controller
                  $id_of_tr_part = 0;
             }
 
-           /* dd([$id_of_part,$id_of_tr_part,$id_nec_part,$troca]);*/
+            if($tipo_mens == "rec"){
+               $data = date('Y-m-d');
+
+               if($id_trans > 0){
+                  DB::table('mensagens_trans')->where('id_part_dest', '=', $id_part)
+                                              ->where('id_trans', '=', $id_trans)
+                                              ->update(['data_ok' => $data]);
+               }
+            }
             
             $part = DB::table('participantes')->where('id',$id_part)
                                               ->select('participantes.*')

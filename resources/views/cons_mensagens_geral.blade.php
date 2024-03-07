@@ -74,6 +74,7 @@
 
              <th scope="col">Mensagem</th>
              <th scope="col">Data</th>
+             <th scope="col">Data Ok</th>
              <th scope="col">Ofertas</th>
              <th scope="col">Necessidades/Trocas</th>
              <th scope="col">Ações</th>
@@ -90,6 +91,11 @@
                         <!--<td>{{$m->id_trans}}</td>-->
                         <td style='width: 400px' class="texto_m">{{$m->msg}}</td> 
                         <td style='width: 150px' class="texto_m">{{date('d/m/Y', strtotime($m->data_msg))}}</td>
+                        @if($m->data_ok == null)
+                          <td style='width: 150px' class="texto_m"></td>  
+                        @else
+                          <td style='width: 150px' class="texto_m">{{date('d/m/Y', strtotime($m->data_ok))}}</td>
+                        @endif
 
                         <td>
                             <div class="card" >
@@ -148,14 +154,25 @@
                         </td>
 
                         <td>
-                          <form action="{{route('mens_transacoes_part')}}" method="get">
+                          <form id="form_cons_trans" action="{{route('mens_transacoes_part')}}" method="get">
                         
                             @csrf 
                             <input value="{{Session::get('id_logado')}}" name="id_part_t" type="hidden">
                             <input value="{{$m->id_nec_part}}" name="id_nec_part_t" type="hidden">
                             <input value="{{$m->id_of_part}}" name="id_of_part_t" type="hidden"> 
                             <input value="{{$m->id_of_tr_part}}" name="id_of_tr_part_t" type="hidden"> 
+                            <input value="{{$m->id_trans}}" name="id_trans" type="hidden">
 
+                            @if(isset($env_rec))
+                                @if($env_rec == 'env')
+                                   <input value="env" name="tipo_mens" id="tipo_mens" type="hidden">
+                                @else
+                                  @if($env_rec == 'rec')
+                                     <input value="rec" name="tipo_mens" id="tipo_mens" type="hidden">
+                                  @endif
+                                @endif
+                            @endif     
+                        
                             @if($m->fluxo == 'Troca')
                                <input value="tr" name="origem" type="hidden"> 
                             @else
@@ -253,10 +270,13 @@
 
 <script>
    document.getElementById('tipo_mensagem').addEventListener('change', () => {
+   //seta o input 'tipo_mens' para o conteudo do select 'tipo_mensagem'
+   document.getElementById('tipo_mens').value = document.getElementById('tipo_mensagem').value;
    document.querySelector('#form_cons_mens').submit();
    });
 
    document.getElementById('tipo_consulta').addEventListener('change', () => {
+   document.getElementById('tipo_mens').value = document.getElementById('tipo_mensagem').value;
    document.querySelector('#form_cons_mens').submit();
    });
 

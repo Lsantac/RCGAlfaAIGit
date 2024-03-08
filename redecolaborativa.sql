@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/02/2024 às 19:38
+-- Tempo de geração: 08/03/2024 às 19:31
 -- Versão do servidor: 10.4.25-MariaDB
 -- Versão do PHP: 8.1.10
 
@@ -139,19 +139,7 @@ CREATE TABLE `markers` (
 --
 
 INSERT INTO `markers` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`) VALUES
-(10, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
-(8, 'Pedro de Alcantara', 'Quinta da Boa Vista, São Cristovão', -22.9051933, -43.2217865, NULL),
-(9, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
-(11, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL),
-(12, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
-(13, 'Joao Batista', 'Rua Brasil 104', -22.7455845, -45.1327324, NULL),
-(14, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
-(15, 'Ana Claudia', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL),
-(16, 'Amanda Pereira', 'Rua Irlanda, 20', -16.7167072, -49.3069305, NULL),
-(17, 'Ana Claudia', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL),
-(18, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', -19.9150295, -43.9596977, NULL),
-(19, 'Luiz Eduardo Castro', 'Rua Luiz Menezes , 111 , Vila Paraiba', -22.8105164, -45.1904182, NULL),
-(20, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL);
+(44, 'adriano assante', 'ramos ferreira 1117', -3.1278131, -60.0218468, NULL);
 
 -- --------------------------------------------------------
 
@@ -174,7 +162,7 @@ CREATE TABLE `markers_nec` (
 --
 
 INSERT INTO `markers_nec` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`, `status`) VALUES
-(1774, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 2);
+(1867, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -197,16 +185,16 @@ CREATE TABLE `markers_of` (
 --
 
 INSERT INTO `markers_of` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`, `status`) VALUES
-(13402, 'Pedro de Alcantara', 'Quinta da Boa Vista, São Cristovão', -22.9051933, -43.2217865, NULL, 4),
-(13401, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4),
-(13400, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 4),
-(13399, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', -19.9150295, -43.9596977, NULL, 4),
-(13398, 'Joao Batista', 'Rua Brasil 104', -22.7455845, -45.1327324, NULL, 3),
-(13397, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 2),
-(13396, 'Amanda Pereira', 'Rua Irlanda, 20', -16.7167072, -49.3069305, NULL, 2),
-(13395, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 4),
-(13394, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 4),
-(13393, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4);
+(14022, 'Pedro de Alcantara', 'Quinta da Boa Vista, São Cristovão', -22.9051933, -43.2217865, NULL, 4),
+(14021, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4),
+(14020, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 4),
+(14019, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', -19.9150295, -43.9596977, NULL, 4),
+(14018, 'Joao Batista', 'Rua Brasil 104', -22.7455845, -45.1327324, NULL, 3),
+(14017, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 2),
+(14016, 'Amanda Pereira', 'Rua Irlanda, 20', -16.7167072, -49.3069305, NULL, 2),
+(14015, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 4),
+(14014, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 4),
+(14013, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -221,6 +209,7 @@ CREATE TABLE `mensagens_trans` (
   `id_part_dest` int(11) NOT NULL,
   `mensagem` text NOT NULL,
   `data` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `data_ok` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `of_nec_tr` varchar(3) NOT NULL,
   `canc_conf` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -229,77 +218,74 @@ CREATE TABLE `mensagens_trans` (
 -- Despejando dados para a tabela `mensagens_trans`
 --
 
-INSERT INTO `mensagens_trans` (`id`, `id_trans`, `id_part`, `id_part_dest`, `mensagem`, `data`, `of_nec_tr`, `canc_conf`) VALUES
-(168, 58, 33, 26, 'olá Luiz', '2021-12-08 18:41:00', 'nec', 0),
-(169, 59, 24, 26, 'Olá Luiz , é a Amanda, tudo bem?', '2021-12-08 21:08:24', 'nec', 0),
-(171, 60, 26, 27, 'Oi Ana', '2021-12-09 15:52:27', 'of', 0),
-(172, 58, 26, 33, 'oi', '2021-12-09 15:54:19', 'of', 0),
-(173, 61, 26, 5, 'oi João', '2021-12-09 15:55:06', 'of', 0),
-(174, 62, 26, 14, 'oi Ricardo', '2021-12-09 16:15:07', 'of', 0),
-(176, 58, 26, 33, 'vamos fechar então.', '2021-12-10 17:59:48', 'of', 0),
-(178, 62, 26, 14, 'está por ai?', '2022-01-11 21:56:16', 'of', 0),
-(179, 62, 14, 26, 'vamos finalizar então ok?', '2022-01-22 21:50:21', 'nec', 0),
-(182, 60, 26, 27, 'oi Ana desculpe, já fechei com um outro amigo. até a proxima.', '2022-02-10 16:25:25', 'of', 0),
-(183, 65, 26, 27, 'Sou um professor bem banaca.', '2024-02-21 18:03:12', 'of', 0),
-(185, 59, 26, 24, 'Tudo bem Amanda! Estou bem!', '2022-02-14 18:59:27', 'of', 0),
-(202, 67, 26, 38, 'vamos trocar feijão por um projeto permacultural ??', '2024-02-20 14:45:08', 'tr', 0),
-(203, 68, 26, 27, 'oi Ana, vamos trocar aulas? heim?', '2022-03-22 13:39:31', 'tr', 0),
-(204, 62, 26, 14, 'Ola', '2022-03-22 00:18:53', 'of', 0),
-(205, 69, 26, 24, 'olá!', '2022-03-23 18:57:07', 'of', 0),
-(206, 66, 26, 38, 'olá Shama', '2022-04-21 16:27:55', 'of', 0),
-(207, 66, 26, 38, 'ola de novo meu amigo', '2022-05-30 18:12:14', 'of', 0),
-(208, 66, 26, 38, 'Cancelamento da confirmação. por que sim', '2022-05-30 20:33:20', 'of', 1),
-(209, 67, 26, 38, 'Cancelamento da confirmação. teste', '2022-05-30 21:46:48', 'tr', 1),
-(211, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-01-31 22:00:16', 'of', 1),
-(212, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-01-31 22:35:38', 'of', 1),
-(213, 69, 26, 24, 'Mas essa Babá é Permacultora também? Maravilha!! rss', '2023-02-01 21:29:04', 'of', 0),
-(214, 66, 38, 26, 'Cancelamento da confirmação. vamos mudar a quantidade de fluxo.', '2023-02-08 16:10:38', 'nec', 1),
-(215, 66, 38, 26, 'Cancelamento da confirmação. teste de readonly', '2023-02-08 21:56:07', 'nec', 1),
-(216, 66, 38, 26, 'Cancelamento da confirmação. outro teste', '2023-02-08 22:22:37', 'nec', 1),
-(217, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:24:50', 'nec', 1),
-(218, 66, 38, 26, 'olá tudo bem?', '2023-02-09 20:26:12', 'nec', 0),
-(219, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:35:48', 'nec', 1),
-(220, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:39:45', 'nec', 1),
-(221, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:40:44', 'nec', 1),
-(222, 66, 38, 26, 'Cancelamento da confirmação. ', '2023-02-09 20:43:18', 'nec', 1),
-(223, 66, 38, 26, 'Cancelamento da confirmação. agora vai!!', '2023-02-09 20:54:30', 'nec', 1),
-(224, 66, 26, 38, 'Cancelamento da confirmação. Luiz cancelou', '2023-02-09 20:55:27', 'of', 1),
-(225, 70, 39, 26, 'Olá Luiz, voce é terapeuta quantico? Quando pode me atender? Pode vir aqui no palacio da Quinta, no proximo domingo?', '2023-02-09 18:03:34', 'nec', 0),
-(226, 70, 39, 26, 'Vi que voce não tem mais horario disponivel. pode incluir mais uma hora?', '2023-02-09 21:03:19', 'nec', 0),
-(227, 70, 26, 39, 'Olá Pedro! Ok, Sim posso incluir mais um horário pra voce com certeza! Vou até fazer uma doação. É um grande prazer poder ajuda-lo.', '2023-02-13 20:24:08', 'of', 0),
-(228, 70, 26, 39, 'Cancelamento da confirmação. mudança de moeda', '2023-02-09 21:09:14', 'of', 1),
-(229, 70, 39, 26, 'Grato Luiz!! Quando puder , venha na Quinta tomar um chá e conversaremos sobre astronomia e permacultura. Isabel também adora. Mas não pode ser ayahuasca porque senão no dia seguinte vou ter inauguração do Colegio Pedro II e tenho que estar bem, rss. ', '2023-02-13 20:25:30', 'nec', 0),
-(230, 69, 26, 24, 'Cancelamento da confirmação. não vou mais doar não. vou usar uma moeda social.', '2023-02-12 21:50:08', 'of', 1),
-(233, 70, 26, 39, 'teste de local-time', '2023-02-13 22:15:12', 'of', 0),
-(234, 70, 26, 39, 'Cancelamento da confirmação. teste de data', '2023-02-13 22:34:22', 'of', 1),
-(235, 70, 39, 26, 'Cancelamento da confirmação. teste', '2023-02-13 23:23:06', 'nec', 1),
-(236, 70, 26, 39, 'novo tesde data local', '2023-02-14 16:12:39', 'of', 0),
-(237, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 21:57:52', 'tr', 1),
-(238, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 21:58:18', 'tr', 1),
-(239, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 22:10:11', 'tr', 1),
-(240, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-02-14 22:10:33', 'of', 1),
-(241, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-02-14 22:10:55', 'of', 1),
-(242, 69, 26, 24, 'Cancelamento da confirmação. ', '2023-02-14 22:12:33', 'of', 1),
-(243, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 22:13:20', 'tr', 1),
-(244, 70, 26, 39, 'Cancelamento da confirmação. ', '2023-03-14 21:00:02', 'of', 1),
-(245, 71, 26, 5, 'olá João Batista!! Vamos fazer um som??', '2023-03-14 21:20:45', 'of', 0),
-(248, 68, 26, 27, 'Cancelamento da confirmação. teste de cancelamento', '2024-02-20 17:30:02', 'tr', 1),
-(249, 67, 26, 38, 'Cancelamento da confirmação. ', '2024-02-20 17:44:44', 'tr', 1),
-(250, 73, 26, 33, 'Nossa! Criar uma casa de bioconstrução pra mim é como uma terapia!!', '2024-02-20 20:58:12', 'nec', 0),
-(251, 73, 26, 33, 'Cancelamento da confirmação. teste', '2024-02-20 21:00:36', 'nec', 1),
-(252, 67, 38, 38, 'Cancelamento da confirmação. teste', '2024-02-20 21:31:53', 'tr', 1),
-(253, 67, 38, 38, 'Cancelamento da confirmação. testando cancelamento', '2024-02-20 21:38:53', 'tr', 1),
-(254, 67, 38, 38, 'Cancelamento da confirmação. outro teste', '2024-02-20 21:46:53', 'tr', 1),
-(255, 67, 38, 38, 'Cancelamento da confirmação. por que sim', '2024-02-20 21:55:14', 'tr', 1),
-(256, 67, 38, 38, 'Cancelamento da confirmação. ', '2024-02-20 21:55:58', 'tr', 1),
-(257, 67, 26, 38, 'Cancelamento da confirmação. testando', '2024-02-20 21:57:08', 'tr', 1),
-(258, 67, 26, 38, 'Cancelamento da confirmação. ', '2024-02-20 21:57:14', 'tr', 1),
-(259, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:06:36', 'nec', 1),
-(260, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:07:11', 'nec', 1),
-(261, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:07:50', 'nec', 1),
-(262, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:08:32', 'nec', 1),
-(263, 65, 27, 26, 'Cancelamento da confirmação. teste de exclusão do registro de moedas_part', '2024-02-21 21:25:21', 'nec', 1),
-(264, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-02-21 21:26:04', 'nec', 1);
+INSERT INTO `mensagens_trans` (`id`, `id_trans`, `id_part`, `id_part_dest`, `mensagem`, `data`, `data_ok`, `of_nec_tr`, `canc_conf`) VALUES
+(168, 58, 33, 26, 'olá Luiz', '2024-03-07 14:24:43', '2024-03-07 03:00:00', 'nec', 0),
+(169, 59, 24, 26, 'Olá Luiz , é a Amanda, tudo bem?', '2024-03-07 14:24:32', '2024-03-07 03:00:00', 'nec', 0),
+(171, 60, 26, 27, 'Oi Ana', '2021-12-09 15:52:27', NULL, 'of', 0),
+(172, 58, 26, 33, 'oi', '2021-12-09 15:54:19', NULL, 'of', 0),
+(173, 61, 26, 5, 'oi João', '2021-12-09 15:55:06', NULL, 'of', 0),
+(174, 62, 26, 14, 'oi Ricardo', '2021-12-09 16:15:07', NULL, 'of', 0),
+(176, 58, 26, 33, 'vamos fechar então.', '2021-12-10 17:59:48', NULL, 'of', 0),
+(178, 62, 26, 14, 'está por ai?', '2022-01-11 21:56:16', NULL, 'of', 0),
+(179, 62, 14, 26, 'vamos finalizar então ok?', '2024-03-07 14:24:05', '2024-03-07 03:00:00', 'nec', 0),
+(182, 60, 26, 27, 'oi Ana desculpe, já fechei com um outro amigo. até a proxima.', '2022-02-10 16:25:25', NULL, 'of', 0),
+(183, 65, 26, 27, 'Sou um professor bem banaca.', '2024-02-21 18:03:12', NULL, 'of', 0),
+(185, 59, 26, 24, 'Tudo bem Amanda! Estou bem!', '2024-03-07 14:57:29', '2024-03-07 03:00:00', 'of', 0),
+(202, 67, 26, 38, 'vamos trocar feijão por um projeto permacultural ??', '2024-02-20 14:45:08', NULL, 'tr', 0),
+(203, 68, 26, 27, 'oi Ana, vamos trocar aulas? heim?', '2022-03-22 13:39:31', NULL, 'tr', 0),
+(204, 62, 26, 14, 'Ola', '2022-03-22 00:18:53', NULL, 'of', 0),
+(206, 66, 26, 38, 'olá Shama', '2022-04-21 16:27:55', NULL, 'of', 0),
+(207, 66, 26, 38, 'ola de novo meu amigo', '2022-05-30 18:12:14', NULL, 'of', 0),
+(208, 66, 26, 38, 'Cancelamento da confirmação. por que sim', '2022-05-30 20:33:20', NULL, 'of', 1),
+(209, 67, 26, 38, 'Cancelamento da confirmação. teste', '2022-05-30 21:46:48', NULL, 'tr', 1),
+(214, 66, 38, 26, 'Cancelamento da confirmação. vamos mudar a quantidade de fluxo.', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(215, 66, 38, 26, 'Cancelamento da confirmação. teste de readonly', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(216, 66, 38, 26, 'Cancelamento da confirmação. outro teste', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(217, 66, 38, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(218, 66, 38, 26, 'olá tudo bem?', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 0),
+(219, 66, 38, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(220, 66, 38, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(221, 66, 38, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(222, 66, 38, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(223, 66, 38, 26, 'Cancelamento da confirmação. agora vai!!', '2024-03-07 13:48:36', '2024-03-07 03:00:00', 'nec', 1),
+(224, 66, 26, 38, 'Cancelamento da confirmação. Luiz cancelou', '2023-02-09 20:55:27', NULL, 'of', 1),
+(225, 70, 39, 26, 'Olá Luiz, voce é terapeuta quantico? Quando pode me atender? Pode vir aqui no palacio da Quinta, no proximo domingo?', '2024-03-07 13:48:20', '2024-03-07 03:00:00', 'nec', 0),
+(226, 70, 39, 26, 'Vi que voce não tem mais horario disponivel. pode incluir mais uma hora?', '2024-03-07 13:48:20', '2024-03-07 03:00:00', 'nec', 0),
+(227, 70, 26, 39, 'Olá Pedro! Ok, Sim posso incluir mais um horário pra voce com certeza! Vou até fazer uma doação. É um grande prazer poder ajuda-lo.', '2023-02-13 20:24:08', NULL, 'of', 0),
+(228, 70, 26, 39, 'Cancelamento da confirmação. mudança de moeda', '2023-02-09 21:09:14', NULL, 'of', 1),
+(229, 70, 39, 26, 'Grato Luiz!! Quando puder , venha na Quinta tomar um chá e conversaremos sobre astronomia e permacultura. Isabel também adora. Mas não pode ser ayahuasca porque senão no dia seguinte vou ter inauguração do Colegio Pedro II e tenho que estar bem, rss. ', '2024-03-07 13:48:20', '2024-03-07 03:00:00', 'nec', 0),
+(233, 70, 26, 39, 'teste de local-time', '2023-02-13 22:15:12', NULL, 'of', 0),
+(234, 70, 26, 39, 'Cancelamento da confirmação. teste de data', '2023-02-13 22:34:22', NULL, 'of', 1),
+(235, 70, 39, 26, 'Cancelamento da confirmação. teste', '2024-03-07 13:48:20', '2024-03-07 03:00:00', 'nec', 1),
+(236, 70, 26, 39, 'novo tesde data local', '2023-02-14 16:12:39', NULL, 'of', 0),
+(237, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 21:57:52', NULL, 'tr', 1),
+(238, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 21:58:18', NULL, 'tr', 1),
+(239, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 22:10:11', NULL, 'tr', 1),
+(243, 68, 26, 27, 'Cancelamento da confirmação. ', '2023-02-14 22:13:20', NULL, 'tr', 1),
+(244, 70, 26, 39, 'Cancelamento da confirmação. ', '2023-03-14 21:00:02', NULL, 'of', 1),
+(245, 71, 26, 5, 'olá João Batista!! Vamos fazer um som??', '2023-03-14 21:20:45', NULL, 'of', 0),
+(248, 68, 26, 27, 'Cancelamento da confirmação. teste de cancelamento', '2024-02-20 17:30:02', NULL, 'tr', 1),
+(249, 67, 26, 38, 'Cancelamento da confirmação. ', '2024-02-20 17:44:44', NULL, 'tr', 1),
+(250, 73, 26, 33, 'Nossa! Criar uma casa de bioconstrução pra mim é como uma terapia!!', '2024-02-20 20:58:12', NULL, 'nec', 0),
+(251, 73, 26, 33, 'Cancelamento da confirmação. teste', '2024-02-20 21:00:36', NULL, 'nec', 1),
+(252, 67, 38, 38, 'Cancelamento da confirmação. teste', '2024-02-20 21:31:53', NULL, 'tr', 1),
+(253, 67, 38, 38, 'Cancelamento da confirmação. testando cancelamento', '2024-02-20 21:38:53', NULL, 'tr', 1),
+(254, 67, 38, 38, 'Cancelamento da confirmação. outro teste', '2024-02-20 21:46:53', NULL, 'tr', 1),
+(255, 67, 38, 38, 'Cancelamento da confirmação. por que sim', '2024-02-20 21:55:14', NULL, 'tr', 1),
+(256, 67, 38, 38, 'Cancelamento da confirmação. ', '2024-02-20 21:55:58', NULL, 'tr', 1),
+(257, 67, 26, 38, 'Cancelamento da confirmação. testando', '2024-02-20 21:57:08', NULL, 'tr', 1),
+(258, 67, 26, 38, 'Cancelamento da confirmação. ', '2024-02-20 21:57:14', NULL, 'tr', 1),
+(259, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:47:50', '2024-03-07 03:00:00', 'nec', 1),
+(260, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:47:50', '2024-03-07 03:00:00', 'nec', 1),
+(261, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:47:50', '2024-03-07 03:00:00', 'nec', 1),
+(262, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:47:50', '2024-03-07 03:00:00', 'nec', 1),
+(263, 65, 27, 26, 'Cancelamento da confirmação. teste de exclusão do registro de moedas_part', '2024-03-07 13:47:50', '2024-03-07 03:00:00', 'nec', 1),
+(264, 65, 27, 26, 'Cancelamento da confirmação. ', '2024-03-07 13:47:50', '2024-03-07 03:00:00', 'nec', 1),
+(265, 74, 26, 24, 'Tenho umas terras para vender ou para dividir com pessoas interessadas em criar uma comunidade sustentavel.', '2024-03-07 14:41:01', '2024-03-07 03:00:00', 'of', 0),
+(266, 75, 24, 26, 'Olá Luiz, Preciso de um programador para criar um sistema de rede colaborativa para comunidades, voce faz ?', '2024-03-08 18:26:18', '2024-03-08 21:26:18', 'nec', 0),
+(267, 75, 26, 24, 'Oi Amanda, faço sim. O que vai precisar exatamente e aonde será essa comunidade ? Posso ir para conversar com o grupo e ver o que vão precisar, e posso personalizar fazer de um jeito que fique mais adequado ao grupo. Vai ficar muito bom!! Acredite!', '2024-03-08 13:23:15', '2024-03-08 03:00:00', 'of', 0),
+(268, 75, 24, 26, 'bom dia Luiz, me passa mais detalhes do que voce faz.', '2024-03-08 18:26:18', '2024-03-08 21:26:18', 'nec', 0),
+(269, 75, 24, 26, 'poderiamos quem sabe marcar de conversar pessoalmente. Onde voce está? Guaratinguetá ?', '2024-03-08 18:26:18', '2024-03-08 21:26:18', 'nec', 0);
 
 -- --------------------------------------------------------
 
@@ -371,7 +357,7 @@ CREATE TABLE `moedas_part` (
 INSERT INTO `moedas_part` (`id`, `id_part`, `id_moeda`, `id_trans`, `quant_moeda`, `data`) VALUES
 (5, 26, 3, 40, 50, '2021-12-03'),
 (6, 14, 3, 40, -50, '2021-11-22'),
-(7, 26, 3, 58, 100, '2022-01-20'),
+(7, 26, 3, 58, 100, '2024-03-04'),
 (8, 14, 3, 63, 1, '2022-01-24'),
 (9, 26, 2, 62, 1, '2022-01-22'),
 (10, 14, 2, 62, -1, '2022-01-22'),
@@ -400,7 +386,8 @@ INSERT INTO `moedas_part` (`id`, `id_part`, `id_moeda`, `id_trans`, `quant_moeda
 (34, 26, 3, 65, 2, '2024-02-21'),
 (36, 26, 4, 65, 2, '2024-02-21'),
 (39, 26, 7, 65, 1, '2024-02-21'),
-(40, 27, 7, 65, -1, '2024-02-21');
+(40, 27, 7, 65, -1, '2024-02-21'),
+(41, 33, 3, 58, -100, '2024-03-04');
 
 -- --------------------------------------------------------
 
@@ -457,11 +444,11 @@ CREATE TABLE `necessidades_part` (
 --
 
 INSERT INTO `necessidades_part` (`id`, `id_nec`, `id_part`, `id_rede`, `data`, `quant`, `obs`, `ranking`, `imagem`, `status`) VALUES
-(1, 1, 33, 0, '2021-08-05', 5, 'Necessito de pessoas com aptidões em culinaria, chefes de cozinha, doceiras, pizzaiolos,comida árabe.', NULL, NULL, 2),
+(1, 1, 33, 0, '2021-08-05', 5, 'Necessito de pessoas com aptidões em culinaria, chefes de cozinha, doceiras, pizzaiolos,comida árabe.', NULL, NULL, 3),
 (2, 2, 26, 0, '2021-08-16', 1, 'Bioconstrutor para fazer casas de adobe.', NULL, '2_1646333534.jpg', 1),
 (3, 3, 14, 0, '2021-08-19', 1, 'Desenvolvedor de sistemas de banco de dados.', NULL, NULL, 2),
 (4, 1, 27, 0, '2021-08-23', 1, 'Preciso de cozinheiro vegano com urgencia.', NULL, NULL, 2),
-(5, 4, 24, 0, '2021-08-23', 1, 'Preciso de um profissional de permacultura para criar um sitio ecologico para futuramente virar uma ecovila.', NULL, NULL, 4),
+(5, 4, 24, 0, '2021-08-23', 1, 'Preciso de um profissional de permacultura para criar um sitio ecologico para futuramente virar uma ecovila.', NULL, NULL, 2),
 (6, 5, 27, 0, '2021-09-07', 1, 'Jardineira Waldorf trabalho de manhã na escola Jardim Michaelis, Rio de Janeiro.', NULL, NULL, 4),
 (7, 6, 26, 0, '2021-09-15', 1, 'Preciso de um ator para um filme que estou fazendo sobre ecovilas.', NULL, '6_1646332030.jpg', 2),
 (8, 7, 5, 0, '2021-11-24', 5, 'Preciso de musicos para montar uma banda. Guitarrista, baterista, vocalista, tecladista e arranjador.', NULL, NULL, 3),
@@ -532,7 +519,7 @@ CREATE TABLE `ofertas_part` (
 --
 
 INSERT INTO `ofertas_part` (`id`, `id_of`, `id_part`, `id_rede`, `data`, `quant`, `obs`, `ranking`, `imagem`, `status`) VALUES
-(3, 4, 26, 0, '2021-07-29', 1, 'Analista de Sistemas php', 1, '', 0),
+(3, 4, 26, 0, '2021-07-29', 1, 'Analista de Sistemas php', 1, '', 2),
 (5, 5, 26, 0, '2021-07-29', 1, 'Aplicação de Reiki a distancia.', 1, '', 0),
 (6, 3, 26, 0, '2021-07-27', 5, 'sapateiro', 0, '3_26_1652899973.jpg', 1),
 (7, 2, 26, 0, '2021-08-04', 2, 'Aulas de Pintura e artes em geral.', 0, NULL, 4),
@@ -548,11 +535,11 @@ INSERT INTO `ofertas_part` (`id`, `id_of`, `id_part`, `id_rede`, `data`, `quant`
 (22, 15, 26, 0, '2022-03-03', 1, 'Casa em otimo estado num lugar maravilhoso na mata atlantica e totalmente sustentável.', NULL, '15_1646333417.jpg', 1),
 (23, 12, 26, 0, '2022-04-12', 1, 'Companhia para conversar sobre espiritualidade.', NULL, '12.jpg', 0),
 (24, 3, 26, 0, '2022-04-21', 1, 'Faço sapatos de couro.', NULL, '3_26_1653418481.jpg', 0),
-(25, 16, 26, 0, '2022-05-17', 1000, 'Terras com florestas, rios e cachoeiras maravilhosas.', NULL, '16.jpg', 0),
+(25, 16, 26, 0, '2022-05-17', 1000, 'Terras com florestas, rios e cachoeiras maravilhosas.', NULL, '16.jpg', 2),
 (26, 16, 26, 10, '2022-05-17', 500, 'ecovilas em Matchu Picchu', NULL, '16_26_1652899916.jpg', 0),
 (28, 10, 40, 10, '2022-05-31', 1, 'Aulas para gestantes', NULL, '10_40_1663268671.jpeg', 0),
 (30, 18, 26, 0, '2022-09-13', 1, 'sou violonista renomado', NULL, '18_26_1672856446.jpg', 3),
-(31, 18, 26, 0, '2023-08-02', 1, 'musico bão mesmo!!', NULL, '18_26_1691001055.jpeg', 0);
+(31, 18, 26, 0, '2023-08-02', 1, 'musico bão mesmo!!', NULL, '18_26_1708972049.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -825,7 +812,7 @@ CREATE TABLE `transacoes` (
 --
 
 INSERT INTO `transacoes` (`id`, `id_nec_part`, `id_of_part`, `id_of_tr_part`, `id_st_trans`, `quant_moeda`, `id_moeda`, `quant_of`, `quant_of_tr`, `quant_nec`, `data_inic`, `data_final_nec_part`, `data_final_of_part`, `data_final_of_tr_part`) VALUES
-(58, 1, 14, 0, 4, 100, 3, 2, 0, 2, '2021-12-08 15:41:00', '2022-01-20 18:19:12', '2024-02-08 18:27:17', NULL),
+(58, 1, 14, 0, 4, 100, 3, 2, 0, 2, '2021-12-08 15:41:00', '2022-01-20 18:19:12', '2024-03-04 19:10:12', NULL),
 (59, 5, 15, 0, 2, 0, NULL, 0, 0, 0, '2021-12-08 18:08:24', NULL, NULL, NULL),
 (60, 4, 14, 0, 2, 0, NULL, 0, 0, 0, '2021-12-09 12:52:27', NULL, NULL, NULL),
 (61, 8, 13, 0, 3, 1, 2, 2, 0, 0, '2021-12-09 12:55:06', NULL, '2024-02-08 19:40:50', NULL),
@@ -834,10 +821,11 @@ INSERT INTO `transacoes` (`id`, `id_nec_part`, `id_of_part`, `id_of_tr_part`, `i
 (66, 10, 20, 0, 4, 30, 3, 1, 0, 1, '2022-03-05 18:57:28', '2023-02-09 17:54:37', '2023-02-09 17:55:47', NULL),
 (67, 0, 17, 14, 4, 1, 1, 1, 1, 0, '2022-03-05 20:35:15', NULL, '2024-02-20 18:56:12', '2024-02-20 18:57:27'),
 (68, 0, 11, 7, 4, 1, 1, 0, 1, 0, '2022-03-05 20:50:13', NULL, '2023-02-12 20:10:00', '2024-02-20 14:30:54'),
-(69, 5, 21, 0, 4, 1, 7, 1, 0, 1, '2022-03-23 15:57:07', '2023-02-12 18:46:46', '2023-02-14 19:12:45', NULL),
 (70, 14, 20, 0, 4, 1, 3, 1, 0, 1, '2023-02-09 18:02:46', '2023-02-13 20:23:17', '2024-02-08 19:19:29', NULL),
 (71, 8, 30, 0, 3, 2, 8, 1, 0, 0, '2023-03-14 18:20:45', NULL, '2024-02-08 18:15:12', NULL),
-(73, 12, 9, 0, 2, 20, 7, 0, 0, 1, '2024-02-20 17:58:12', NULL, NULL, NULL);
+(73, 12, 9, 0, 3, 20, 7, 0, 0, 1, '2024-02-20 17:58:12', '2024-02-26 18:14:22', NULL, NULL),
+(74, 5, 25, 0, 2, 0, NULL, 0, 0, 0, '2024-03-07 14:26:18', NULL, NULL, NULL),
+(75, 5, 3, 0, 2, 0, NULL, 0, 0, 0, '2024-03-07 14:56:34', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -860,21 +848,20 @@ CREATE TABLE `transaction_ratings` (
 --
 
 INSERT INTO `transaction_ratings` (`id`, `id_part`, `id_trans`, `id_rating`, `obs_rating`, `created_at`, `updated_at`) VALUES
-(3, 26, 69, 4, 'Foi tudo feito com transparencia e rapidez. Esse sistema é muito bom. Que todos usem cada vez mais!! mudei o fluxo para moeda.', '2023-02-02 21:33:07', '2023-02-14 22:12:45'),
 (7, 26, 66, 4, 'gostei muito do espaço e clientes. ;-)', '2023-02-03 16:56:17', '2023-02-09 20:55:47'),
 (8, 38, 66, 4, 'gostei muito do terapeuta!! pessoa muito legal!', '2023-02-03 17:04:56', '2023-02-09 20:54:37'),
 (9, 26, 68, 5, 'muito boa instrutora!! Eu recomendo!! confirmei de novo.', '2023-02-03 22:36:33', '2024-02-20 17:30:54'),
 (10, 39, 70, 5, 'Luiz é ótimo!', '2023-02-09 21:04:19', '2023-02-13 23:23:17'),
 (11, 26, 70, 4, 'Pedro é ótimo cliente! gostei de tudo!', '2023-02-09 21:08:50', '2024-02-08 22:19:29'),
-(12, 24, 69, 5, 'um bom babá, rss', '2023-02-12 21:46:46', '2023-02-12 21:46:46'),
 (14, 27, 68, 5, 'Muito bom professor!! também recomendo!!', '2023-02-12 23:10:00', '2023-02-12 23:10:00'),
 (15, 26, 61, 4, NULL, '2023-03-14 21:01:00', '2024-02-08 22:40:50'),
 (16, 26, 71, 4, 'muito bom musico!!', '2023-03-14 21:21:23', '2024-02-08 21:15:12'),
 (20, 26, 67, 5, 'show de bola!', '2024-02-20 17:44:10', '2024-02-20 21:57:27'),
-(21, 26, 73, 4, 'gostei muito.', '2024-02-20 20:59:39', '2024-02-20 20:59:39'),
+(21, 26, 73, 4, 'gostei muito.', '2024-02-20 20:59:39', '2024-02-26 21:14:22'),
 (22, 38, 67, 5, 'top!! gostei', '2024-02-20 21:32:22', '2024-02-20 21:56:12'),
 (23, 26, 65, 4, 'espero que gostem das minhas aulas.', '2024-02-21 21:04:30', '2024-02-21 21:04:30'),
-(24, 27, 65, 5, 'gostei sim, parabens!!', '2024-02-21 21:06:18', '2024-02-21 21:26:11');
+(24, 27, 65, 5, 'gostei sim, parabens!!', '2024-02-21 21:06:18', '2024-02-21 21:26:11'),
+(25, 26, 58, 5, 'maravilhoso', '2024-03-04 22:10:12', '2024-03-04 22:10:12');
 
 -- --------------------------------------------------------
 
@@ -923,7 +910,8 @@ INSERT INTO `users` (`id`, `email`, `senha`, `created_at`, `updated_at`) VALUES
 (816, 'collab.redecolaborativa@gmail.com', '$2y$10$H4BrhFSS5G8xTsM6yKv8FubMBfLkrE9ssRgXsvWzlvyfyLep/SNJ.', NULL, NULL),
 (818, 'allamofarias@hotmail.com', '$2y$10$cXTdCIGFtnF2SiKg3MQSiO0LDKiE0KYfY0616IL60PpZSAklsmyuS', NULL, NULL),
 (947, 'adriano50assante@gmail.com', '$2y$10$QNCpNe4be4xpvbbfnosTcOH44fkrZjFSoCHPB/aXAPdsHxDNojM0K', NULL, NULL),
-(978, 'planta_amorosa@gmail.com', '$2y$10$XW17OJ3gbJF7HWRz60z.Tegd1wSJlg9Idpln1PIDuAfUm/BChOeMK', NULL, NULL);
+(978, 'planta_amorosa@gmail.com', '$2y$10$XW17OJ3gbJF7HWRz60z.Tegd1wSJlg9Idpln1PIDuAfUm/BChOeMK', NULL, NULL),
+(1067, 'Lsantac@gmail.com', '$2y$10$WykdVx.e2jbYHUYDPY7g6./yjo30HfEIiHpDx7EPAMH.sjKCHsvhi', NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -999,7 +987,8 @@ ALTER TABLE `mensagens_trans`
   ADD KEY `id_part` (`id_part`),
   ADD KEY `of_nec_tr` (`of_nec_tr`),
   ADD KEY `id_part_dest` (`id_part_dest`) USING BTREE,
-  ADD KEY `canc_conf` (`canc_conf`) USING BTREE;
+  ADD KEY `canc_conf` (`canc_conf`) USING BTREE,
+  ADD KEY `data_ok` (`data_ok`);
 
 --
 -- Índices de tabela `migrations`
@@ -1240,25 +1229,25 @@ ALTER TABLE `identidade_imgs`
 -- AUTO_INCREMENT de tabela `markers`
 --
 ALTER TABLE `markers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de tabela `markers_nec`
 --
 ALTER TABLE `markers_nec`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1775;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1868;
 
 --
 -- AUTO_INCREMENT de tabela `markers_of`
 --
 ALTER TABLE `markers_of`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13403;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14023;
 
 --
 -- AUTO_INCREMENT de tabela `mensagens_trans`
 --
 ALTER TABLE `mensagens_trans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
 
 --
 -- AUTO_INCREMENT de tabela `migrations`
@@ -1276,7 +1265,7 @@ ALTER TABLE `moedas`
 -- AUTO_INCREMENT de tabela `moedas_part`
 --
 ALTER TABLE `moedas_part`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de tabela `necessidades`
@@ -1366,13 +1355,13 @@ ALTER TABLE `tipos_acessos`
 -- AUTO_INCREMENT de tabela `transacoes`
 --
 ALTER TABLE `transacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de tabela `transaction_ratings`
 --
 ALTER TABLE `transaction_ratings`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `unidades`
@@ -1384,7 +1373,7 @@ ALTER TABLE `unidades`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1027;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1068;
 
 --
 -- Restrições para tabelas despejadas

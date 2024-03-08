@@ -105,7 +105,7 @@ class TransacoesController extends Controller
 
        $msg = DB::table('mensagens_trans')
        ->where('id',$id)
-       ->update(['mensagem'=>$mensagem,'data'=>date('Y-m-d H:i:s')])
+       ->update(['mensagem'=>$mensagem,'data'=>date('Y-m-d H:i:s'),'data_ok'=>null])
        ;
                                           
        return back();                                          
@@ -721,11 +721,12 @@ class TransacoesController extends Controller
             }
 
             if($tipo_mens == "rec"){
-               $data = date('Y-m-d');
+               $data = date('Y-m-d H:i:s');
 
                if($id_trans > 0){
                   DB::table('mensagens_trans')->where('id_part_dest', '=', $id_part)
                                               ->where('id_trans', '=', $id_trans)
+                                              ->where('data_ok', '=', null)
                                               ->update(['data_ok' => $data]);
                }
             }

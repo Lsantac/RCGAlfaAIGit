@@ -14,6 +14,8 @@ class MensagensGeralController extends Controller
     $env_rec = $request->tipo_mensagem;
     $mens = null;
     $tipo_cons = $request->tipo_consulta;
+    $mens_lidas = $request->mensagens_lidas;
+
     //seta variavel de sessão $cons_of_tela_inic com a variavel $request->cons_of_tela_inic
     session(['cons_of_tela_inic' => $request->cons_of_tela_inic]);
        
@@ -23,6 +25,11 @@ class MensagensGeralController extends Controller
 
    if(!$env_rec){
     $env_rec = "rec";
+   }
+
+  // dd($mens_lidas);
+   if(!$mens_lidas){
+    $mens_lidas = "T";
    }
   
     $query = DB::table('mensagens_trans')
@@ -89,6 +96,16 @@ class MensagensGeralController extends Controller
 
     }
 
+   // dd($lidas);
+
+    if($mens_lidas == "NL"){
+      $query->where('mensagens_trans.data_ok', '=', null);
+    }
+
+    if($mens_lidas == "L"){
+      $query->where('mensagens_trans.data_ok', '!=', null);
+    }
+
     if ($request->cons_of_tela_inic) {
 
       $string = $request->cons_of_tela_inic;
@@ -135,9 +152,9 @@ class MensagensGeralController extends Controller
    
     //retorna para a view cons_mensagem_geral com a variavel a consulta $mens
     if ($mens) {
-        return view('cons_mensagens_geral', ['mens' => $mens,'env_rec'=>$env_rec,'tipo_cons'=>$tipo_cons]);
+        return view('cons_mensagens_geral', ['mens' => $mens,'env_rec'=>$env_rec,'tipo_cons'=>$tipo_cons,'lidas'=>$mens_lidas]);
     } else {
-        return view('cons_mensagens_geral', ['mens' => null,'env_rec'=>$env_rec,'tipo_cons'=>$tipo_cons]);
+        return view('cons_mensagens_geral', ['mens' => null,'env_rec'=>$env_rec,'tipo_cons'=>$tipo_cons ,'lidas'=>$mens_lidas]);
     }
    
 

@@ -25,7 +25,7 @@
 
         <div class="col-sm">
           
-          <select class="form-select texto_m" style="margin-left: 20px; width: 250px;" id="tipo_consulta" name="tipo_consulta" aria-label="Default select example">
+          <select class="form-select texto_m" style="margin-left: 10px; width: 150px;" id="tipo_consulta" name="tipo_consulta" aria-label="Default select example">
             @if(isset($tipo_cons))
                
                 @if($tipo_cons == 'sel')
@@ -47,7 +47,7 @@
         </div>
 
         <div class="col-sm">
-          <select class="form-select texto_m" style="margin-left: 20px; width: 250px;" id="tipo_mensagem" name="tipo_mensagem" aria-label="Default select example">
+          <select class="form-select texto_m" style="margin-left: 10px; width: 250px;" id="tipo_mensagem" name="tipo_mensagem" aria-label="Default select example">
             @if(isset($env_rec))
                 @if($env_rec == 'env')
                   <option value="env" selected>Mensagens Enviadas</option>
@@ -56,6 +56,30 @@
                   @if($env_rec == 'rec')
                      <option value="rec" selected>Mensagens Recebidas</option>
                      <option value="env">Mensagens Enviadas</option>
+                  @endif
+                @endif
+            @endif     
+          </select>
+        </div>
+
+        <div class="col-sm">
+          <select class="form-select texto_m" style="margin-left: 5px; width: 120px;" id="mensagens_lidas" name="mensagens_lidas" aria-label="Default select example">
+            @if(isset($lidas))
+                @if($lidas == 'L')
+                  <option value="L" selected>Já Lidas</option>
+                  <option value="NL">Não Lidas</option>
+                  <option value="T">Todas</option>
+                @else
+                  @if($lidas == 'NL')
+                    <option value="L">Já Lidas</option>
+                    <option value="NL" selected>Não Lidas</option>
+                    <option value="T">Todas</option>
+                  @else
+                    @if($lidas == 'T')
+                       <option value="L">Já Lidas</option>
+                       <option value="NL">Não Lidas</option>
+                       <option value="T" selected>Todas</option>
+                    @endif
                   @endif
                 @endif
             @endif     
@@ -171,7 +195,7 @@
                                      <input value="rec" name="tipo_mens" id="tipo_mens" type="hidden">
                                   @endif
                                 @endif
-                            @endif     
+                            @endif  
                         
                             @if($m->fluxo == 'Troca')
                                <input value="tr" name="origem" type="hidden"> 
@@ -190,7 +214,12 @@
               @endforeach
 
           @else
-              <td><td>Nenhum registro encontrado</td></td>    
+              <td>Nenhum registro encontrado</td>    
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               
           @endif 
 
@@ -270,15 +299,17 @@
 
 <script>
    document.getElementById('tipo_mensagem').addEventListener('change', () => {
-   //seta o input 'tipo_mens' para o conteudo do select 'tipo_mensagem'
-   document.getElementById('tipo_mens').value = document.getElementById('tipo_mensagem').value;
    document.querySelector('#form_cons_mens').submit();
    });
 
    document.getElementById('tipo_consulta').addEventListener('change', () => {
-   document.getElementById('tipo_mens').value = document.getElementById('tipo_mensagem').value;
    document.querySelector('#form_cons_mens').submit();
    });
+
+   document.getElementById('mensagens_lidas').addEventListener('change', () => {
+           document.querySelector('#form_cons_mens').submit();
+   });
+
 
 </script>
 

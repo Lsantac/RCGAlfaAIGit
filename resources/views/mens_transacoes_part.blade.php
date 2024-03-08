@@ -619,6 +619,15 @@
               </th>
               <th scope="col">
                 <div class="texto_m d-none d-lg-block">
+                     Data Ok
+                </div>
+                <div class="texto_p d-block d-lg-none">
+                     Data OK
+                </div>
+
+              </th>
+              <th scope="col">
+                <div class="texto_m d-none d-lg-block">
                      Enviado por
                 </div>
                 <div class="texto_p d-block d-lg-none">
@@ -664,6 +673,12 @@
                       </div>
                       <div class="d-block d-lg-none texto_p local-time-msg col-data" data-time="{{$msg->data}}">
                         
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-none d-lg-block texto_m local-time-msg col-data" data-time="{{$msg->data_ok}}">
+                      </div>
+                      <div class="d-block d-lg-none texto_p local-time-msg col-data" data-time="{{$msg->data_ok}}">
                       </div>
                     </td>
                     <td>
@@ -1066,12 +1081,17 @@
     
     localTime.forEach(function(el) {
       let utcTime = el.getAttribute("data-time");
-      let time = moment.utc(utcTime).toDate();
-      time = moment(time).local().format('DD-MM-YYYY HH:mm');
-      el.innerHTML = time;  
+      if (utcTime) {
+        let time = moment.utc(utcTime).toDate();
+        time = moment(time).local().format('DD-MM-YYYY HH:mm');
+        el.innerHTML = time;
+      } else {
+        el.innerHTML = "";  // Exibe campo vazio se a data for nula
+      }
     });
   });
 </script>
+
 
 
 @endsection

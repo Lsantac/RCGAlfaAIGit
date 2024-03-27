@@ -14,6 +14,6 @@ set "mysqldump="C:\xampp\mysql\bin\mysqldump.exe""
 set "mysqluser=root"
 set "mysqlpassword="
 set "backupdir=D:\Laravel\backup\RedeColaborativa"
-set "dbname=redecolabarativa"
+set "dbname=redecolaborativa"
 
 "%mysqldump%" --user=%mysqluser% --password=%mysqlpassword% --result-file="%backupdir%\%dbname%_%fullstamp%.sql" %dbname%

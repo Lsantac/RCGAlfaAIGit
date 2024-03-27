@@ -48,10 +48,7 @@
                   {{App\Http\Controllers\MensagensGeralController::consulta_qt_mensagens(Session('id_logado'))}}
               </span>
             </li>
-          
-          
-            
-
+      
           </ul>
 
       </div>
@@ -86,16 +83,17 @@
                     
                     @if(Session::get('id_tipo_acesso_logado') == 1)
                     <li><a style="color: red;"  class="dropdown-item" href="{{route('auth.resetpass')}}">Resetar Senha</a></li>
+                    <li><a class="dropdown-item" href="/identidade">Identidade do Sistema</a></li>
                     <div class="dropdown-divider"></div>
-                    <li><a class="dropdown-item" href="/unidades">Unidades</a></li>
                     @endif
-                  
+
+                    <li><a class="dropdown-item" href="/unidades">Unidades</a></li>
                     <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
                     <li><a class="dropdown-item" href="/tipos_ofertas">Tipos de Ofertas</a></li>
                     <li><a class="dropdown-item" href="/tipos_necessidades">Tipos de Necessidades</a></li>
                     <li><a class="dropdown-item" href="/moedas">Moedas</a></li>
                     <li><a class="dropdown-item" href="/consulta_saldos/{{Session('id_logado')}}">Consulta Saldos</a></li>
-                    <li><a class="dropdown-item" href="/identidade">Identidade do Sistema</a></li>
+                   
                   @endif
                 </ul>
               </div>

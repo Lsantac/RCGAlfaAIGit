@@ -111,7 +111,7 @@ class UserAuthController extends Controller
         $part->longitude = $geo['long'];
 
         $part->ranking = 0;
-        $part->id_tipo_acesso = 0;
+        $part->id_tipo_acesso = 2; //participante
 
         $query = $part->save();
 

@@ -19,6 +19,13 @@ body {
   color: rgb(8, 80, 212) !important;
 }
 
+.btn-doacoes {
+  color: black !important;
+}
+.btn-doacoes:hover {
+  color: rgb(5, 119, 24) !important;
+}
+
 
 .imagem-logo {
   width:45px;

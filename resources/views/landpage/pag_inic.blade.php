@@ -28,11 +28,16 @@
 								</div>
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item" style="padding-right: 20px ">
 							<a href="#contato" class="nav-link btn-contato">Contato</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#tutoriais">Tutoriais</a>
+						
+						<li>
+							<form action="https://www.paypal.com/donate" method="post" target="_blank" style="padding-right: 20px">
+								<input type="hidden" name="hosted_button_id" value="B8RP4KYEM3WYG" />
+								<input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+								<img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+							</form>
 						</li>
 						<li class="nav-item btn-entrar">
 
@@ -274,6 +279,9 @@
 		
 
 	</div>
+
+	
+		
 
   </section>
   <footer class="footer mt-auto py-3 text-center">

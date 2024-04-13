@@ -2,22 +2,21 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container">
 
     <h2 class="texto-necessidade">Necessidades</h2> 
-    <br>
-    
+       
     <div class="row">
-         <div class="col-10">
+         <div class="col-12">
               <form class="row-g-3" method="GET" action="{{route('consultar_necessidades')}}">
                 @csrf
 
                 <div class="row">
                   <div class="col-sm-5">
-                      <input class="form-control me-3 texto_m" name="consulta_nec" value="{{Session::get('criterio_nec')}}" type="search" placeholder="Digite palavras para consulta..." aria-label="Consultar">
+                      <input class="form-control me-2 texto_p" name="consulta_nec" value="{{Session::get('criterio_nec')}}" type="search" placeholder="Digite palavras para consulta..." aria-label="Consultar">
                   </div>
-                  <div class="col-sm-3">
-                      <input class="form-control me-2 texto_m" list="rede-list" id="consulta_redes" name="consulta_redes" value="{{Session::get('criterio_cons_rede')}}"  type="search" placeholder="Consulta por Rede...">
+                  <div class="col-sm-4">
+                      <input class="form-control me-2 texto_p" list="rede-list" id="consulta_redes" name="consulta_redes" value="{{Session::get('criterio_cons_rede')}}"  type="search" placeholder="Consulta por Rede...">
                       <datalist id="rede-list">
                                   @foreach ($redes as $rede)
                                           <option value="{{ $rede->nome }}"> 
@@ -33,7 +32,9 @@
 
               </form>
          </div>
-         <div class="col">
+         <br><br>  
+
+         <div class="col-auto">
               <form action="mostra_varios_parts" method="post">
                     @csrf
 
@@ -52,6 +53,7 @@
                                 <input value="{{$necp->longitude}}" name="parts[{{ $loop->index }}][longitude]" type="hidden">
                                 <input value="{{$necp->nome_part}}" name="parts[{{ $loop->index }}][nome_part]" type="hidden">
                                 <input value="{{$necp->endereco}}" name="parts[{{ $loop->index }}][endereco]" type="hidden">
+                                <input value="{{$necp->cidade}}" name="parts[{{ $loop->index }}][cidade]" type="hidden">
                             @endforeach
                         @endif
 

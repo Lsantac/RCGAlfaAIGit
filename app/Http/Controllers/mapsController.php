@@ -33,6 +33,7 @@ class mapsController extends Controller
             $markers = DB::table('markers')->insert([
                    'nome_part'=> $part->nome_part,
                    'endereco'=> $part->endereco,
+                   'cidade'=> $part->cidade,
                    'latitude'=> $lat,
                    'longitude'=> $long,
             ]);
@@ -41,7 +42,9 @@ class mapsController extends Controller
             $_SESSION['longi'] = $long;
             $_SESSION['part_selecionado'] = $part->nome_part;
 
-            return view('mostramapa');
+          
+            //retorna a view mostramapa com os dados de markers 
+            return view('mostramapa', ['markers_part' => DB::table('markers')->get()]);
             
           }else{
             return back()->with('fail_mapa','Latitude e Longitude precisam ser definidas para mostrar a localização do Participante : '. $part->nome_part);
@@ -83,6 +86,7 @@ class mapsController extends Controller
                $markers = DB::table('markers')->insert([
                         'nome_part'=> $part['nome_part'],
                         'endereco'=> $part['endereco'],
+                        'cidade'=> $part['cidade'],
                         'latitude'=> $lat,
                         'longitude'=> $long,
                ]);
@@ -92,12 +96,14 @@ class mapsController extends Controller
       
          } 
 
+         $markers_part = DB::table('markers')->get(); 
+
          $_SESSION['lati'] = request('latitude');
          $_SESSION['longi'] = request('longitude');
          $_SESSION['part_selecionado'] = request('nome_part');
          $_SESSION['of_nec'] = request('of_nec');
 
-         return view('mostramapa_varios');
+         return view('mostramapa_varios', ['markers_part' => $markers_part]);
       
       }
       return redirect()->route('trans_ofertas_part');

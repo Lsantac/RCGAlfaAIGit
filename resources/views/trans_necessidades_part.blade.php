@@ -152,6 +152,7 @@
           <input value="{{$ofp->longitude}}" name="parts[{{ $loop->index }}][longitude]" type="hidden">
           <input value="{{$ofp->nome_part}}" name="parts[{{ $loop->index }}][nome_part]" type="hidden">
           <input value="{{$ofp->endereco}}" name="parts[{{ $loop->index }}][endereco]" type="hidden">
+          <input value="{{$ofp->cidade}}" name="parts[{{ $loop->index }}][cidade]" type="hidden">
           @endforeach
           
         </form>

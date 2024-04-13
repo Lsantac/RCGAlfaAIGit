@@ -225,16 +225,19 @@ class IniciaController extends Controller
             'transacoes.id_of_tr_part as id_of_tr_trans',
             'participantes.nome_part as nome_part_nec',
             'participantes.endereco as endereco_nec',
+            'participantes.cidade as cidade_nec',
             'participantes.latitude as lat_nec',
             'participantes.longitude as long_nec',
 
             'participantes_tr.nome_part as nome_part_tr',
             'participantes_tr.endereco as endereco_tr',
+            'participantes_tr.cidade as cidade_tr',
             'participantes_tr.latitude as lat_tr',
             'participantes_tr.longitude as long_tr',
 
             'participantes_of.nome_part as nome_part_of_trans',
             'participantes_of.endereco as endereco_of_trans',
+            'participantes_of.cidade as cidade_of_trans',
             'participantes_of.latitude as lat_of_trans',
             'participantes_of.longitude as long_of_trans'
             );
@@ -269,16 +272,19 @@ class IniciaController extends Controller
             'transacoes.id_of_tr_part as id_of_tr_trans',
             'participantes.nome_part as nome_part_nec',
             'participantes.endereco as endereco_nec',
+            'participantes.cidade as cidade_nec',
             'participantes.latitude as lat_nec',
             'participantes.longitude as long_nec',
 
             'participantes_tr.nome_part as nome_part_tr',
             'participantes_tr.endereco as endereco_tr',
+            'participantes_tr.cidade as cidade_tr',
             'participantes_tr.latitude as lat_tr',
             'participantes_tr.longitude as long_tr',
 
             'participantes_of.nome_part as nome_part_of_trans',
             'participantes_of.endereco as endereco_of_trans',
+            'participantes_of.cidade as cidade_of_trans',
             'participantes_of.latitude as lat_of_trans',
             'participantes_of.longitude as long_of_trans'
             )
@@ -313,6 +319,7 @@ class IniciaController extends Controller
                                 $markers_of = DB::table('markers_of')->insert([
                                         'nome_part'=> $of->nome_part_nec,
                                         'endereco'=> $of->endereco_nec,
+                                        'cidade'=> $of->cidade_nec,
                                         'latitude'=> $lat,
                                         'longitude'=> $long,
                                         'status'=> $of->id_st_trans,
@@ -338,6 +345,7 @@ class IniciaController extends Controller
                                 $markers_of = DB::table('markers_of')->insert([
                                         'nome_part'=> $of->nome_part_of_trans,
                                         'endereco'=> $of->endereco_of_trans,
+                                        'cidade'=> $of->cidade_of_trans,
                                         'latitude'=> $lat,
                                         'longitude'=> $long,
                                         'status'=> $of->id_st_trans,
@@ -382,6 +390,7 @@ class IniciaController extends Controller
                         $markers_nec = DB::table('markers_nec')->insert([
                                 'nome_part'=> $nec->nome_part,
                                 'endereco'=> $nec->endereco,
+                                'cidade'=> $nec->cidade,
                                 'latitude'=> $lat,
                                 'longitude'=> $long,
                                 'status'=> $nec->id_st_trans,
@@ -391,7 +400,12 @@ class IniciaController extends Controller
                         }
                 
                 } 
-            }    
+            } 
+            
+
+            $markers_of = DB::table('markers_of')->select('*')->get();
+            $markers_nec = DB::table('markers_nec')->select('*')->get();
+            //dd($markers_nec);
 
             /* Retorno para a pagina inicial com as variaveis respectivas ----------------------------------------------*/
 
@@ -401,7 +415,9 @@ class IniciaController extends Controller
                          'num_ofp_parc' => $num_ofp_parc,
                          'num_ofp_final' => $num_ofp_final,
                          'num_nec_parc' => $num_nec_parc,
-                         'num_nec_final' => $num_nec_final
+                         'num_nec_final' => $num_nec_final,
+                         'markers_of' => $markers_of,
+                         'markers_nec' => $markers_nec
                          ]);
 
     }

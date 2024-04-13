@@ -1,8 +1,4 @@
-.card-inicio{
-    border-radius: .9rem;
-    overflow: hidden; 
-    width: 100%;
-}
+
 
 .overlay {
     background-color: white;
@@ -15,7 +11,12 @@
     border: 1px solid black;
 }
 
-#fullscreen_map_of {
+
+#map_varios {
+    position: relative;
+}
+
+#fullscreen_map_varios {
     position: absolute;
     top: 30px;
     right: 20px;
@@ -32,21 +33,5 @@
     text-align: center; /* Centraliza o texto horizontalmente */
 }
 
-#fullscreen_map_nec {
-    position: absolute;
-    top: 30px;
-    right: 20px;
-    background: white;
-    padding: 10px;
-    font-size: 18px; /* Tamanho da fonte maior */
-    width: 30px; /* Largura do botão */
-    height: 30px; /* Altura do botão */
-    border: 1px solid #ccc; /* Cor da borda mais clara */
-    border-radius: 5px; /* Bordas mais arredondadas */
-    cursor: pointer;
-    z-index: 1000; /* Garante que o botão fique no topo */
-    line-height: 5px; /* Adiciona line-height igual à altura do botão */
-    text-align: center; /* Centraliza o texto horizontalmente */
-}
 
 

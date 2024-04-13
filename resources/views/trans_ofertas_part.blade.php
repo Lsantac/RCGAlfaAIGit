@@ -144,6 +144,7 @@
           <input value="{{$necp->longitude}}" name="parts[{{ $loop->index }}][longitude]" type="hidden">
           <input value="{{$necp->nome_part}}" name="parts[{{ $loop->index }}][nome_part]" type="hidden">
           <input value="{{$necp->endereco}}" name="parts[{{ $loop->index }}][endereco]" type="hidden">
+          <input value="{{$necp->cidade}}" name="parts[{{ $loop->index }}][cidade]" type="hidden">
           @endforeach
           
         </form>

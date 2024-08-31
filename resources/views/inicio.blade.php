@@ -4,6 +4,13 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('/css/inicio.css') }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<style>
+    .overlay a {
+    pointer-events: auto; /* Garante que os cliques nos links dentro do balão sejam capturados */
+    }
+</style>
 
 <link rel="stylesheet" href="/css/ol.css">
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/03/2024 às 19:31
+-- Tempo de geração: 05/07/2024 às 14:49
 -- Versão do servidor: 10.4.25-MariaDB
 -- Versão do PHP: 8.1.10
 
@@ -129,17 +129,12 @@ CREATE TABLE `markers` (
   `id` int(11) NOT NULL,
   `nome_part` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `endereco` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cidade` varchar(80) DEFAULT NULL,
   `latitude` float(10,7) NOT NULL,
   `longitude` float(10,7) NOT NULL,
   `type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Despejando dados para a tabela `markers`
---
-
-INSERT INTO `markers` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`) VALUES
-(44, 'adriano assante', 'ramos ferreira 1117', -3.1278131, -60.0218468, NULL);
+-- Erro ao ler dados para tabela redecolaborativa.markers: #126 - Index for table &#039;.\redecolaborativa\markers.MYI&#039; is corrupt; try to repair it
 
 -- --------------------------------------------------------
 
@@ -151,6 +146,7 @@ CREATE TABLE `markers_nec` (
   `id` int(11) NOT NULL,
   `nome_part` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `endereco` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cidade` varchar(80) DEFAULT NULL,
   `latitude` float(10,7) NOT NULL,
   `longitude` float(10,7) NOT NULL,
   `type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -161,8 +157,8 @@ CREATE TABLE `markers_nec` (
 -- Despejando dados para a tabela `markers_nec`
 --
 
-INSERT INTO `markers_nec` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`, `status`) VALUES
-(1867, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 3);
+INSERT INTO `markers_nec` (`id`, `nome_part`, `endereco`, `cidade`, `latitude`, `longitude`, `type`, `status`) VALUES
+(2142, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', NULL, -22.9703426, -43.1876640, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -174,6 +170,7 @@ CREATE TABLE `markers_of` (
   `id` int(11) NOT NULL,
   `nome_part` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `endereco` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cidade` varchar(80) DEFAULT NULL,
   `latitude` float(10,7) NOT NULL,
   `longitude` float(10,7) NOT NULL,
   `type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -184,17 +181,17 @@ CREATE TABLE `markers_of` (
 -- Despejando dados para a tabela `markers_of`
 --
 
-INSERT INTO `markers_of` (`id`, `nome_part`, `endereco`, `latitude`, `longitude`, `type`, `status`) VALUES
-(14022, 'Pedro de Alcantara', 'Quinta da Boa Vista, São Cristovão', -22.9051933, -43.2217865, NULL, 4),
-(14021, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4),
-(14020, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 4),
-(14019, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', -19.9150295, -43.9596977, NULL, 4),
-(14018, 'Joao Batista', 'Rua Brasil 104', -22.7455845, -45.1327324, NULL, 3),
-(14017, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 2),
-(14016, 'Amanda Pereira', 'Rua Irlanda, 20', -16.7167072, -49.3069305, NULL, 2),
-(14015, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', -22.9703426, -43.1876640, NULL, 4),
-(14014, 'Ana Claudia ', 'Rua do Catete, 200', -22.9254646, -43.1766167, NULL, 4),
-(14013, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', -28.0606689, -48.6789703, NULL, 4);
+INSERT INTO `markers_of` (`id`, `nome_part`, `endereco`, `cidade`, `latitude`, `longitude`, `type`, `status`) VALUES
+(16763, 'Pedro de Alcantara', 'Quinta da Boa Vista, São Cristovão', NULL, -22.9051933, -43.2217865, NULL, 4),
+(16761, 'Ana Claudia ', 'Rua do Catete, 200', NULL, -22.9254646, -43.1766167, NULL, 4),
+(16762, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', NULL, -28.0606689, -48.6789703, NULL, 4),
+(16760, 'Ricardo Geraldo', 'R. Corumbá, 224 - Carlos Prates', NULL, -19.9150295, -43.9596977, NULL, 4),
+(16759, 'Joao Batista', 'Rua Brasil 104', NULL, -22.7455845, -45.1327324, NULL, 3),
+(16758, 'Ana Claudia ', 'Rua do Catete, 200', NULL, -22.9254646, -43.1766167, NULL, 2),
+(16757, 'Amanda Pereira', 'Rua Irlanda, 20', NULL, -16.7167072, -49.3069305, NULL, 2),
+(16755, 'Ana Claudia ', 'Rua do Catete, 200', NULL, -22.9254646, -43.1766167, NULL, 4),
+(16756, 'Marcos da Silva', 'Rua Santa Clara , 100 , Copacabana', NULL, -22.9703426, -43.1876640, NULL, 4),
+(16754, 'Marcelo Shama', 'Rua Luiz Silveira Soares, 108 - Encantada', NULL, -28.0606689, -48.6789703, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -452,7 +449,7 @@ INSERT INTO `necessidades_part` (`id`, `id_nec`, `id_part`, `id_rede`, `data`, `
 (6, 5, 27, 0, '2021-09-07', 1, 'Jardineira Waldorf trabalho de manhã na escola Jardim Michaelis, Rio de Janeiro.', NULL, NULL, 4),
 (7, 6, 26, 0, '2021-09-15', 1, 'Preciso de um ator para um filme que estou fazendo sobre ecovilas.', NULL, '6_1646332030.jpg', 2),
 (8, 7, 5, 0, '2021-11-24', 5, 'Preciso de musicos para montar uma banda. Guitarrista, baterista, vocalista, tecladista e arranjador.', NULL, NULL, 3),
-(9, 8, 26, 0, '2022-03-03', 10, 'comida organica, vegetariana. muito gostosa.', NULL, '8_1646332608.jpg', 0),
+(9, 8, 26, 10, '2022-03-03', 10, 'comida organica, vegetariana. muito gostosa.', NULL, '8_1646332608.jpg', 0),
 (10, 9, 38, 0, '2022-03-05', 10, 'grupo para desenvolver curso', NULL, '9.jpg', 3),
 (12, 9, 26, 10, '2022-09-10', 1, 'tecnica com bolha de cura com luz azul', NULL, '9_26_1662842139.jpg', 3),
 (13, 3, 26, 0, '2022-09-13', 2, 'preciso de programadores de PHP/Laravel/HTML/CSS/JavaScript', NULL, '3_26_1663077714.jpg', 0),
@@ -911,7 +908,7 @@ INSERT INTO `users` (`id`, `email`, `senha`, `created_at`, `updated_at`) VALUES
 (818, 'allamofarias@hotmail.com', '$2y$10$cXTdCIGFtnF2SiKg3MQSiO0LDKiE0KYfY0616IL60PpZSAklsmyuS', NULL, NULL),
 (947, 'adriano50assante@gmail.com', '$2y$10$QNCpNe4be4xpvbbfnosTcOH44fkrZjFSoCHPB/aXAPdsHxDNojM0K', NULL, NULL),
 (978, 'planta_amorosa@gmail.com', '$2y$10$XW17OJ3gbJF7HWRz60z.Tegd1wSJlg9Idpln1PIDuAfUm/BChOeMK', NULL, NULL),
-(1067, 'Lsantac@gmail.com', '$2y$10$WykdVx.e2jbYHUYDPY7g6./yjo30HfEIiHpDx7EPAMH.sjKCHsvhi', NULL, NULL);
+(1099, 'lsantac@gmail.com', '$2y$10$MBmUpUPbxrEX0pQMkkDS8OXP/JlroxHQcP3bg7jnc43kBF3TLQw2a', NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -963,19 +960,22 @@ ALTER TABLE `identidade_imgs`
 -- Índices de tabela `markers`
 --
 ALTER TABLE `markers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cidade` (`cidade`);
 
 --
 -- Índices de tabela `markers_nec`
 --
 ALTER TABLE `markers_nec`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cidade` (`cidade`);
 
 --
 -- Índices de tabela `markers_of`
 --
 ALTER TABLE `markers_of`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cidade` (`cidade`);
 
 --
 -- Índices de tabela `mensagens_trans`
@@ -1229,19 +1229,19 @@ ALTER TABLE `identidade_imgs`
 -- AUTO_INCREMENT de tabela `markers`
 --
 ALTER TABLE `markers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=619;
 
 --
 -- AUTO_INCREMENT de tabela `markers_nec`
 --
 ALTER TABLE `markers_nec`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1868;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2143;
 
 --
 -- AUTO_INCREMENT de tabela `markers_of`
 --
 ALTER TABLE `markers_of`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14023;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16764;
 
 --
 -- AUTO_INCREMENT de tabela `mensagens_trans`
@@ -1373,7 +1373,7 @@ ALTER TABLE `unidades`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1068;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1100;
 
 --
 -- Restrições para tabelas despejadas

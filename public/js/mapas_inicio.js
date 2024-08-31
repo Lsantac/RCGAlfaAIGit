@@ -41,7 +41,9 @@ for (var i = 0; i < markers_of.length; i++) {
         geometry: new ol.geom.Point(ol.proj.fromLonLat([marker_of.longitude, marker_of.latitude])),
         name: marker_of.nome_part, // Adiciona o nome como uma propriedade do recurso
         endereco:marker_of.endereco,
-        cidade: marker_of.cidade
+        cidade: marker_of.cidade,
+        //testando click em url
+        url: '/identidade'
 
     });
 
@@ -89,19 +91,30 @@ var overlay = new ol.Overlay({
 });
 map_of.addOverlay(overlay);
 
+
 // Adiciona um evento de clique ao mapa para mostrar o balão
 map_of.on('click', function(evt) {
-    var feature = map_of.forEachFeatureAtPixel(evt.pixel,
-        function(feature) {
-            return feature;
-        });
+    var feature = map_of.forEachFeatureAtPixel(evt.pixel, function(feature) {
+        return feature;
+    });
+
     if (feature) {
         var coordinates = feature.getGeometry().getCoordinates();
         overlay.setPosition(coordinates);
-        element.innerHTML = feature.get('name') + '<br>' + feature.get('endereco') + '<br>' + feature.get('cidade');
+
+        var content = `
+            ${feature.get('name')} <br> 
+            ${feature.get('endereco')} <br> 
+            ${feature.get('cidade')} <br> 
+            `;
+
+        element.innerHTML = content;
+     
+
     } else {
         element.innerHTML = '';
         overlay.setPosition(undefined);
+       
     }
 });
 

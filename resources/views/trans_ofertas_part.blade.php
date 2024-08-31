@@ -165,8 +165,8 @@
     <table class="table table-sm tabela-necessidade">
         <thead>
           <tr>
-            <th scope="col" class="texto_p" >Imagem</th>
-            <th scope="col" class="texto_p" >Descrição</th>
+            <th scope="col" class="texto_p">Imagem</th>
+            <th scope="col" class="texto_p">Descrição</th>
             <th scope="col" class="texto_p">Data</th>
             <th scope="col" class="texto_p">Quant</th>
             <th scope="col" class="texto_p">Unidade</th>
